@@ -1,0 +1,422 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Functions</title>
+  <metadata>
+  <md:content-id>m27749</md:content-id><md:title>Functions</md:title>
+  <md:abstract/>
+  <md:uuid>0eb7825d-9d87-4263-9066-f6e6990bb376</md:uuid>
+</metadata>
+
+<content>
+    <section id="id-858825611637">
+      <title>Basic of C functions</title>
+      <para id="id6151285">Functions break large computing tasks into smaller ones, and enable people to build on what others have done instead of starting over from scratch. Appropriate functions hide details of operation from parts of the program that don't need to know about them, thus clarifying the whole, and easing the pain of making changes. </para>
+      <para id="id7429953">C has been designed to make functions efficient and easy to use; C programs generally consist of many small functions rather than a few big ones. A program may reside in one or more source files. Source files may be compiled separately and loaded together, along with previously compiled functions from libraries. We will not go into that process here, however, since the details vary from system to system. </para>
+      <para id="id6886370">Function declaration and definition is the area where the ANSI standard has made the most changes to C. It is now possible to declare the type of arguments when a function is declared. The syntax of function declaration also changes, so that declarations and definitions match. This makes it possible for a compiler to detect many more errors than it could before. Furthermore, when arguments are properly declared, appropriate type coercions are performed automatically. </para>
+      <para id="id4771834">Every function is defined exactly once. A program can declare and call a function as many times as necessary.</para>
+    </section>
+    <section id="id-375218762173">
+      <title>Declaration and Usage of Function</title>
+      <section id="id-204096882415">
+        <title>Function Declarations</title>
+        <para id="id5635584">The definition of a function consists of a function head (or the declarator) and a function block . The function head specifies the name of the function, the type of its return value, and the types and names of its parameters, if any. The statements in the function block specify what the function does. The general form of a function definition is as follows:</para>
+        <code id="id1167725971689" display="block">//function head
+type function-name(parameter declarations)  
+//function block
+{ 
+declarations and statements 
+}
+</code>
+        
+        
+        
+        
+        
+        <para id="id7725880">In the function head, name is the function's name, while type (return-type) consists of at least one type specifier, which defines the type of the function's return value. The return type may be void or any object type, except array types. Furthermore, type may include the function specifier inline, and/or one of the storage class specifiers extern and static.</para>
+        <para id="id6164179">A function cannot return a function or an array. However, you can define a function that returns a pointer to a function or a pointer to an array.</para>
+        <para id="id6692442">The <emphasis>parameter</emphasis><emphasis>declarations</emphasis> are contained in a comma-separated list of declarations of the function's parameters. If the function has no parameters, this list is either empty or contains merely the word void.</para>
+        <para id="id7683437">The type of a function specifies not only its return type, but also the types of all its parameters. The following listing is a simple function to calculate the volume of a cylinder.</para>
+        <code id="id1167725849880" display="block">// The  cylinderVolume( ) function calculates the volume of a cylinder.
+// Arguments: Radius of the base circle; height of the cylinder.
+// Return value: Volume of the cylinder.
+
+extern double cylinderVolume( double r, double h )
+{
+   const double pi = 3.1415926536;     // Pi is constant
+   return  pi * r * r * h;
+}
+</code>
+        
+        
+        
+        
+        
+        
+        
+        <para id="id6724281">This function has the name cylinderVolume, and has two parameters, r and h, both with type double. It returns a value with the type double.</para>
+        <para id="id6558560">
+          <emphasis>return statement</emphasis>
+        </para>
+        <para id="id6612786">The return statement ends execution of the current function, and jumps back to where the function was called:</para>
+        <code id="id1167725968112" display="block">return [expression];</code>
+        <para id="id7261487"><emphasis>expression</emphasis> is evaluated and the result is given to the caller as the value of the function call. This return value is converted to the function's return type, if necessary.</para>
+        <para id="id7556971">A function can contain any number of return statements:</para>
+        <code id="id1167725850300" display="block">// Return the smaller of two integer arguments.
+int min( int a, int b )
+{
+   if   ( a &lt; b ) return a;
+   else           return b;
+}
+</code>
+        
+        
+        
+        
+        
+        <para id="id8779146">The contents of this function block can also be expressed by the following single statement:</para>
+        <code id="id1167725663981" display="block">return ( a &lt; b ? a : b );</code>
+        <para id="id6229067">The parentheses do not affect the behavior of the return statement. However, complex return expressions are often enclosed in parentheses for the sake of readability.</para>
+        <para id="id3692528">A return statement with no expression can only be used in a function of type void. In fact, such functions do not need to have a return statement at all. If no return statement is encountered in a function, the program flow returns to the caller when the end of the function block is reached.</para>
+      </section>
+      <section id="id-631105289392">
+        <title>Usage of Functions </title>
+        <para id="id7805964">The instruction to execute a function, the function call, consists of the function's name and the operator ( ). For example, the following statement calls the function maximum to compute the maximum of the matrix mat, which has r rows and c columns:</para>
+        <code id="id1167725672834" display="block">maximum( r, c, mat );</code>
+        <para id="id6236542">The program first allocates storage space for the parameters, then copies the argument values to the corresponding locations. Then the program jumps to the beginning of the function, and execution of the function begins with first variable definition or statement in the function block.</para>
+        <para id="id6585191">If the program reaches a return statement or the closing brace } of the function block, execution of the function ends, and the program jumps back to the calling function. If the program "falls off the end" of the function by reaching the closing brace, the value returned to the caller is undefined. For this reason, you must use a return statement to stop any function that does not have the type void. The value of the return expression is returned to the calling function.</para>
+      </section>
+      <section id="id-286412022133">
+        <title>Scope of Variables</title>
+        <para id="id8773156">One of the C language’s strengths is its flexibility in defining data storage. There are two aspects that can be controlled in C: scope and lifetime. Scope refers to the places in the code from which the variable can be accessed. Lifetime refers to the points in time at which the variable can be accessed.</para>
+        <para id="id8553578">Three scopes are available to the programmer:</para>
+        <list id="id6127295" list-type="bulleted">
+          <item><emphasis>extern</emphasis>: This is the default for variables declared outside any function. The scope of variables with <emphasis>extern</emphasis> scope is all the code in the entire program.</item>
+          <item><emphasis>static</emphasis>: The scope of a variable declared static outside any function is the rest of the code in that source file. The scope of a variable declared static inside a function is the rest of the local block.</item>
+          <item><emphasis>auto</emphasis>: This is the default for variables declared inside a function. The scope of an auto variable is the rest of the local block.</item>
+        </list>
+        <para id="id3754015">Three lifetimes are available to the programmer. They do not have predefined keywords
+for names as scopes do. The first is the lifetime of <emphasis>extern</emphasis> and <emphasis>static</emphasis> variables, whose
+lifetime is from before <emphasis>main()</emphasis> is called until the program exits. The second is the lifetime
+of function arguments and automatics, which is from the time the function is called until
+it returns. The third lifetime is that of dynamically allocated data. It starts when the
+program calls <emphasis>malloc()</emphasis> or <emphasis>calloc()</emphasis> to allocate space for the data and ends when the
+program calls <emphasis>free()</emphasis> or when it exits, whichever comes first.
+
+</para>
+        
+        
+        
+        
+        
+        
+        <section id="id-00129375680608">
+          <title>Local block</title>
+          <para id="id6736658">A local block is any portion of a C program that is enclosed by the left brace ({) and the right brace (}). A C function contains left and right braces, and therefore anything between the two braces is contained in a local block. An if statement or a switch statement can also contain braces, so the portion of code between these two braces would be considered a local block. Additionally, you might want to create your own local block without the aid of a C function or keyword construct. This is perfectly legal. Variables can be declared within local blocks, but they must be declared only at the beginning of a local block. Variables declared in this manner are visible only within the local block. Duplicate variable names declared within a local block take precedence over variables with the same name declared outside the local block. Here is an example of a program that uses local blocks:</para>
+          <code id="id1167725791816" display="block">#include &lt;stdio.h&gt;
+void main(void);
+void main()
+{
+/* Begin local block for function main() */
+int test_var = 10;
+printf(“Test variable before the if statement: %d\n”, test_var);
+if (test_var &gt; 5)
+{
+/* Begin local block for “if” statement */
+int test_var = 5;
+printf(“Test variable within the if statement: %d\n”, test_var);
+{
+/* Begin independent local block (not tied to any function or keyword) */
+int test_var = 0;
+printf(“Test variable within the independent local block:%d\n”, test_var);
+}
+/* End independent local block */
+}
+/* End local block for “if” statement */
+printf(“Test variable after the if statement: %d\n”, test_var);
+}
+/* End local block for function main() */
+</code>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <para id="id7466528">This example program produces the following output:</para>
+          <code id="id1167726669792" display="block">Test variable before the if statement: 10                                                                            
+Test variable within the if statement: 5
+Test variable within the independent local block: 0
+Test variable after the if statement: 10
+</code>
+          <para id="id8776340">Notice that as each test_var was defined, it took precedence over the previously defined test_var. Also notice that when the if statement local block had ended, the program had reentered the scope of the original test_var, and its value was 10.</para>
+        </section>
+        <section id="id-60490769633">
+          <title>Functions and Storage Class Specifiers</title>
+          <para id="id6369108">The function in the listing above is declared with the storage class specifier extern. This is not strictly necessary, since extern is the default storage class for functions. An ordinary function definition that does not contain a static or inline specifier can be placed in any source file of a program. Such a function is available in all of the program's source files, because its name is an external identifier. You merely have to declare the function before its first use in a given translation unit. Furthermore, you can arrange functions in any order you wish within a source file. The only restriction is that you cannot define one function within another. C does not allow you to define "local functions" in this way.</para>
+          <para id="id6048881">You can hide a function from other source files. If you declare a function as static, its name identifies it only within the source file containing the function definition. Because the name of a static function is not an external identifier, you cannot use it in other source files. If you try to call such a function by its name in another source file, the linker will issue an error message, or the function call might refer to a different function with the same name elsewhere in the program.</para>
+          <para id="id8739108">The function <emphasis>printArray( )</emphasis> in the following listing might well be defined using static because it is a special-purpose helper function, providing formatted output of an array of float variables.</para>
+          
+          <code id="id1167726984642" display="block">// The static function printArray( ) prints the elements of an array
+// of float to standard output, using printf( ) to format them.
+// Arguments:    An array of float, and its length.
+// Return value: None.
+
+static void printArray( const float array[ ], int n )
+{
+  for ( int i=0; i &lt; n; ++i )
+  {
+    printf( "%12.2f", array[i] );     // Field width: 12; decimal places: 2
+    if ( i % 5 == 4 ) putchar( '\n' );// New line after every 5 numbers
+  }
+  if ( n % 5 != 0 ) putchar( '\n' ); // New line at the end of the output
+}
+</code>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <para id="id6486710">If your program contains a call to the <emphasis>printArray()</emphasis> function before its definition, you must first declare it using the static keyword:</para>
+          <code id="id1167726969594" display="block">static void printArray(const float [ ], int);
+
+int main( )
+{
+  float farray[123];
+  /* ... */
+  printArray( farray, 123 );
+  /* ... */
+}
+</code>
+          
+          
+          
+          
+          
+          
+          
+        </section>
+      </section>
+      <section id="id-78769206857">
+        <title>Function prototype</title>
+        <para id="id6554664">A function prototype in C++ is a declaration of a function that omits the function body but does specify the function's name, arity, argument types and return type. While a function definition specifies what a function does, a function prototype can be thought of as specifying its interface. Just like a blueprint, the prototype tells the compiler what the function will return, what the function will be called, as well as what arguments the function can be passed. The general format for a prototype is simple: </para>
+        <code id="id1167725825342" display="block">type function_name ( arg_type arg1, ..., arg_type argN ); </code>
+        <para id="id8593363">arg_type just means the type for each argument -- for instance, an int, a float, or a char. It's exactly the same thing as what you would put if you were declaring a variable.</para>
+        <para id="id6369477">There can be more than one argument passed to a function or none at all (where the parentheses are empty), and it does not have to return a value. Functions that do not return values have a return type of void. Lets look at a function prototype: </para>
+        <code id="id1167726819396" display="block">int mult ( int x, int y );</code>
+        <para id="id6231568">This prototype specifies that the function mult will accept two arguments, both integers, and that it will return an integer. Do not forget the trailing semi-colon. Without it, the compiler will probably think that you are trying to write the actual definition of the function. </para>
+        <para id="id6911890">When the programmer actually defines the function, it will begin with the prototype, minus the semi-colon. Then there should always be a block with the code that the function is to execute, just as you would write it for the main function. Any of the arguments passed to the function can be used as if they were declared in the block. </para>
+        <para id="id5000341">Lets look at an example program:</para>
+        <code id="id1167726878875" display="block">#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+int mult ( int x, int y );
+int main()
+{
+  int x;
+  int y;
+  printf("Please input two numbers to be multiplied: ");
+  scanf("%d%d", &amp;x,&amp;y);
+  printf("The product of your two numbers is %d\n", mult ( x, y )) ;
+  return 0;
+  getch();
+}
+int mult ( int x, int y )
+{
+  return x * y;
+}
+</code>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </section>
+    </section>
+    <section id="id-00168692170967">
+      <title>Parameters passing </title>
+      <para id="id5451899">The parameters of a function are ordinary local variables. The program creates them, and initializes them with the values of the corresponding arguments, when a function call occurs. Their scope is the function block. A function can change the value of a parameter without affecting the value of the argument in the context of the function call. In the following listing, the <emphasis>factorial( )</emphasis> function, which computes the factorial of a whole number, modifies its parameter n in the process.</para>
+      <code id="id1167726999570" display="block">//factorial( ) calculates n!, the factorial of a non-negative number n.
+// For n &gt; 0, n! is the product of all integers from 1 to n inclusive.
+// 0! equals 1.
+// Argument:     A whole number, with type unsigned int.
+// Return value: The factorial of the argument, with type long double.
+
+long double factorial(register unsigned int n)
+{
+  long double f = 1;
+  while ( n &gt; 1 )
+    f *= n--;
+  return f;
+}
+</code>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <para id="id6140471">Although the factorial of an integer is always an integer, the function uses the type long double in order to accommodate very large results. As the above listing illustrates, you can use the storage class specifier register in declaring function parameters. The register specifier is a request to the compiler to make a variable as quickly accessible as possible. No other storage class specifiers are permitted on function parameters.</para>
+      
+      <section id="id-295130627151">
+        <title>Arrays as Function Parameters</title>
+        <para id="id5489367">If you need to pass an array as an argument to a function, you would generally declare the corresponding parameter in the following form:</para>
+        <code id="id1167727182785" display="block">type name[ ]</code>
+        <para id="id6502161">Because array names are automatically converted to pointers when you use them as function arguments, this statement is equivalent to the declaration:</para>
+        <code id="id1167726957743" display="block">type *name</code>
+        <para id="id7253744">When you use the array notation in declaring function parameters, any constant expression between the brackets ([ ]) is ignored. In the function block, the parameter name is a pointer variable, and can be modified. Thus the function <emphasis>addArray()</emphasis> in the following listing modifies its first two parameters as it adds pairs of elements in two arrays.</para>
+        
+        <code id="id1167727034396" display="block">// addArray( ) adds each element of the second array to the
+// corresponding element of the first (i.e., "array1 += array2", so to speak).
+// Arguments:    Two arrays of float and their common length.
+// Return value: None.
+
+void addArray( register float a1[ ], register const float a2[ ], int len )
+{
+  register float *end = a1 + len;
+  for ( ; a1 &lt; end; ++a1, ++a2 )
+    *a1 += *a2;
+}
+</code>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <para id="id7770619">An equivalent definition of the <emphasis>addArray()</emphasis> function, using a different notation for the array parameters, would be:</para>
+        <code id="id1167727051499" display="block">void addArray( register float *a1, register const float *a2, int len )
+{  /* Function body as earlier. */  }
+
+</code>
+        
+        <para id="id3648682">An advantage of declaring the parameters with brackets ([ ]) is that human readers immediately recognize that the function treats the arguments as pointers to an array, and not just to an individual float variable. But the array-style notation also has two peculiarities in parameter declarations :</para>
+        <list id="id6328945" list-type="bulleted">
+          <item>In a parameter declaration and only there C allows you to place any of the type qualifiers const, volatile, and restrict inside the square brackets. This ability allows you to declare the parameter as a qualified pointer type.</item>
+          <item>Furthermore, in C you can also place the storage class specifier static, together with a integer constant expression, inside the square brackets. This approach indicates that the number of elements in the array at the time of the function call must be at least equal to the value of the constant expression.</item>
+        </list>
+        <para id="id6244136">Here is an example that combines both of these possibilities:</para>
+        <code id="id1167727043355" display="block">int func( long array[const static 5] )
+{ /* ... */ }
+</code>
+        
+        <para id="id6312010">In the function defined here, the parameter array is a constant pointer to long, and so cannot be modified. It points to the first of at least five array elements.</para>
+        <para id="id6104929">In the following listing, the <emphasis>maximum( )</emphasis> function's third parameter is a two-dimensional array of variable dimensions.</para>
+        
+        <code id="id1167727162876" display="block">// The function maximum( ) obtains the greatest value in a
+// two-dimensional matrix of double values.
+// Arguments:    The number of rows, the number of columns, and the matrix.
+// Return value: The value of the greatest element.
+
+double maximum( int nrows, int ncols, double matrix[nrows][ncols] )
+{
+  double max = matrix[0][0];
+  for ( int r = 0; r &lt; nrows; ++r )
+    for ( int c = 0; c &lt; ncols; ++c )
+      if ( max &lt; matrix[r][c] )
+        max = matrix[r][c];
+  return max;
+}
+</code>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <para id="id7530958">The parameter matrix is a pointer to an array with ncols elements.</para>
+      </section>
+      <section id="id-795193861283">
+        <title>Pointers as Function Parameters</title>
+        <para id="id6399208">Since C passes arguments to functions by value, there is no direct way for the called function to alter a variable in the calling function. For instance, a sorting routine might exchange two out-of-order arguments with a function called swap. It is not enough to write </para>
+        <code id="id1167727037999" display="block">swap(a, b); </code>
+        <para id="id3297301">where the swap function is defined as </para>
+        <code id="id1167727068608" display="block">void swap(int x, int y) /* WRONG */ 
+{ 
+int temp; 
+temp = x; 
+x = y; 
+y = temp; 
+} 
+</code>
+        
+        
+        
+        
+        
+        
+        <para id="id5240074">Because of call by value, swap can't affect the arguments a and b in the routine that called it. The function above swaps copies of a and b. </para>
+        <para id="id6937433">The way to obtain the desired effect is for the calling program to pass pointers to the values to be changed: </para>
+        <code id="id1167727167708" display="block"> swap(&amp;a, &amp;b); </code>
+        <para id="id7102042">Since the operator &amp; produces the address of a variable, &amp;a is a pointer to a. In swap itself, the parameters are declared as pointers, and the operands are accessed indirectly through them. </para>
+        <code id="id1167726837795" display="block">void swap(int *px, int *py) /* interchange *px and *py */ 
+{ 
+int temp; 
+temp = *px; 
+*px = *py; 
+*py = temp; 
+} 
+</code>
+        <para id="id7215349">{ </para>
+        
+        
+        
+        
+        
+        <para id="id5209922">Pictorially in <link target-id="id7439365"/></para>
+        <figure id="id7439365"><media id="id1167727167784" alt="">
+
+<image mime-type="image/png" src="../../media/66.PNG"/>
+
+ </media>
+        <caption>swap function with pointer parameters</caption></figure>
+        
+      </section>
+    </section>
+  </content>
+</document>

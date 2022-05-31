@@ -1,0 +1,301 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Structures</title>
+  <metadata>
+  <md:content-id>m27764</md:content-id><md:title>Structures</md:title>
+  <md:abstract/>
+  <md:uuid>990daf63-b294-4f77-b895-f3a47071bce7</md:uuid>
+</metadata>
+
+<content>
+ <section id="sec1">
+      <title>Introduction</title>
+    <para id="element-371">A structure type can contain a number of dissimilar data objects within it. Unlike a simple variable (which contains only one data object) or an array (which, although it contains more than one data item, only contains items of a single data type),a structure is a collection of related data of different types. a name, for example, might be array of characters, an age might be integer. A structure representing a person, say, could contain both a name and an age, each represented in the appropriate format. </para>
+</section>
+<section id="sec2">
+      <title>Declarations and Usage of  Structures</title>
+<para id="element-372">Until now, all the data that we have dealt with has been either of a basic type such as char, int and double…, or an array of those types. However, there are many situations in real life where a data item needs to be made up from other more basic types. We could do this with an array if the constituent types were all the same, but often they are different.
+For example, suppose we want to record the details of each student in a class. The detail of each student might be as follow:
+</para><list id="element-691" list-type="bulleted"><item>A unique student number, which could be represented as a string (an array of <emphasis>char</emphasis>).</item>
+	<item>The student’s name, which could be represented as a string (an array of <emphasis>char</emphasis>).</item>
+	<item>Final mark for the Introduction to computer science course, which is a floating point value (a <emphasis>float</emphasis>).</item></list>
+<section id="sec3">
+      <title>Creating Structures as New Data Types</title>
+<para id="element-373">The definition of a structure type begins with the keyword struct, and contains a list of declarations of the structure's members, in braces:</para><code id="id8201031" display="block">  struct structTag
+     {
+	    &lt;list of members&gt;;
+     };
+  </code><note id="id11405675">Definition ends with semicolon (;)</note><example id="element-282"><para id="element-783">The three components above can be placed in a structure declared like this:     
+
+	</para><code id="id6794471" display="block">struct Student
+{
+    char StudentID[10];
+    char name[30];
+    float markCS ;
+};
+
+</code>
+</example><para id="element-251">The keyword <term>struct</term> introduces a structure declaration, which is a list of declarations enclosed in braces. An optional name called a structure tag may follow the word <term>struct</term> (as with Student here). The tag names this kind of structure, and can be used subsequently as a shorthand for the part of the declaration in braces. 
+The variables named in a structure are called members. A structure member or tag and an ordinary (i.e., non-member) variable can have the same name without conflict, since they can always be distinguished by context. Furthermore, the same member names may occur in different structures, although as a matter of style one would normally use the same names only for closely related objects. 
+</para>
+</section>
+<section id="sec31">
+<title>Creating variable of a struct type</title>
+<para id="element-252">Structure types are not considered a variable declaration, just definition of a new type, so they cannot store anything until we declare variable of this type.
+Here is how we would create: 
+</para><code id="id8907191" display="block">type_name_of_struct   name_of_variable;</code><example id="element-435"><para id="element-121">
+		Creating three variables a, b, c of the Student type:
+	</para><code id="id10080986" display="block">Student a, b, c;</code><para id="element-637">Creating an array of  the Student type:</para><code id="id6586192" display="block">Student studentCS[50];
+</code>
+</example><para id="element-425">A member of a structure may have any desired complete type, including previously defined structure types. They must not be variable-length arrays, or pointers to such arrays. For instance, now we want to record more information of students, for example their date of birth, which comprises the day, month and year. So first, let's start with the date, because that is a new type that we may be able to use in a variety of situations. We can declare a new type for a <emphasis>Date</emphasis> thus:</para><code id="id7318657" display="block">struct Date
+    {
+      int day;
+      int month;
+      int year;
+    };
+
+</code><para id="element-391">We can now use this  <emphasis>Date</emphasis> type, together with other types, as members of a <emphasis>Student</emphasis> type which we can declare as follows:</para><code id="id5052194" display="block">struct Student
+    {
+       char studentID[10];
+       char name[30];
+       float markCS ;
+       Date  dateOfBirth;
+    };
+
+</code><para id="element-389">Or</para><code id="id10306857" display="block">
+struct Student 
+{
+    char studentID[10];
+    char name[30];
+    float markCS;
+    struct Date {
+      	          int day;
+                  int month;
+      	          int year;
+                } dateOfBirth;
+};
+
+
+</code><para id="element-134">We can also declare structured variables when we define the structure itself:</para><code id="id5054088" display="block">
+struct  Student 
+{
+    char studentID[10];
+    char name[30];
+    float markCS ;
+    Date  dateOfBirth;
+} a, b, c;
+</code><para id="element-848">C permits to declare untagged structures that enable us to declare structure variables without defining a name for their structures.
+For example, the following structure definition declares the variables a, b, c but omits the name of the structure:
+</para><code id="id6609238" display="block">struct 
+{
+    char studentID[10];
+    char name[30];
+    float markCS ;
+    Date  dateOfBirth;
+} a, b, c;
+</code><para id="element-139">A structure type cannot contain itself as a member, as its definition is not complete until the closing brace (}). However, structure types can and often do contain pointers to their own type. Such self-referential structures are used in implementing linked lists and binary trees, for example. The following example defines a type for the members of a singly linked list:</para><code id="id8841927" display="block">struct List 
+{   struct Student stu;     // This record's data.
+    struct List *pNext;    // A pointer to the next student.
+};
+</code>
+</section>
+
+<section id="sec32">
+<title>Referencing Structure Members with the Dot Operator</title>
+<para id="element-253">Whenever we need to refer to the members of a structure, we normally use the dot operator.</para><para id="element-635">For example, if we wanted to access the number member of newStudent we could do so as follows:</para><para id="element-611"><emphasis>newStudent.studentID</emphasis></para><para id="element-303">We can then access the member as if it were a normal variable. For instance, we can write to this member as follows.</para><para id="element-890"><emphasis>newStudent.studentID= “C0681008”;</emphasis></para><para id="element-518">We can also read from the member in a similar fashion.</para><code id="id7135976" display="block">printf("Student identification: %s", newStudent.studentID);</code><para id="element-715">The following code outputs the contents of an <emphasis>Student</emphasis> structure.</para><code id="id3450002" display="block">printf("Student Details\n");
+printf("Identification: %s\n", newStudent.studentID);
+printf("Name: %s\n", newStudent.name);
+printf("Mark: %.2f\n", newStudent.markCS);
+printf("Date of Birth: %i/%i/%i\n", 
+             newStudent.dateOfBirth.day,
+             newStudent.dateOfBirth.month,
+             newStudent.dateOfBirth.year
+);
+</code><para id="element-913">Suppose we wish to input the details of this employee from a user. We could do so as follows.</para><code id="id7598889" display="block">
+Student newStudent;
+printf("Enter student identification: ");
+scanf("%s", &amp;newStudent.studentID);
+printf("Enter student name: ");
+fflush(stdin);gets(newStudent.name);
+printf("Enter mark for Introduction to computer science course: ”);
+scanf("%f", &amp;newStudent.markCS);
+printf("Enter birth date (dd/mm/yyyy): ");
+scanf("%i/%i/%i",
+&amp;newStudent.dateOfBirth.day,
+&amp;newStudent.dateOfBirth.month,
+&amp;newStudent.dateOfBirth.year
+);
+</code>
+</section>
+
+<section id="sec33">
+<title>Initializing Structure Variables</title>
+<para id="element-254">When we declare a new variable of a basic data type we can initialize its value at declaration. We can also initialize structure variables at declaration as shown below.
+</para><code id="id9259432" display="block">Student newStudent = {
+            "C0681008",
+            "Cao Anh Huy",
+            8.50,
+            {1, 2, 1985}
+        };
+</code><para id="element-668">Notice how we include the initialization values in curly brackets, just like when we initialize an array. Furthermore, we include the values for any nested structure type (in this case the <emphasis>dateOfBirth</emphasis> member is a nested structure), in a further set of curly brackets.</para>
+</section>
+
+<section id="sec34">
+<title>Copying Structure Variables</title>
+<para id="element-255">One of the most convenient features of structures is that we can copy them in a single assignment operation. This is unlike an array, which must be copied item-by-item. The name of a structure variable when it appears on its own represents the entire structure. If a structure contains an array as a member, that array is copied if the entire structure is copied.</para><code id="id6467971" display="block">Student newStudent1, newStudent2;
+// Get the values for newStudent2
+...
+// Copy newStudent2's value to newStudent1
+newStudent1 = newStudent2;
+</code>
+</section>
+
+<section id="sec35">
+<title>Comparing Values of Structures</title>
+<para id="element-256">We cannot compare structures in a single operation. If we wish to compare the values of two structure variables, we need to compare each of their members.</para>
+</section>
+
+</section>
+
+ <section id="sec4">
+      <title>Arrays of Structures</title>
+    <para id="element-357">Just as we can have an array of basic data types, we can also have an array of structures. Suppose that we created an array of <emphasis>Student </emphasis>structures as follows. We could then copy <emphasis>newStudent</emphasis> into each position in the array.</para><code id="id11656717" display="block">
+Student  students[100];
+Student  newStudent;
+int i;
+for (i=0; i&lt;100; i++)
+{
+// Get the values for newStudent
+...
+// Copy into the next position in the array
+students[i] = newStudent;
+}
+</code>
+</section>
+
+ <section id="sec5">
+      <title>Operations on Structures</title>
+    <section id="sec51">
+<title>Passing Structures to and from Functions</title>
+<para id="element-358">Structures can be passed to functions just like any other data type. Functions can also return structures, just as they can return any basic type. Structures can be also be passed to functions by reference.</para><para id="element-488">Just like passing variable of a basic data type, when we pass a structure as an argument to a function, a copy is made of the entire structure. Structures are passed by value. We can easily take the code that output a student and put it into a function as follows.</para><code id="id8235616" display="block">void outputStudent(Student stu) 
+{
+printf("Student Details\n");
+printf("Identification: %s\n", stu.studentID);
+printf("Name: %s\n", stu.name);
+printf("Mark: %.2f\n, stu.markCS);
+printf("Date of Birth: %i/%i/%i\n",
+           stu.dateOfBirth.day,
+           stu.dateOfBirth.month,
+           stu.dateOfBirth.year 
+      );
+}
+</code><para id="element-23">If we had an array of 100 students and wanted to output them this would be straightforward:</para><code id="id5411534" display="block">Student students[100];
+int i;
+...
+for (i=0; i&lt;100; i++) {
+   outputStudent(students[i]);
+}
+</code><para id="element-432">We could similarly place the code to input a student into a function, but now we have a problem. The function can return a structure of type <emphasis>Student</emphasis> as follows.</para><code id="id4471150" display="block">Student inputStudent() 
+{
+   Student tempStudent;
+   printf("Enter Student identification: ");
+   scanf("%s", &amp;tempStudent.studentID);
+   printf("Enter Student name: ");
+   fflush(stdin);gets(tempStudent.name);
+   printf("Enter final mark: ");
+   scanf("%f", &amp;tempStudent.markCS);
+   printf("Enter birth date (dd/mm/yyyy):");
+   scanf("%i/%i/%i",
+         &amp;tempStudent.dateOfBirth.day,
+         &amp;tempStudent.dateOfBirth.month,
+         &amp;tempStudent.dateOfBirth.year
+        );
+   return tempStudent;
+}
+</code><para id="element-597">In the example above we are filling the structure variable <emphasis>tempStudent</emphasis> with values. At the end of the function, the value of <emphasis>tempStudent</emphasis> is returned as the return value of the function. The code to input 100 students can now be modified to use this function:</para><code id="id6081568" display="block">Student students[100];
+int i;
+for (i=0; i&lt;100; i++) {
+    students[i] = inputStudent();
+}
+</code>
+</section>
+
+<section id="sec52">
+<title>The Arrow Operator</title>
+<para id="element-359">In order to dereference a pointer we would normally use the dereferencing operator (*) and if we our pointer was to a structure, we could subsequently use the dot '.' operator to refer to a member of the structure. Suppose we have declared a pointer which could be used to point to a structure of type employee as follows.</para><code id="id7331603" display="block">Student stuVariable;
+Student *stuPtr;
+stuPtr = &amp;stuVariable;
+</code><para id="element-247">To refer to the student identification we could say:</para><code id="id6305115" display="block">(*stuPtr).studentID</code><para id="element-346">Note that the brackets are necessary because the dereference operator has lower precedence than the dot operator. This form of syntax is a little cumbersome, so another operator is provided to us as a convenient shorthand:</para><code id="id5750443" display="block">stuPtr-&gt;studentID</code><para id="element-769">This method of accessing the number member through a pointer is completely equivalent to the previous form. The '-&gt;' operator is called the indirect member selection operator or just the arrow operator and it is almost always used in preference to the previous form.</para>
+</section>
+
+<section id="sec53">
+<title>Passing Structures by Reference</title>
+<para id="element-360">Passing structures to a function using pass-by-value can be simple and successful for simple structures so long as we do not wish to do so repeatedly. But when structures can contain a large amount of data (therefore occupying a large chunk of memory) then creating a new copy to pass to a function can create a burden on the memory of the computer. If we were going to do this repeatedly (say several thousand times within the running of a computer) then there would also be a cost in time to copy the structure for each function call. </para><para id="element-350">In the example at the beginning of this section we created and filled a structure variable called tempStudent. When the function ended it returned the value of tempStudent. The same inefficiency exists with the return value from the function, where the Student structure must be copied to a local variable at the function call.</para><para id="element-561">Whether such inefficiencies are of any significance or not depends on the circumstances and on the size of the structure. Each Student structure probably occupies about 50 bytes, so this is a reasonably significant amount of memory to be copying each time the output function is called or each time the input function returns, especially if this is happening frequently.</para><para id="element-146">A better solution would be to pass the Student structure by reference, which means we will pass a pointer to the structure.</para><para id="element-34">We can now revise the input function by passing an Student structure by reference using a pointer. Because the function is no longer returning an Student structure, we can also enhance the function to return a Boolean status indicating whether an Student structure was successfully read or not. We can enhance our function to do some better error checking. Below is the revised version.</para><code id="id7504991" display="block">bool inputStudent(Student *stuPtr)
+{
+printf("Enter Student identification: ");
+if (scanf("%s", &amp;stuPtr-&gt;studentID) != 1) return false;
+printf("Enter Student name: ");
+fflush(stdin);gets(stuPtr-&gt;name);
+printf("Enter mark: ");
+if (scanf("%f", &amp;stuPtr-&gt;markCS) != 1) return false;
+printf("Enter birth date: ");
+if (scanf("%i/%i/%i",&amp;stuPtr-&gt;dateOfBirth.day,
+&amp;stuPtr-&gt;dateOfBirth.month,&amp;stuPtr-&gt;dateOfBirth.year) != 3) 
+   return false;
+return true;
+}
+</code><para id="element-320">The code to input 100 students can now be revised as follows.</para><code id="id7620108" display="block">Student students[100];
+int i;
+for (i=0; i&lt;100; i++) 
+{
+   while (!inputStudent(&amp;students[i])) 
+   {
+printf("Invalid student details - try again!\n");
+fflush(stdin);
+   }
+}
+</code><para id="element-697">As a final example, consider a function to give s student a mark rise. The function takes two parameters. The first is an Student structure passed by reference, (a pointer to an Student structure) and the second is the increase of mark.</para><code id="id4326782" display="block">void markRise(Student *stuPtr, float increase)
+{
+stuPtr-&gt;markCS += increase;
+}
+</code><para id="element-283">What use is such a function? Having input many students into an array, we might then wish to give certain students a mark rise. For each student we can easily call this function, passing a pointer to the appropriate Student structure.</para>
+</section>
+
+
+</section>
+<section id="sec6">
+      <title>Enumerated Types</title>
+    
+
+<para id="element-361">Another way of creating a new type is by creating an enumerated type. With an enumerated type we build a new type from scratch by stating which values are in the type. The syntax for an enumerated type is as follows.</para><code id="id11191606" display="block">enum TypeIdentifier { list... };</code><para id="element-901">Here is an example of a definition of an enumerated type that can be used to refer to the days of the week.</para><code id="id5059373" display="block">enum DayOfWeek {sun, mon, tue, wed, thu, fri, sat};</code><para id="element-778">Just like when we define a structure type, defining an enumerated type does not give us any space to store information. We use the type like a template to create variables of that type.</para><para id="element-487">For instance we can create a variable of type DayOfWeek as follows.</para><code id="id4182816" display="block">DayOfWeek nameOfDay;</code><para id="element-991">With variables of enumerated types we can do almost anything we could do with a variable of a basic data type. For instance we can assign a value as follows.</para><code id="id5073798" display="block">nameOfDay = tue;</code><para id="element-893">Note that <emphasis>tue</emphasis> is a literal value of type <emphasis>DayOfWeek</emphasis> and we do not need to place quotes around it.</para><para id="element-95">The values in <emphasis>DayOfWeek </emphasis>are ordered and each has an equivalent <emphasis>int</emphasis> value; sun==0, mon==1, and so on. The value of sun is less than the value of <emphasis>wed </emphasis>because of the order they were presented in the list of values when defining the type. We can compare two values of enumerated types as follows:</para><code id="id12171850" display="block">DayOfWeek day1, day2;
+// Get day values
+...
+if(day1 &lt; day2) {
+...
+}
+</code><para id="element-655">Here is another example that uses enumerated types.</para><code id="id6083401" display="block">#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+enum TrafficLight {red, orange, green};
+int main() 
+ {
+   TrafficLight light;
+   printf("Please enter a Light Value: (0)Red (1)Orange (2)Green:\n");
+   scanf("%i", &amp;light);
+   switch(light)
+    {
+      case red:
+         printf("Stop!\n");
+         break;
+      case orange:
+         printf("Slow Down\n");
+         break;
+      case green:
+         printf("Go\n");
+    }
+   getch();
+  }
+</code>
+</section>
+
+  </content>
+  
+</document>

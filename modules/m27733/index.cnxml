@@ -1,0 +1,418 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Computer Systems</title>
+  <metadata>
+  <md:content-id>m27733</md:content-id><md:title>Computer Systems</md:title>
+  <md:abstract/>
+  <md:uuid>611fa6c7-a16d-460a-a221-ae57ff2379be</md:uuid>
+</metadata>
+
+<content>
+    <para id="id5179958">A computer is an electronic device that performs calculations on data, presenting the results to humans or other computers in a variety of (hopefully useful) ways. The computer system includes not only the hardware, but also software that are necessary to make the computer function. </para>
+    <para id="id5180531">Computer hardware is the physical part of a computer, including the digital circuitry, as distinguished from the computer software that executes within the hardware.</para>
+    <para id="id5180538">Computer software is a general term used to describe a collection of computer programs, procedures and documentation that perform some task on a computer system</para>
+    <section id="id-683710600293">
+      <title>Computer Organization</title>
+      <section id="id-69314651146">
+        <title>General Model of a Computer</title>
+        <para id="id5180191">A computer performs basically five major operations or functions irrespective of their size and make. </para>
+        <para id="id5180197"><emphasis>1. Input:</emphasis> This is the process of entering data and programs in to the computer system. You should know that computer is an electronic machine like any other machine which takes as inputs raw data and performs some processing giving out processed data. Therefore, the input unit takes data from us to the computer in an organized manner for processing.</para>
+        <para id="id4529263"><emphasis>2. Storage</emphasis>: The process of saving data and instructions permanently is known as storage. Data has to be fed into the system before the actual processing starts. It is because the processing speed of Central Processing Unit (CPU) is so fast that the data has to be provided to CPU with the same speed. Therefore the data is first stored in the storage unit for faster access and processing. This storage unit or the primary storage of the computer system is designed to do the above functionality. It provides space for storing data and instructions.</para>
+        <para id="id4056178">The storage unit performs the following major functions: </para>
+        <para id="id4056412">- All data and instructions are stored here before and after processing.</para>
+        <para id="id4056302">- Intermediate results of processing are also stored here. </para>
+        <para id="id4056307"><emphasis>3. Processing</emphasis>: The task of performing operations like arithmetic and logical operations is called processing. The Central Processing Unit (CPU) takes data and instructions from the storage unit and makes all sorts of calculations based on the instructions given and the type of data provided. It is then sent back to the storage unit.</para>
+        <para id="id5146148"><emphasis>4. Output</emphasis>: This is the process of producing results from the data for getting useful information. Similarly the output produced by the computer after processing must also be kept somewhere inside the computer before being given to you in human readable form. Again the output is also stored inside the computer for further processing. </para>
+        <para id="id4481032"><emphasis>5. Control</emphasis>: The manner how instructions are executed and the above operations are performed. Controlling of all operations like input, processing and output are performed by control unit. It takes care of step by step processing of all operations in side the computer. </para>
+        <para id="id5146224">In order to carry out the operations mentioned above, the computer allocates the task between its various functional units. The computer system is divided into several units for its operation.</para>
+        <list id="id4479380" list-type="bulleted">
+          <item>CPU (central processing unit) : The place where decisions are made, computations are performed, and input/output requests are delegated</item>
+          <item>Memory: stores information being processed by the CPU</item>
+          <item>Input devices : allows people to supply information to computers</item>
+          <item>Output devices : allows people to receive information from computers</item>
+          <item>Buses : a bus is a subsystem that transfers data or power between computer components inside a computer.</item>
+        </list>
+        <figure id="id4479304"><media id="id6635043" alt=""><image src="../../media/graphics1-d2b1.png" mime-type="image/png"/></media>
+        <caption>General model of a computer</caption></figure>
+        
+        <para id="id5179567">The basic function of a computer is program execution. When a program is running the executable binary file is copied from the disk drive into memory. The process of program execution is the retrieval of instructions and data from memory, and the execution of the various operations.The cycles with complex instruction sets typically utilize the following stages :</para>
+        <para id="id5176952">
+          <emphasis>Fetch the instruction from main memory</emphasis>
+        </para>
+        <para id="id4482552">The CPU presents the value of the program counter (PC) on the address bus. The CPU then fetches the instruction from main memory via the data bus into the Memory Data Register (MDR). The value from the MDR is then placed into the Current Instruction Register (CIR), a circuit that holds the instruction so that it can be decoded and executed.</para>
+        <para id="id4482562">
+          <emphasis>Decode the instruction</emphasis>
+        </para>
+        <para id="id4481423">The instruction decoder interprets and implements the instruction.</para>
+        <para id="id4481429">
+          <emphasis>Fetch data from main memory</emphasis>
+        </para>
+        <para id="id5146067">Read the effective address from main memory if the instruction has an indirect address. Fetch required data from main memory to be processed and placed into registers.</para>
+        <para id="id4059011">
+          <emphasis>Execute the instruction</emphasis>
+        </para>
+        <para id="id4059019">From the instruction register, the data forming the instruction is decoded by the control unit. It then passes the decoded information as a sequence of control signals to the relevant function units of the CPU to perform the actions required by the instruction such as reading values from registers, passing them to the Arithmetic logic unit (ALU) to calculate the result and writing the result back to a register. A condition signal is sent back to the control unit by the ALU if it is involved.</para>
+        <para id="id4481087">
+          <emphasis>Store results</emphasis>
+        </para>
+        <para id="id5204788">The result generated by the operation is stored in the main memory, or sent to an output device. Based on the condition feedback from the ALU, the PC is either incremented to address the next instruction or updated to a different address where the next instruction will be fetched. The cycle is then repeated.</para>
+      </section>
+      <section id="id-89010214426">
+        <title>The Central Processing Unit (CPU)</title>
+        <para id="id5205550">You may call CPU as the brain of any computer system. It is the brain that takes all major decisions, makes all sorts of calculations and directs different parts of the computer functions by activating and controlling the operations.</para>
+        <para id="id5181108">CPU has four key parts </para>
+        <list id="id5181112" list-type="bulleted">
+          <item>Control Unit</item>
+          <item>Arithmetic &amp; Logic Unit</item>
+          <item>Registers </item>
+          <item>Clock</item>
+        </list>
+        <para id="id4482354">And, of course, wires that connect everything together.</para>
+        <figure id="id5179906"><media id="id8656647" alt=""><image src="../../media/graphics2-4188.png" mime-type="image/png"/></media>
+        <caption>Basic Model of the Central Processing Unit (CPU)</caption></figure>
+        
+        <para id="id5180555">
+          <emphasis>Arithmetic Logic Units (ALU)</emphasis>
+        </para>
+        <para id="id5180562">The ALU, as its name implies, is that portion of the CPU hardware which performs the arithmetic and logical operations on the binary data .The ALU contains an Adder which is capable of combining the contents of two registers in accordance with the logic of binary arithmetic. </para>
+        <para id="id5178416">
+          <emphasis>Control Unit</emphasis>
+        </para>
+        <para id="id4480792">The control unit, which extracts instructions from memory and decodes and executes them, calling on the ALU when necessary. </para>
+        <para id="id4480799">
+          <emphasis>Registers</emphasis>
+        </para>
+        <para id="id4483730">Registers are temporary storage units within the CPU. Some registers, such as the program counter and instruction register, have dedicated uses. Other registers, such as the accumulator, are for more general purpose use.</para>
+        <para id="id4483738">
+          <emphasis>Clock</emphasis>
+        </para>
+        <para id="id5146119">A circuit in a processor that generates a regular sequence of electronic pulses used to synchronize operations of the processor's components. The time between pulses is the cycle time and the number of pulses per second is the clock rate (or frequency). </para>
+        <para id="id4481893">The execution times of instructions on a computer are usually measured by a number of clock cycles rather than seconds. The higher clock rate, the quicker speed of instruction processing. The clock rate for a Pentium 4 processor is about 2.0, 2.2 GHz or higher</para>
+      </section>
+      <section id="id-148835027061">
+        <title>Memory</title>
+        <para id="id5176767">Memory refer to computer components, devices and recording media that retain digital data used for computing for some interval of time. Computer memory includes internal and external memory.</para>
+        <para id="id5205465">
+          <emphasis>Internal memory</emphasis>
+        </para>
+        <para id="id5205472">The internal memory is accessible by a processor without the use of the computer input-output channels.It usually includes several types of storage, such as main storage, cache memory, and special registers, all of which can be directly accessed by the processor.</para>
+        <para id="id5203588">Cache memory : A buffer, smaller and faster than main storage, used to hold a copy of instructions and data in main storage that are likely to be needed next by the processor and that have been obtained automatically from main storage.</para>
+        <para id="id5206070">Main memory (Main Storage) : addressable storage from which instructions and other data may be loaded directly into registers for subsequent execution or processing. </para>
+        <para id="id5177628">Storage capacity of the main memory is the total amount of stored information that the memory can hold. It is expressed as a quantity of bits or bytes. Each address identifies a word of storage. So the capacity of the main memory depends on the number of bits allowed to address. For instance, a computer allows also 32-bit memory addresses; a byte-addressable 32-bit computer can address <m:math display="inline">
+ <m:semantics>
+  <m:mrow>
+   <m:msup>
+    <m:mn>2</m:mn>
+    <m:mrow>
+     <m:mn>32</m:mn>
+    </m:mrow>
+   </m:msup>
+   
+  </m:mrow>
+ 
+ </m:semantics>
+</m:math>
+ = 4,294,967,296 bytes of memory, or 4 gigabytes (GB). The capacity of the main memory is 4 GB.</para>
+        <para id="id4057431">The main memory consists of ROM and RAM.</para>
+        <list id="id4056118" list-type="bulleted">
+          <item>Random Access Memory (RAM): The primary storage is referred to as random access memory (RAM) because it is possible to randomly select and use any location of the memory directly store and retrieve data. It takes same time to any address of the memory as the first address. It is also called read/write memory. The storage of data and instructions inside the primary storage is temporary. It disappears from RAM as soon as the power to the computer is switched off. </item>
+          <item>Read Only Memory (ROM): There is another memory in computer, which is called Read Only Memory (ROM). Again it is the ICs inside the PC that form the ROM. The storage of program and data in the ROM is permanent. The ROM stores some standard processing programs supplied by the manufacturers to operate the personal computer. The ROM can only be read by the CPU but it cannot be changed. The basic input/output program is stored in the ROM that examines and initializes various equipment attached to the PC when the switch is made ON.</item>
+        </list>
+        <para id="id4056126">
+          <emphasis>External Memory</emphasis>
+        </para>
+        <para id="id5176634">The external memory holds information too large for storage in main memory. Information on external memory can only be accessed by the CPU if it is first transferred to main memory. External memory is slow and virtually unlimited in capacity. It retains information when the computer is switched off and is used to keep a permanent copy of programs and data.</para>
+        <para id="id5202359">Hard Disk: is made of magnetic material. Magnetic disks used in computer are made on the same principle. It rotates with very high speed inside the computer drive. Data is stored on both the surface of the disk. Magnetic disks are most popular for direct access storage device. Each disk consists of a number of invisible concentric circles called tracks. Information is recorded on tracks of a disk surface in the form of tiny magnetic spots. The presence of a magnetic spot represents one bit and its absence represents zero bit. The information stored in a disk can be read many times without affecting the stored data. So the reading operation is non-destructive. But if you want to write a new data, then the existing data is erased from the disk and new data is recorded. The capacity of a hard disk is possibly 20 GB, 30 GB, 40 GB, 60 GB or more. </para>
+        <para id="id4481969">Floppy Disk: It is similar to magnetic disk discussed above. They are 5.25 inch or 3.5 inch in diameter. They come in single or double density and recorded on one or both surface of the diskette. The capacity of a 5.25-inch floppy is 1.2 mega bytes whereas for 3.5 inch floppy it is 1.44 mega bytes. The floppy is a low cost device particularly suitable for personal computer system. </para>
+        <para id="id4529185">Optical Disk:With every new application and software (includes sounds, images and videos) there is greater demand for memory capacity. It is the necessity to store large volume of data that has led to the development of optical disk storage medium. There are two commonly used categories of optical disks: CD with the approximate capacity of 700MB and DVD with the approximate capacity of 4.7GB</para>
+        <para id="id5202130">Memory Stick (Flash card, flash drive) a removable flash memory card format, with 128MB, 256 MB, 512 MB, 1 GB, 2 GB , 4 GB or more capacities </para>
+        <figure id="id4481470"><media id="id5660134" alt=""><image src="../../media/graphics3-24f7.png" mime-type="image/png"/></media>
+        <caption>Some types of auxiliary memory</caption></figure>
+        
+      </section>
+      <section id="id-58114472871">
+        <title>Input-Output Devices</title>
+        <para id="id4480829">A computer is only useful when it is able to communicate with the external environment. When you work with the computer you feed your data and instructions through some devices to the computer. These devices are called Input devices. Similarly the computer after processing, gives output through other devices called output devices.</para>
+        <para id="id5202723">Common input and output devices are: Speakers, Mouse, Scanner, Printer,Joystick, CD-ROM, Keyboard, Microphone, DVD, Floppy drive, Hard drive, Magnetic tape, and Monitor. Some devices are capable of both input and output.</para>
+        <figure id="id4480716"><media id="id7781201" alt=""><image src="../../media/graphics4-7bdf.png" mime-type="image/png"/></media>
+        <caption>Typical input- output devices</caption></figure>
+        
+        <para id="id5203171">
+          <emphasis>Input Devices</emphasis>
+        </para>
+        <para id="id5203872">Input devices are necessary to convert our information or data in to a form which can be understood by the computer. A good input device should provide timely, accurate and useful data to the main memory of the computer for processing followings are the most useful input devices. </para>
+        <para id="id5203881">Keyboard: - This is the standard input device attached to all computers. The layout of keyboard is just like the traditional typewriter. It also contains some extra command keys and function keys. It contains a total of 101 to 104 keys. You must press correct combination of keys to input data. The computer can recognize the electrical signals corresponding to the correct key combination and processing is done accordingly.</para>
+        <para id="id4058421">Mouse: - Mouse is an input device that is used with your personal computer. It rolls on a small ball and has two or three buttons on the top.When you roll the mouse across a flat surface the screen censors the mouse in the direction of mouse movement. The cursor moves very fast with mouse giving you more freedom to work in any direction. It is easier and faster to move through a mouse. </para>
+        <para id="id4481820">Scanner: The keyboard can input only text through keys provided in it. If we want to input a picture the keyboard cannot do that. Scanner is an optical device that can input any graphical matter and display it back. </para>
+        <para id="id5203013">
+          <emphasis>Output Devices </emphasis>
+        </para>
+        <para id="id5176214">Monitor: The most popular input/output device is the monitor. A Keyboard is used to input data and Monitor is used to display the input data and to receive massages from the computer. A monitor has its own box which is separated from the main computer system and is connected to the computer by cable. It can be color or monochrome. It is controlled by an output device called a graphics card. Displayable area measured in dots per inch, dots are often referred to as pixels. Standard resolution is 640 by 480. Many cards support resolution of 1280 by 1024 or better. Number of colors supported varies from 16 to billions</para>
+        <para id="id4056736">Printer: It is an important output device which can be used to get a printed copy of the processed text or result on paper. There are different types of printers that are designed for different types of applications. </para>
+      </section>
+      <section id="id-106974769209">
+        <title>Buses</title>
+        <para id="id4058307">Bus is a subsystem that transfers data or power between computer components inside a computer or between computers. Bus can logically connect several peripherals over the same set of wires. Each bus defines its set of connectors to physically plug devices, cards or cables together. The buses are categorized depending on their tasks: </para>
+        <list id="id4058319" list-type="bulleted">
+          <item>The data bus transfers actual data. </item>
+          <item>The address bus transfers information about where the data should go.</item>
+          <item>The control bus carries signals that report the status of various devices.</item>
+        </list>
+      </section>
+    </section>
+    <section id="id-139087384174">
+      <title>Computer Software</title>
+      <section id="id-749072403258">
+        <title>Data and Algorithms</title>
+        <para id="id5146856">There are many steps involved in writing a computer program to solve a given problem. The steps go form problem formulation and specification, to design of the solution, to implementation, testing and documentation, and evaluation the solution.</para>
+        <para id="id4482323">Once we have a suitable mathematical model for our problem, we attempt to find a solution in term of that model. Our initial goal is to find a solution in the form of an algorithm. So what is an algorithm? </para>
+        <para id="id4482327">Algorithm is a finite sequence of instructions each of which has a clear meaning and can be performed with a finite amount of effort in a finite length of time.</para>
+        <para id="id5177316">How do you represent an algorithm? The most obvious representation: source code of a programming language. However, writing source code before you fully understand an algorithm often leads to difficult-to-find bugs. So, algorithms may be presented ...</para>
+        <para id="id4483026">
+          <emphasis>1. In words </emphasis>
+        </para>
+        <para id="id5177321">To present the algorithm in words we may describe the tasks step by step.</para>
+        <para id="id5177576">
+          <emphasis>2.As a flowchart</emphasis>
+        </para>
+        <para id="id5177583">A familiar technique for overcoming those bugs involves flowcharts. </para>
+        <para id="id4480691">A flowchart is a visual representation of an algorithm's control flow. That representation illustrates statements that need to execute, decisions that need to be made, logic flow (for iteration and other purposes), and terminals that indicate start and end points.</para>
+        <para id="id5202516">To present that visual representation, a flowchart uses various symbols, which Figure 3.5.shows.</para>
+        <figure id="id5203820"><media id="id2795901" alt=""><image src="../../media/graphics5-03db.png" mime-type="image/png"/></media>
+        <caption>Flowchart symbol for statements, decisions, logic flows, etc.</caption></figure>
+        
+        <para id="id5206439">This review was essential because we will be using these building blocks quite often today.</para>
+        <para id="id4481108">
+          <emphasis>3. In pseudocode </emphasis>
+        </para>
+        <para id="id4481116">Pseudocode (derived from pseudo and code) is a compact and informal high-level description of a computer programming algorithm that uses the structural conventions of programming languages, but omits detailed subroutines, variable declarations or language-specific syntax. The programming language is augmented with natural language descriptions of the details, where convenient, or with compact mathematical notation.</para>
+        <para id="id5206285">Example </para>
+        <para id="id4056896">Present the algorithm of converting an integer from decimal to binary</para>
+        <para id="id4056901">a. By words</para>
+        <para id="id4059144">Step 1: Let x is the decimal integer you want to convert and let k=1</para>
+        <para id="id4059149">Step 2 : Divide x by 2, saving the quotient as Q, and the remainder (in binary) as <m:math display="inline">
+ <m:semantics>
+  <m:mrow>
+   <m:msub>
+    <m:mi>R</m:mi>
+    <m:mi>k</m:mi>
+   </m:msub>
+   
+  </m:mrow>
+ 
+ </m:semantics>
+</m:math>
+</para>
+        <para id="id5205840">Step 3 : If Q is not zero, let X=Q, and go back to step 2. Otherwise go to step 4.</para>
+        <para id="id5146691">Step 4 : Assume step 1-3 were repeated n times. Arrange the remainders as string for digit <m:math display="inline">
+ <m:semantics>
+  <m:mrow>
+   <m:msub>
+    <m:mi>R</m:mi>
+    <m:mi>n</m:mi>
+   </m:msub>
+   <m:msub>
+    <m:mi>R</m:mi>
+    <m:mrow>
+     <m:mi>n</m:mi><m:mo>−</m:mo><m:mn>1</m:mn>
+    </m:mrow>
+   </m:msub>
+   <m:mn>...</m:mn><m:msub>
+    <m:mi>R</m:mi>
+    <m:mn>3</m:mn>
+   </m:msub>
+   <m:msub>
+    <m:mi>R</m:mi>
+    <m:mn>2</m:mn>
+   </m:msub>
+   <m:msub>
+    <m:mi>R</m:mi>
+    <m:mn>1</m:mn>
+   </m:msub>
+   
+  </m:mrow>
+
+ </m:semantics>
+</m:math>.</para>
+        <para id="id4479338">b. As a flowchart</para>
+        <figure id="id5202857"><media id="id1166583091248" alt=""><image src="../../media/graphics6-7bc8.png" mime-type="image/png"/></media>
+        <caption>Flowchart of the algorithm of converting an integer from decimal to binary</caption></figure>
+        
+        <para id="id5202260">c. By pseudocode</para>
+        <code id="id2528393" display="block">
+   BEGIN
+   input x.
+   y=””
+   remainder=0,
+     while (x&gt;0)
+   begin
+     quotient=x/2
+     remainder=x mod 2
+     y=conc(remainder,y)
+     x=quotient
+   end
+   print y
+   END.
+ </code>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <para id="id4058621">Example </para>
+        <para id="id4058625">Bubble Sort</para>
+        <para id="id4058630">Bubble sort is a simple sorting algorithm. It works by repeatedly stepping through the list to be sorted, comparing two items at a time and swapping them if they are in the wrong order. The pass through the list is repeated until no swaps are needed, which indicates that the list is sorted.</para>
+        <para id="id5206515">5 1 4 2 8 - unsorted array</para>
+        <para id="id5206519">1 4 2 5 8 - after one pass</para>
+        <para id="id4056352">1 2 4 5 8 - sorted array</para>
+        <para id="id4056356">The algorithm gets its name from the way smaller elements "bubble" to the top (i.e. the beginning) of the list via the swaps.Because it only uses comparisons to operate on elements, it is a comparison sort. This is the easiest comparison sort to implement.</para>
+        <para id="id4482865">Here are the presentations of bubble sort algorithm</para>
+        <para id="id4482874">a. By words</para>
+        <para id="id5204710">Step 1: Get the length of the list : N and the list: list[1],list[2],…,list[N]</para>
+        <para id="id4529130">Step 2: M ← N.</para>
+        <para id="id5178909">Step 3: If M &lt; 2 then print the list, stop.</para>
+        <para id="id5178917">Step 4: M ← M – 1, i ← 0.</para>
+        <para id="id4480743">Step 5: Increase i by 1</para>
+        <para id="id4480750">Step 6: If i &gt; M then go to step 3.</para>
+        <para id="id4056870">Step 7: If list[i] &gt; list[i+1] swap list[i] and list[i+1]</para>
+        <para id="id5203717">Step 8: Go to step 5. </para>
+        
+        <para id="id4479774">b. As a flow chart</para>
+        <figure id="id4479782"><media id="id4480000" alt=""><image src="../../media/graphics7-8c8d.png" mime-type="image/png"/></media>
+        <caption>Flowchart of bubble sort algorithm</caption></figure>
+        
+        <para id="id5204368">c. In pseudocode</para>
+        <para id="id5204376">A simple way to express bubble sort in pseudocode is as follows:</para>
+        <code id="id6175920" display="block">
+BEGIN  get length (list) and list’s elements
+  for each M in length(list) down to 2 do:
+     for each i  in 1 to M-1 do:
+       if list[ i] &gt; list[ i+1 ] then
+         swap( list[i+1],  list[ i ] )
+       end if
+     end for
+  end for
+end procedure
+ </code>
+        
+        
+        
+        
+        
+        
+        
+        
+        <para id="id5204976">Comparing the three methods,especially pseudocode and flowchart we realized :</para>
+        <para id="id5204980">Pros and Cons of Flowcharts </para>
+        <para id="id5203536">In fact, flowcharts are not very useful.The process of writing an algorithm in the form of a flowchart is just too cumbersome, and then converting this graphical form into code is not straight forward</para>
+        <para id="id5206667">However, there is another kind of flowcharts – called Structured Flowcharts – that may be better suited for software developers.</para>
+        <para id="id5206675">The good thing about flowcharts is that their symbols are quite intuitive and almost universally understood. Their graphical nature makes the process of explaining an algorithm to one’s peers quite straightforward.</para>
+        <para id="id5206679">Pros and Cons of Pseudocode </para>
+        <para id="id4057525">Pseudocode are quite suitable for software development as it is closer in form to real code.One can write the pseudocode, then use it as a starting point or outline for writing real code.</para>
+        <para id="id4057533">Many developers write the pseudocode first and then incrementally comment each line out while converting that line into real code.Pseudocode can be constructed quite quickly as compared with a flowchart.</para>
+        <para id="id5178727">Unlike flowcharts, no standard rules exist for writing pseudocode</para>
+        <para id="id5178733">To design an algorithm, the following characteristics are very</para>
+        <list id="id5202645" list-type="bulleted">
+          <item>Exactness</item>
+          <item>Effectiveness</item>
+          <item>Guaranteed termination</item>
+          <item>Generality</item>
+        </list>
+        <para id="id4058544">The concept of structured programming says that any programming logic problem can be solved using an appropriate combination of only three programming structures, </para>
+        <para id="id4058551"><emphasis>1.Sequence</emphasis>: a sequence of instructions that are executed in the precise order they are written in</para>
+        <figure id="id5180684"><media id="id6198335" alt=""><image src="../../media/graphics8-0024.png" mime-type="image/png"/></media>
+        </figure>
+        <para id="id5205398"><emphasis>2. Conditional</emphasis> : Select between alternate courses of action depending upon the evaluation of a condition</para>
+        <figure id="id5204610"><media id="id1166590051076" alt=""><image src="../../media/graphics9-ee0e.png" mime-type="image/png"/></media>
+        </figure>
+        <para id="id5205706"><emphasis>Loops</emphasis>: Loop through a set of statements as long as a condition is true </para>
+        <figure id="id5179821"><media id="id6154324" alt=""><image src="../../media/graphics10.png" mime-type="image/png"/></media>
+        </figure>
+      </section>
+      <section id="id-24371979778">
+        <title>Programs and Programming Languages</title>
+        <para id="id4480771">
+          <emphasis>Programs</emphasis>
+        </para>
+        <para id="id5179482">A computer program is an algorithm written for a computer in a special programming language.</para>
+        <para id="id5179488">
+          <emphasis>Programming languages </emphasis>
+        </para>
+        <para id="id5202278">A programming language is an artificial language that can be used to control the behavior of a machine, particularly a computer. It is defined through the use of syntactic and semantic rules, to determine structure and meaning respectively.</para>
+        <para id="id5202286">Programming languages are used to facilitate communication about the task of organizing and manipulating information, and to express algorithms precisely. </para>
+        <para id="id4483339">There are large number of programming language in use. We can identify three type of programming languages : machine languages, assembly languages, high-level languages.</para>
+        <para id="id4483346">
+          <emphasis>Machine Languages</emphasis>
+        </para>
+        <para id="id4482113">Machine code or machine language is a system of instructions and data directly executed by a computer's central processing unit. Machine code is the lowest-level of abstraction for representing a computer program.Instructions are patterns of bits with different patterns corresponding to different commands to the machine. Machine code has several significant disadvantages : very difficult for a human to read and write, a program written on one computer cannot run on a different computer, so it cannot be used to write large program or program intended to run on different machines.</para>
+        <para id="id4482117">
+          <emphasis>Assembly Languages</emphasis>
+        </para>
+        <para id="id5202148">An assembly language is a low-level language for programming computers. It implements a symbolic representation of the numeric machine codes and other constants needed to program a particular CPU architecture. </para>
+        <para id="id5202155">This representation is usually defined by the hardware manufacturer, and is based on abbreviations (called mnemonics) that help the programmer remember individual instructions, registers, etc. An assembly language is thus specific to a certain physical or virtual computer architecture</para>
+        <para id="id5202492">A utility program called an assembler, is used to translate assembly language statements into the target computer's machine code. </para>
+        <para id="id4483832">Although assembly is more friendly than machine code, use of assembly offer several disadvantages, for instance, each type of computer has its own assembly language or programming assembly requires much time and effort.</para>
+        <para id="id4483840">Hence, assembly language is not use to write large programs. However, there are some computer application, such as in writing program that control peripherals, assembly is still a necessity.</para>
+        <para id="id4483844">
+          <emphasis>High-level languages</emphasis>
+        </para>
+        <para id="id4056553">A high-level programming language is a programming language that, may be more abstract, easier to use, or more portable across platforms. </para>
+        <para id="id4059062">Examples: Pascal, C, Visual Basic, SQL, . . . .</para>
+        <para id="id4059067">Such languages often abstract away CPU operations such as memory access models and management of scope.These languages have been implemented by translating to machine languages. </para>
+        <para id="id4058263">There are two types of translators</para>
+        <list id="id4058267" list-type="bulleted">
+          <item><emphasis>Compiler</emphasis> is a program that translate source code from a high-level programming language to a lower level language (e.g., assembly language or machine language)</item>
+        </list>
+        <list id="id5202306" list-type="bulleted">
+          <item><emphasis>Interpreter</emphasis> is a program that translates and executes source language statements one line at a time.</item>
+        </list>
+        <para id="id4483000"><link target-id="id5205025"/> below shows the process of solving problem with computers</para>
+        <figure id="id5205025"><media id="id1166586458488" alt=""><image src="../../media/graphics11.png" mime-type="image/png"/></media>
+        <caption>Steps in software development</caption></figure>
+        
+        <para id="id5146590">Domain Analysis </para>
+        <para id="id5146594">Often the first step in attempting to design a new piece of software, whether it be an addition to an existing software, a new application, a new subsystem or a whole new system, is, what is generally referred to as "Domain Analysis". The more knowledgeable they are about the domain already, the less the work required. Another objective of this work is to make the analysts who will later try to elicit and gather the requirements from the area experts or professionals, speak with them in the domain's own terminology and to better understand what is being said by these people. Otherwise they will not be taken seriously. So, this phase is an important prelude to extracting and gathering the requirements. </para>
+        <para id="id4058659">Software Elements Analysis </para>
+        <para id="id5179146">The most important task in creating a software product is extracting the requirements. Customers typically know what they want, but not what software should do, while incomplete, ambiguous or contradictory requirements are recognized by skilled and experienced software engineers. Frequently demonstrating live code may help reduce the risk that the requirements are incorrect.</para>
+        <para id="id4056602">Specification </para>
+        <para id="id4056606">Specification is the task of precisely describing the software to be written, possibly in a rigorous way. In practice, most successful specifications are written to understand and fine-tune applications that were already well-developed, although safety-critical software systems are often carefully specified prior to application development. Specifications are most important for external interfaces that must remain stable.</para>
+        <para id="id5205890">Software architecture </para>
+        <para id="id5205894">The architecture of a software system refers to an abstract representation of that system. Architecture is concerned with making sure the software system will meet the requirements of the product, as well as ensuring that future requirements can be addressed. The architecture step also addresses interfaces between the software system and other software products, as well as the underlying hardware or the host operating system.</para>
+        <para id="id4057689">Implementation (or coding) </para>
+        <para id="id5178802">Reducing a design to code may be the most obvious part of the software engineering job, but it is not necessarily the largest portion.</para>
+        <para id="id5178809">Testing </para>
+        <para id="id5178813">Testing of parts of software, especially where code by two different engineers must work together, falls to the software engineer.</para>
+        <para id="id5205131">Documentation </para>
+        <para id="id5205135">An important (and often overlooked) task is documenting the internal design of software for the purpose of future maintenance and enhancement. Documentation is most important for external interfaces.</para>
+      </section>
+      <section id="id-35577881112">
+        <title>Classification of Computer Software </title>
+        <para id="id5179637">The software is divided to System Software and Application Software with each having several sub levels.</para>
+        <para id="id5179645">System software is the low –level software required to manage computer resources and support the production or execution of application program.</para>
+        <para id="id5180871">Application software is software program that perform a specific function directly for the end user.</para>
+        <para id="id5180877">System Software includes </para>
+        <list id="id5180893" list-type="bulleted">
+          <item>Operating Systems software</item>
+          <item>Network Software : network management software, server software, security and encryption software, etc.</item>
+          <item>Database management software</item>
+          <item>Development tools and programming language software: software testing tools and testing software, program development tools, programming languages software </item>
+          <item>Etc.</item>
+        </list>
+        <para id="id5205867">Application Software includes</para>
+        <list id="id5176530" list-type="bulleted">
+          <item>General business productivity applications : software program that perform a specific function directly for the end user, examples include : office applications, word processors, spreadsheet, project management system ,etc.</item>
+          <item>Home use applications : software used in the home for entertainment, reference or educational purposes, examples include games, home education etc.</item>
+          <item>Cross-industry application software : software that is designed to perform and/or manage a specific business function or process that is not unique to a particular industry, examples include professional accounting software, human resources management, Geographic Information Systems (GIS) software, etc.</item>
+          <item>Vertical market application software : software that perform a wide range of business functions for a specific industry such as manufacturing, retail, healthcare , engineering, restaurant, etc.</item>
+          <item>Utilities software : a small program that performs a very specific task. Examples include : compression programs, antivirus, search engines, font, file viewers, voice recognition software, etc.</item>
+        </list>
+      </section>
+    </section>
+  </content>
+</document>

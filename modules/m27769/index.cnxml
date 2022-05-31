@@ -1,0 +1,721 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Pointers and Arrays</title>
+  <metadata>
+  <md:content-id>m27769</md:content-id><md:title>Pointers and Arrays</md:title>
+  <md:abstract/>
+  <md:uuid>4fbbc27b-719f-4d04-8f16-501d89ef7ab6</md:uuid>
+</metadata>
+
+<content>
+    <para id="id6072921">From the beginning, we only show how to access or change directly the values of variables through their names. However, the C language provides the developers an effective method to access variables - pointer.</para>
+    <para id="id5685994">A pointer is a variable that contains the address of a variable. Pointers are much used in C, partly because they are sometimes the only way to express a computation, and partly because they usually lead to more compact and efficient code than can be obtained in other ways. Pointers and arrays are closely related; this Unit also explores this relationship and shows how to exploit it. </para>
+    <section id="id-317419601606">
+      <title>Pointers and Addresses</title>
+      <para id="id5834883">Let us begin with a simplified picture of how memory is organized. A typical machine has an array of consecutively numbered or addressed memory cells that may be manipulated individually or in contiguous groups. One common situation is that any byte can be a char, a pair of one-byte cells can be treated as a short integer, and four adjacent bytes form a long. </para>
+      <para id="id7158886">Any variable in a program is stored at a specific area in memory. If you declare a variable, the compiler will allocate this variable to some consecutive memory cells to hold the value of the variable. The address of the variable is the address of the first memory cell.</para>
+      <para id="id7158895">One variable always has two properties:</para><list id="element-332" list-type="bulleted"><item>The address of the variable</item>
+	<item>The value of the variable.</item>
+	</list><para id="element-851">Consider the following Example</para><code id="id1171738794837" display="block">  int i, j;
+  i = 3;
+  j = i;
+</code><para id="element-613">Type of these two variables is integer so they are stored in 2-byte memory area. Suppose that the compiler allocates i at the FFEC address in memory and j in FFEE, we have:</para><table id="element-931" summary="">
+<tgroup cols="3"><thead>
+  <row>
+    <entry>Variable</entry>
+    <entry>Address</entry>
+    <entry>Value</entry>
+  </row>
+</thead>
+<tbody>
+  <row>
+    <entry>i</entry>
+    <entry>FFEC</entry>
+    <entry>3</entry>
+  </row>
+  <row>
+    <entry>j</entry>
+    <entry>FFEE</entry>
+    <entry>3</entry>
+  </row>
+</tbody>
+</tgroup>
+</table><para id="element-17">Two different variables have different addresses. The i = j assignment affects only on the value of variables, that means the content of  the memory area for j will be copied to the content of the memory area for i.</para>
+
+<section id="ingredsec">
+  <title>Pointers</title>
+    <para id="element-18">A pointer is a group of cells (often two or four) that can hold an address. So if c is a char and p is a pointer that points to it, we could represent the situation this way: </para><figure id="element-482"><media id="id1171743540032" alt=""><image src="../../media/44.PNG" mime-type="image/png"/></media></figure>
+
+<section id="Poidec">
+  <title>Pointer declaration</title>
+<para id="element-19">
+If you declare a variable, its name is a direct reference to its value. If you have a pointer to a variable or any other object in memory, you have an indirect reference to its value. A pointer variable stores the address of another object or a function. To start out, the declaration of a pointer to an object that is not an array has the following syntax:
+</para>
+<code id="id1171743358148" display="block">type * Name [= initializer];</code>
+<para id="element-20">
+In declarations, the asterisk (*) means "pointer to". The identifier name is declared as an object with the type *, or pointer to type.  * is the indirection or dereferencing operator; when applied to a pointer, it accesses the object the pointer points to.
+</para>
+<para id="element-21">Here is a simple Example</para>
+
+<code id="id1171736157464" display="block">int *iPtr;          // Declare iPtr as a pointer to int.
+double *realptr; // pointer to a double
+char *astring; // pointer to a character
+</code><para id="element-477">The type int is the type of object that the pointer iPtr can point to.</para><para id="element-978">To make a pointer refer to a certain object, assign it the address of the object. 
+</para><para id="element-367">For example, if iVar is an int variable, then the following assignment makes iPtr point to the variable iVar:</para><code id="id1171738860500" display="block">iPtr = &amp;iVar;       // Let iPtr point to the variable iVar.</code><para id="element-885">In a pointer declaration, the asterisk (*) is part of an individual declarator. We can thus define and initialize the variables iVar and iPtr in one declaration, as follows:</para><code id="id1171736355929" display="block">int iVar = 77, *iPtr = &amp;iVar; // Define an int variable and a
+                              // pointer to it.
+</code><para id="element-246">The second of these two declarations initializes the pointer iPtr with the address of the variable iVar, so that iPtr points to iVar. Figure 4.1. illustrates one possible arrangement of the variables iVar and iPtr in memory. The addresses shown are purely fictitious examples. As Figure 4.1. shows, the value stored in the pointer iPtr is the address of the object iVar.</para><figure id="element-43"><media id="id1171743464556" alt=""><image src="../../media/45.PNG" mime-type="image/png"/></media>
+<caption>A pointer and another object in memory</caption></figure><para id="element-676">It is often useful to output addresses for verification and debugging purposes. The <emphasis>printf() </emphasis> functions provide a format specifier for pointers: %p. The following statement prints the address and contents of the variable iPtr:</para><code id="id1171743335189" display="block">printf("Value of iPtr (i.e. the address of iVar): %p\n"
+        "Address of iPtr:                          %p\n", iPtr, &amp;iPtr);
+</code><para id="element-72">The size of a pointer in memory given by the expression <emphasis>sizeof(iPtr)</emphasis></para>
+</section>
+
+<section id="marinadesec">
+  <title>&amp; and * operators</title>
+  <para id="element-197">The unary operator &amp; gives the address of an object, so the statement </para><code id="id1171743271090" display="block">p = &amp;c; </code><para id="marinate">assigns the address of c to the variable p, and p is said to “point to” c. The &amp; operator only applies to objects in memory: variables and array elements. It cannot be applied to expressions, constants, or register variables.</para><para id="element-147">* is the operator that  retrieves the value stored at the address held in the pointer. The indirection operator * yields the location in memory whose address is stored in a pointer. If ptr is a pointer, then *ptr designates the object that ptr points to. Using the indirection operator is sometimes called dereferencing a pointer. The type of the pointer determines the type of object that is assumed to be at that location in memory. For example, when you access a given location using an int pointer, you read or write an object of type int.</para><para id="element-973">The indirection operator * is a unary operator; that is, it has only one operand.ptr points to the variable x. Hence the expression *ptr is equivalent to the variable x itself.</para><example id="element-794"><code id="id1171738774974" display="block">double x, y, *ptr;     // Two double variables and a pointer to double.
+ptr = &amp;x;              // Let ptr point to x.
+*ptr = 7.8;            // Assign the value 7.8 to the variable x.
+*ptr *= 2.5;           // Multiply x by 2.5.
+y = *ptr + 0.5;      // Assign y the result of the addition x + 0.5.
+</code>
+</example><para id="element-311">Do not confuse the asterisk (*) in a pointer declaration with the indirection operator. The syntax of the declaration can be seen as an illustration of how to use the pointer. </para><code id="id1171743475688" display="block">double *ptr;</code><para id="element-748">As declared here, ptr has the type double * (read: "pointer to double"). Hence the expression *ptr would have the type double.</para><para id="element-309">Of course, the indirection operator * must be used with only a pointer that contains a valid address. This usage requires careful programming! Without the assignment ptr = &amp;x in the listing above, all of the statements containing *ptr would be senseless dereferencing an undefined pointer value and might well cause the program to crash.</para>
+    
+</section>
+
+<section id="grillingsec">
+  <title>Pointer Assignment</title>
+  <para id="prepgrill">Since pointers are variables, they can be used without dereferencing. Pointer assignment between two pointers makes them point to the same pointee. So the assignment <code display="inline">iq = ip;</code> copies the contents of ip into iq, thus making iq point to whatever ip pointed to. It makes iq point to the same pointee as ip. Pointer assignment does not touch the pointees. It just changes one pointer to have the same reference as another pointer. After pointer assignment, the two pointers are said to be "sharing" the pointee.</para><para id="element-475">Example Consider the following programs:</para><code id="id1171743519738" display="block">main()
+{
+  int i = 3, j = 6;
+  int *p1, *p2;
+  p1 = &amp;i;
+  p2 = &amp;j;
+  *p1 = *p2;
+}
+and
+main()
+{
+  int i = 3, j = 6;
+  int *p1, *p2;
+  p1 = &amp;i;
+  p2 = &amp;j;
+  p1 = p2;
+}
+</code><para id="element-587">Suppose the values of variables before executing the last assignment are </para><table id="element-278" summary="">
+<tgroup cols="3"><thead>
+  <row>
+    <entry>Variable</entry>
+    <entry>Address</entry>
+    <entry>Value</entry>
+  </row>
+</thead>
+<tbody>
+  <row>
+    <entry>i</entry>
+    <entry>FFEC</entry>
+    <entry>3</entry>
+  </row>
+  <row>
+    <entry>j</entry>
+    <entry>FFEE</entry>
+    <entry>6</entry>
+  </row>
+  <row>
+    <entry>p1</entry>
+    <entry>FFDA</entry>
+    <entry>FFEC</entry>
+  </row>
+  <row>
+    <entry>p2</entry>
+    <entry>FFDC</entry>
+    <entry>FFEE</entry>
+  </row>
+</tbody>
+</tgroup>
+</table><para id="element-125">After the assignment  *p1 = *p2; for the first program: </para><table id="element-544" summary="">
+<tgroup cols="3"><thead>
+  <row>
+    <entry>Variable</entry>
+    <entry>Address</entry>
+    <entry>Value</entry>
+  </row>
+</thead>
+<tbody>
+  <row>
+    <entry>i</entry>
+    <entry>FFEC</entry>
+    <entry>6</entry>
+  </row>
+  <row>
+    <entry>j</entry>
+    <entry>FFEE</entry>
+    <entry>6</entry>
+  </row>
+  <row>
+    <entry>p1</entry>
+    <entry>FFDA</entry>
+    <entry>FFEC</entry>
+  </row>
+  <row>
+    <entry>p2</entry>
+    <entry>FFDC</entry>
+    <entry>FFEE</entry>
+  </row>
+</tbody>
+
+</tgroup>
+</table><para id="element-120">While the assignment  p1 = p2 for the second program results </para><table id="element-650" summary="">
+<tgroup cols="3"><thead>
+  <row>
+    <entry>Variable</entry>
+    <entry>Address</entry>
+    <entry>Value</entry>
+  </row>
+</thead>
+<tbody>
+  <row>
+    <entry>i</entry>
+    <entry>FFEC</entry>
+    <entry>3</entry>
+  </row>
+  <row>
+    <entry>j</entry>
+    <entry>FFEE</entry>
+    <entry>6</entry>
+  </row>
+  <row>
+    <entry>p1</entry>
+    <entry>FFDA</entry>
+    <entry>FFEE</entry>
+  </row>
+  <row>
+    <entry>p2</entry>
+    <entry>FFDC</entry>
+    <entry>FFEE</entry>
+  </row>
+</tbody>
+
+</tgroup>
+</table>
+  
+</section>
+
+<section id="grillingsec1">
+  <title>Initializing Pointers</title>
+ 
+  <para id="grilling1"> Pointer variables with automatic storage duration start with an undefined value, unless their declaration contains an explicit initializer. You can initialize a pointer with the following kinds of initializers:</para><list id="element-577" list-type="bulleted"><item>A null pointer constant. </item>
+	<item>A pointer to the same type, or to a less qualified version of the same type.</item>
+	<item>A void pointer, if the pointer being initialized is not a function pointer. Here again, the pointer being initialized can be a pointer to a more qualified type.</item></list>
+</section>
+
+</section>
+<section id="grillingsec2">
+  <title>Operators on Pointers</title>
+  <para id="prepgrill2"> Besides using assignments to make a pointer refer to a given object or function, you can also modify an object pointer using arithmetic operations. When you perform <emphasis>pointer arithmetic</emphasis>, the compiler automatically adapts the operation to the size of the objects referred to by the pointer type. </para><para id="element-110">You can perform the following operations on pointers to objects:</para><list id="element-3415" list-type="bulleted"><item>Adding an integer to, or subtracting an integer from, a pointer.</item>
+	<item>Subtracting one pointer from another.</item>
+	<item>Comparing two pointers.</item></list><para id="element-498">If ip points to the integer x, then *ip can occur in any context where x could, so </para><code id="id1171743355999" display="block">*ip = *ip + 10; </code><para id="element-645">The unary operators * and &amp; bind more tightly than arithmetic operators, so the assignment </para><code id="id1171743145605" display="block">y = *ip + 1 </code><para id="element-907">takes whatever ip points at, adds 1, and assigns the result to y, while </para><code id="id1171743286271" display="block">*ip += 1 </code><para id="element-446">increments what ip points to, as do </para><code id="id1171743340447" display="block">++*ip </code><para id="element-841">and </para><code id="id1171743547175" display="block">(*ip)++ </code><para id="element-152">The parentheses are necessary in this last example; without them, the expression would increment ip instead of what it points to, because unary operators like * and ++ associate right to left. </para><para id="element-382">When you subtract one pointer from another, the two pointers must have the same basic type, although you can disregard any type. Furthermore, you may compare any pointer with a null pointer constant using the equality operators (== and !=), and you may compare any object pointer with a pointer to void.</para>
+  
+<section id="grillingse31c">
+  <title>Pointer to pointer</title>
+  <para id="prepgrill31">A pointer variable is itself an object in memory, which means that a pointer can point to it. To declare a pointer to a pointer , you must use two asterisks, as in the following Example</para>
+ 
+<code id="id1171743253165" display="block">char c = 'A', *cPtr = &amp;c, **cPtrPtr = &amp;cPtr;</code>
+<para id="prepgrill3">The expression *cPtrPtr now yields the char pointer cPtr, and the value of **cPtrPtr is the char variable c. The diagram in Figure X illustrates these references.</para>
+</section>
+<section id="grillingse4c">
+  <title>NULL Pointers</title>
+<para id="prepgrill5">There are times when it’s necessary to have a pointer that doesn’t point to anything. A <emphasis>null pointer</emphasis> is what results when you convert a <emphasis>null pointer constant</emphasis> to a pointer type. A null pointer constant is an integer constant expression with the value 0, or such an expression cast as the type void *. </para>
+<para id="prepgrill6">Null pointers are implicitly converted to other pointer types as necessary for assignment operations, or for comparisons using == or !=. Hence no cast operator is necessary in the previous example.</para>
+</section>
+<section id="grillingse6c">
+  <title>void Pointers</title>
+<para id="prepgrill7">A pointer to void, or <emphasis>void pointer</emphasis> for short, is a pointer with the type void *. As there are no objects with the type void, the type void * is used as the all-purpose pointer type. In other words, a void pointer can represent the address of any object but not its type. To access an object in memory, you must always convert a void pointer into an appropriate object pointer.</para>
+</section>
+</section>
+</section>
+<section id="grillingse7c">
+  <title>Arrays</title>
+ <section id="grillingse8c">
+  <title>Basic of Arrays</title>
+<para id="prepgrill8">An array contains objects of a given type, stored consecutively in a continuous memory block.The individual objects are called the elements of an array. The elements' type can be any object type. No other types are permissible: array elements may not have a function type or an incomplete type.</para><para id="element-351">An array is also an object itself, and its type is derived from its elements' type. More specifically, an array's type is determined by the type and number of elements in the array. If an array's elements have type T, then the array is called an "array of T." If the elements have type int, for example, then the array's type is "array of int." The type is an incomplete type, however, unless it also specifies the number of elements. If an array of int has 16 elements, then it has a complete object type, which is "array of 16 int elements."</para><para id="element-339">In C, there is a strong relationship between pointers and arrays, strong enough that pointers and arrays should be discussed simultaneously. Any operation that can be achieved by array subscripting can also be done with pointers. The pointer version will in general be faster but, at least to the uninitiated, somewhat harder to understand. </para>
+
+
+</section>
+<section id="grillingse9c">
+  <title>Declarations and Usage of Arrays</title>
+<para id="element-340">The definition of an array determines its name, the type of its elements, and the number of elements in the array. The general syntax for declaring a single-dimensional array is</para>
+<code id="id1171743545244" display="block">type name[ number_of_elements ];
+</code>
+<para id="element-341">The number of elements, between square brackets ([ ]), must be an integer expression whose value is greater than zero.</para>
+<para id="element-342">For example, the declaration, </para>
+<code id="id1171738858571" display="block">int a[10]; 
+</code>
+
+<para id="element-343">defines an array of size 10, that is, a block of 10 consecutive objects named a[0], a[1], ...,a[9]. </para>
+<code id="id1171743394747" display="block">char buffer[4*512];
+</code>
+<para id="element-344">defines an array with the name buffer, which consists of 2,048 elements of type char.</para>
+<list id="cnxnlist">
+<item>The lower bound of an array is set at 0. C++ does not allow you to override or alter this lower bound</item>
+<item>Declaring a C++ array entails specifying the number of members. The number of member is equal to the upper bound plus one</item>
+<item>The valid range of indices extends between 0 and number_of_elements -1.</item>
+</list>
+<section id="grillingse10c">
+<title>Multidimensional Arrays</title>
+<para id="element-345">A multidimensional array in C is merely an array whose elements are themselves arrays. The elements of an n-dimensional array are (n-1)-dimensional arrays. For example, each element of a two-dimensional array is a one-dimensional array. The elements of a one-dimensional array, of course, do not have an array type.</para>
+
+<para id="element-346">A multidimensional array declaration has a pair of brackets for each dimension:</para>
+<code id="id1171743513137" display="block">char screen[10][40][80];      // A three-dimensional array.
+</code>
+
+<para id="element-347">The array screen consists of the 10 elements screen[0] to screen[9]. Each of these elements is a two-dimensional array, consisting in turn of 40 one-dimensional arrays of 80 characters each. All in all, the array screen contains 32,000 elements with the type char.</para>
+
+<para id="element-348">Two-dimensional arrays are also called matrices. Because they are so frequently used, they merit a closer look. It is often helpful to think of the elements of a matrix as being arranged in rows and columns. Thus the matrix mat in the following definition has three rows and five columns:</para>
+<code id="id1171743542437" display="block">float mat[3][5];
+</code>
+
+
+<para id="element-349">The three elements mat[0], mat[1], and mat[2] are the rows of the matrix mat. Each of these rows is an array of five float elements. Thus the matrix contains a total of 3 x 5 = 15 float elements, as the following diagram illustrates:</para><table id="element-501" summary="">
+<tgroup cols="6"><thead>
+  <row>
+    <entry/>
+    <entry>0</entry>
+    <entry>1</entry>
+    <entry>2</entry>
+    <entry>3</entry>
+    <entry>4</entry>
+  </row>
+</thead>
+<tbody>
+  <row>
+    <entry>mat[0]</entry>
+    <entry>0.0</entry>
+    <entry>0.1</entry>
+    <entry>0.2</entry>
+    <entry>0.3</entry>
+    <entry>0.4</entry>
+  </row>
+  <row>
+    <entry>mat[1]</entry>
+    <entry>1.0</entry>
+    <entry>1.1</entry>
+    <entry>1.2</entry>
+    <entry>1.3</entry>
+    <entry>1.4</entry>
+  </row>
+  <row>
+    <entry>mat[2]</entry>
+    <entry>2.0</entry>
+    <entry>2.1</entry>
+    <entry>2.2</entry>
+    <entry>2.3</entry>
+    <entry>2.4</entry>
+  </row>
+</tbody>
+
+</tgroup>
+</table>
+
+</section>
+<section id="tungo1">
+<title>Accessing Array Elements</title>
+<para id="tungo11">The subscript operator [ ] provides an easy way to address the individual elements of an array by index. If myArray is the name of an one dimensional array and i is an integer, then the expression myArray[i] designates the array element with the index i. Array elements are indexed beginning with 0. Thus, if len is the number of elements in an array, the last element of the array has the index len-1.
+</para>
+
+<para id="tungo12">
+The following code fragment defines the array myArray and assigns a value to each element.
+</para>
+<code id="id1171743599614" display="block">
+#define A_SIZE 4
+long myarray[A_SIZE];
+for (int i = 0;  i &lt; A_SIZE;  ++i)
+   myarray[i] = 2 * i;
+
+</code>
+<para id="tungo13">
+The diagram in <link target-id="tungo_f-01"/> illustrates the result of this assignment loop.
+</para>
+
+<figure id="tungo_f-01"><media id="id1171743483534" alt=""><image src="../../media/35.PNG" mime-type="image/png"/></media>
+	    <caption>Values assigned to elements by index</caption>
+	  </figure> 
+<para id="tungo14">
+To access a char element in the three-dimensional array screen, you must specify three indices. For example, the following statement writes the character Z in a char element of the array:
+</para>
+<code id="id1171743373690" display="block">
+screen[9][39][79] = 'Z';
+</code>
+
+</section>
+<section id="tungo2">
+<title>Initializing Arrays</title>
+<para id="tungo21">
+If you do not explicitly initialize an array variable, the usual rules apply: if the array has automatic storage duration, then its elements have undefined values. Otherwise, all elements are initialized by default to the value 0. 
+</para>
+
+<list id="tungo2_l1"><item>You cannot include an initialization in the definition of a variable-length array.</item>
+<item>If the array has static storage duration, then the array initializers must be constant expressions. If the array has automatic storage duration, then you can use variables in its initializers.</item>
+<item>You may omit the length of the array in its definition if you supply an initialization list. The array's length is then determined by the index of the last array element for which the list contains an initializer. For example, the definition of the array a in the previous example is equivalent to this:
+<code id="id1171738869998" display="block">int a[ ] = { 1, 2, 4, 8 };     // An array with four elements.
+</code>
+</item>
+<item>If the definition of an array contains both a length specification and an initialization list, then the length is that specified by the expression between the square brackets. Any elements for which there is no initializer in the list are initialized to zero (or NULL, for pointers). If the list contains more initializers than the array has elements, the superfluous initializers are simply ignored.</item>
+<item>A superfluous comma after the last initializer is also ignored.</item>
+<item>As a result of these rules, all of the following definitions are equivalent:
+<code id="id1171743135521" display="block">int a[4] = {1, 2};
+int a[ ]  = {1, 2, 0, 0};
+int a[ ]  = {1, 2, 0, 0, };
+int a[4] = {1, 2, 0, 0, 5};
+</code>
+</item></list>
+</section>
+</section>
+<section id="tungo3">
+<title>Operations on arrays</title>
+<section id="tungo31">
+<title>Read the elements of a 1-dimensional array:</title>
+<code id="id1171743551565" display="block">float a[10];	// declare a float array of size 10
+int i;
+// read the second element of the array : a[1]
+scanf(“%f”,&amp;a[1]);
+// Assign an expression  to the third element of the array
+a[2] = a[1] + 5;
+
+</code>
+<para id="tungo31p1">To read the value for each element of an array, you should use  for statement. For example, </para>
+<code id="id1171743394057" display="block">
+int b[10];
+int i;
+// Read the value for each element of the array
+for(i = 0; i &lt; 10; i++)
+{
+	printf(“\n Enter the value of b[%d]”, i);
+	scanf(“%d”,&amp;b[i]);
+}
+
+</code>
+<para id="tungo31p2">In case you do not now the exact number of elements, declare the maximum number of elements and use a variable to store the actual size of the array </para>
+
+<code id="id1171743373068" display="block">
+int a[100];	// Declare the array with the number of elements not greater than 100
+	int n;			// n is the actual size of the array
+	int i;
+	printf(“\n Enter the number of elements: “);
+	scanf(“%d”,&amp;n);
+	for(i = 0; i &lt; n; i++)
+	{
+		printf("\n a[%d] = ", i);
+		scanf("%d",&amp;a[i]);
+	}
+
+
+</code>
+<para id="tungo31p3">C allow you to associate initializers with specific elements . To specify a certain element to initialize, place its index in square brackets. In other words, the general form of an element designator for array elements is:</para>
+
+<code id="id1171743451281" display="block">
+int a[4] = {4, 9, 22, 16};
+float b[3] = {40.5, 20.1, 100};
+char c[5] = {‘h’, ‘e’, ‘l’, ‘l’, ‘o’};
+
+</code>
+<para id="tungo31p4">The first statement is equivalent to four assign statements</para>
+
+<code id="id1171743271127" display="block">
+a[0] = 4; a[1] = 9; a[2] = 22; a[3] = 16;
+
+</code>
+</section>
+<section id="tungo4">
+<title>Printing array elements</title>
+<para id="tungo41">printf function are used to print the element of an array. In the following example, we print the element of array a in different ways</para>
+
+<code id="id1171743471990" display="block">
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+void main()
+{
+	int a[5];
+	int i, k;
+	// Read the elements of the array
+	for(i = 0; i &lt; 5; i++)
+	{
+		printf(“\n a[%d] = “, i);
+		scanf(“%d”, &amp;a[i]);
+	}
+	// print the value of element a[3] 
+	printf(“\n a[3] = %d”, a[3]);
+	// Display all the elements of array a, each element in a line.
+	for(i = 0; i &lt; 5; i++)
+		printf(“\n%d”, a[i]);
+	// Display all the elements of array a in a line
+	printf(“\n”);	// change to a new line
+	for(i = 0; i &lt; 5; i++)
+		printf(“%d  “, a[i]);
+	// Display all the elements of array a, k elements in a line
+	printf(“\n Enter the value of k = “);
+	scanf(“%d”,&amp;k);
+	for(i = 0; i &lt; 5; i++)
+	{
+		printf(“%d  “,a[i]);
+		if((i+1)%k == 0)	// change to a new line after printing k     
+                              //elements
+			printf(“\n”);
+	}
+	getch();
+}
+
+
+</code>
+<para id="tungo42">here is the sample session with the above program</para>
+<code id="id1171743579738" display="block">
+ a[0] = 6
+ a[1] = 14
+ a[2] = 23
+ a[3] = 37
+ a[4] = 9
+ a[3] = 37
+ 6
+ 14
+ 23
+ 37
+ 9
+ 6  14  23  37  9
+ Input the value of k = 2
+ 6  14
+ 23  37
+ 9
+
+
+</code>
+
+</section>
+<section id="tungo6">
+<title>Find the maximum value stored in the array.</title>
+<para id="tungo61">The purpose of this function is to find the maximum value stored in the array </para>
+<list id="tungo6l1"><item>Set up a trial minimum value.
+The function begins by declaring a variable named min and initializing that variable with a trial minimum value – value of the first element .
+</item>
+<item>Then the function uses a while loop to:
+<list id="tungo6l2">
+<item>Fetch the value stored in each element in the array</item>
+<item>Compare each of those values with the current value stored in the variable named max  </item>
+<item>Possibly replace if the value fetched from an element is algebraically greater than the current value stored in max:</item>
+<item>The value fetched from the element is stored in the variable named max</item>
+<item>Replacing the value that was previously stored in the variable named max by the new value from the element.</item>
+</list>
+</item>
+<item>When all of the array elements have been examined and processed in this manner, the variable named max will contain the maximum value of all the values stored in the array.</item>
+</list>
+<code id="id1171743500170" display="block">
+int a[100];
+int i, n;
+int max;
+printf("\n Enter the size of the array: ");
+scanf("%d",&amp;n);
+// Read the number of elements of the array
+for(i = 0; i &lt; n; i++)
+{
+	printf("\n a[%d] = ",i);
+	scanf("%d",&amp;a[i]);
+}
+// Find the maximum element
+max = a[0];	// max is initialized by a[0]
+// compare max to other elements
+for(i = 1; i &lt; n; i++)
+	if(max &lt; a[i])		//meet an element greater than max
+		max = a[i];	// replace max by the new value from the elements.
+printf("\n The maximum element of the array is: %d", max);
+
+</code>
+</section>
+<section id="tungo7">
+<title>Searching</title>
+<para id="tungo71">The simplest type of searching process is the sequential search.  In the sequential search, each element of the array is compared to the key, in the order it appears in the array, until the first element matching the key is found.  If you are looking for an element that is near the front of the array, the sequential search will find it quickly.  The more data that must be searched, the longer it will take to find the data that matches the key using this process.</para>
+<para id="tungo72">here is the sample session with the above program</para>
+<code id="id1171738785979" display="block">
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+void main()
+{
+	int m[100], idx[100];
+	int n;	// n is the actual size of the array
+	int i, k, test;
+	clrscr();	// clear screen
+	// Read array m
+	// Read the actual size of m
+	printf(“ Enter the number of elements
+	scanf(“%d”,&amp;n);
+	// Read array’s elements
+for(i  = 0;i&lt;n;i++)
+	{
+		int temp;
+	printf(“\n Enter the value of m[%d] = “,i);
+		scanf(“%d”,&amp;temp);
+		m[i] = temp;
+	}
+	// Read the searching key k
+	printf(“\n Enter the value you want to search : “);
+	scanf(“%d”,&amp;k);
+	// Begin searching
+	test = 0;
+	// Scan all the elements
+	for(i = 0;i&lt;n;i++)
+		if(m[i] = = k)//Compare the current element with the           
+                          //searching key k
+		{
+			// save the index of the current element
+			idx[test] = i;
+test ++; 
+		}
+	// Conclusion
+	if(test &gt; 0)
+	{
+		printf(“\n there are %d elements which has the value of %d”,test,k);
+		printf(“\n Indexes of those elements: “);
+		for(i = 0;i &lt; test;i++)
+			printf(“%3d”,idx[i]);
+	}
+	else
+		printf(“\n No element has the value %d”,k);
+	getch();	// Wait until the user press any key
+}
+
+</code>
+</section>
+<section id="tungo8">
+<title>Sorting</title>
+<para id="tungo81">
+Selection sort is a sorting algorithm, specifically an in-place comparison sort. Selection sort is noted for its simplicity, and also has performance advantages over more complicated algorithms in certain situations. It works as follows:
+</para>
+<list id="tungol81">
+<item>Find the minimum value in the list</item>
+<item>Swap it with the value in the first position</item>
+<item>Repeat the steps above for remainder of the list (starting at the second position)</item>
+</list>
+<para id="tungo82">
+Effectively, we divide the list into two parts: the sublist of items already sorted, which we build up from left to right and is found at the beginning, and the sublist of items remaining to be sorted, occupying the remainder of the array.
+</para>
+<para id="tungo83">Here is an example of this sort algorithm sorting five elements:
+
+</para>
+<code id="id1171738817599" display="block">31 25 12 22 11
+11 25 12 22 31
+11 12 25 22 31
+11 12 22 25 31
+</code><code id="id1171738840207" display="block">
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+void main()
+{
+	int m[100];//100 is the maximum size for array m
+	int n;	// n is the number of elements	int i, j, k;
+	clrscr();	// clear screen 
+	// Read the elements of array m
+	// Read the actual size of the array
+
+	printf(“ Enter the number of elements: “);
+	scanf(“%d”,&amp;n);
+	// Read array elements 
+for(i  = 0;i&lt;n;i++)
+	{
+		int temp;
+	printf(“\n Enter the value of m[%d] = “,i);
+		scanf(“%d”,&amp;temp);
+		m[i] = temp;
+	}
+	// Print the array 
+	printf(“\n The array before sorting:    “);
+	for(i=0;i&lt;n;i++)
+		printf(“%3d”,m[i]);
+	// Begin to sort
+	for(i = 0; i&lt;n-1;i++)
+	{
+		// Put the minimum value in the list of n-i elements
+           //to the ith position 
+	for(j = i+1;j&lt;n;j++)
+		{
+			// compare m[i] with other element of the sublist
+// and swap m[i] and m[j] if m[j] &lt; m[i].
+			if(m[j]&lt;m[i])
+			{
+				int temp;
+				temp = m[j]; m[j] = m[i]; m[i] = temp;
+			}
+		}
+		// Print the array after the i+1 th step of sorting process
+printf(“\n The array after step %d”,i+1);
+		for(k = 0;k &lt; n ;k++)
+printf(“%3d”,m[k]);
+	}
+	getch();	// Wait until the user press any key.
+}
+
+
+</code><para id="element-814">here is the sample session with the above program</para><code id="id1171743466204" display="block">Enter the number of elements:  : 5
+Enter the value of m[0]: 34
+Enter the value of m[1]: 20
+Enter the value of m[2]: 17
+Enter the value of m[3]: 65
+Enter the value of m[4]: 21
+The array before sorting:    34 20 17 65 21
+The array after step 1: 17 34 20 65 21
+The array after step 2: 17 20 34 65 21
+The array after step 3: 17 20 21 65 34
+The array after step 4: 17 20 21 34 65
+</code>
+
+
+</section>
+</section>
+    </section>
+<section id="tungo9">
+<title>Pointers vs Arrays </title>
+<para id="element-629">Pointers occur in many C programs as references to arrays , and also as elements of arrays. A pointer to an array type is called an array pointer for short, and an array whose elements are pointers is called a pointer array.</para><section id="tungo10">
+<title>Array Pointers</title>
+<para id="tungo101">For the sake of example, the following description deals with an array of int. The same principles apply for any other array type, including multidimensional arrays.</para><para id="element-545">To declare a pointer to an array type, you must use parentheses, as the following example illustrates:</para><code id="id1171738870032" display="block">int (* arrPtr)[10] = NULL; // A pointer to an array of
+                           // ten elements with type int.
+</code><para id="element-746">Without the parentheses, the declaration int * arrPtr[10]; would define arrPtr as an array of 10 pointers to int. Arrays of pointers are described in the next section.</para><para id="element-469">In the example, the pointer to an array of 10 int elements is initialized with NULL. However, if we assign it the address of an appropriate array, then the expression *arrPtr yields the array, and (*arrPtr)[i] yields the array element with the index i. According to the rules for the subscript operator, the expression (*arrPtr)[i] is equivalent to *((*arrPtr)+i). Hence **arrPtr yields the first element of the array, with the index 0.</para><para id="element-628">In order to demonstrate a few operations with the array pointer arrPtr, the following example uses it to address some elements of a two-dimensional array that is, some rows of a matrix:</para><code id="id1171743474846" display="block">int matrix[3][10];       // Array of three rows, each with 10 columns.
+                         // The array name is a pointer to the first
+                         // element; i.e., the first row.
+arrPtr = matrix;         // Let arrPtr point to the first row of
+                         // the matrix.
+(*arrPtr)[0] = 5;  // Assign the value 5 to the first element of the
+                   // first row.
+                   //
+arrPtr[2][9] = 6;   // Assign the value 6 to the last element of the
+                    // last row.
+                    //
+++arrPtr;                // Advance the pointer to the next row.
+(*arrPtr)[0] = 7;  // Assign the value 7 to the first element of the
+                         // second row.
+</code><para id="element-892">After the initial assignment, arrPtr points to the first row of the matrix, just as the array name matrix does. At this point you can use arrPtr in the same way as matrix to access the elements. For example, the assignment (*arrPtr)[0] = 5 is equivalent to arrPtr[0][0] = 5 or matrix[0][0] = 5.</para><para id="element-434">However, unlike the array name matrix, the pointer name arrPtr does not represent a constant address, as the operation ++arrPtr shows. The increment operation increases the address stored in an array pointer by the size of one array in this case, one row of the matrix, or ten times the number of bytes in an int element.</para><para id="element-198">If you want to pass a multidimensional array to a function, you must declare the corresponding function parameter as a pointer to an array type.</para><para id="element-114">One more word of caution: if a is an array of ten int elements, then you cannot make the pointer from the previous example, arrPtr, point to the array a by this assignment:</para><code id="id1171743576351" display="block">arrPtr = a;    // Error: mismatched pointer types.</code><para id="element-605">The reason is that an array name, such as a, is implicitly converted into a pointer to the array's first element, not a pointer to the whole array. The pointer to int is not implicitly converted into a pointer to an array of int. The assignment in the example requires an explicit type conversion, specifying the target type int (*)[10] in the cast operator:</para><code id="id1171738823604" display="block">arrPtr = (int (*)[10])a;     // OK</code><para id="element-563">You can derive this notation for the array pointer type from the declaration of arrPtr by removing the identifier. However, for more readable and more flexible code, it is a good idea to define a simpler name for the type using typedef:</para><code id="id1171743440832" display="block">typedef int ARRAY_t[10];     // A type name for "array of ten int elements".
+ARRAY_t a,                   // An array of this type,
+        *arrPtr;             // and a pointer to this array type.
+arrPtr = (ARRAY_t *)a;       // Let arrPtr point to a.
+</code>
+
+</section>
+<section id="tungos11">
+<title>Pointer Arrays</title>
+<para id="tungo102">Pointer arrays that is, arrays whose elements have a pointer type are often a handy alternative to two-dimensional arrays. Usually the pointers in such an array point to dynamically allocated memory blocks.</para><para id="element-115">For example, if you need to process strings, you could store them in a two-dimensional array whose row size is large enough to hold the longest string that can occur:</para><code id="id1171743578666" display="block">#define ARRAY_LEN 100
+#define STRLEN_MAX 256
+char myStrings[ARRAY_LEN][STRLEN_MAX] =
+{ // Several corollaries of Murphy's Law:
+  "If anything can go wrong, it will.",
+  "Nothing is foolproof, because fools are so ingenious.",
+  "Every solution breeds new problems."
+};
+</code><para id="element-471">However, this technique wastes memory, as only a small fraction of the 25,600 bytes devoted to the array is actually used. For one thing, a short string leaves most of a row empty; for another, memory is reserved for whole rows that may never be used. A simple solution in such cases is to use an array of pointers that reference the objects in this case, the strings and to allocate memory only for the pointer array and for objects that actually exist. Unused array elements are null pointers.</para><code id="id1171738897257" display="block">#define ARRAY_LEN 100
+char *myStrPtr[ARRAY_LEN] =    // Array of pointers to char
+{ // Several corollaries of Murphy's Law:
+  "If anything can go wrong, it will.",
+  "Nothing is foolproof, because fools are so ingenious.",
+  "Every solution breeds new problems."
+};
+</code><figure id="element-914"><media id="id1171743352374" alt=""><image src="../../media/55.PNG" mime-type="image/png"/></media>
+		<caption>Pointer array</caption></figure><para id="element-761">The diagram in illustrates how the objects are stored in memory.
+The pointers not yet used can be made to point to other strings at runtime. The necessary storage can be reserved dynamically in the usual way. The memory can also be released when it is no longer needed.
+</para>
+
+</section>
+</section>
+  </content>
+</document>

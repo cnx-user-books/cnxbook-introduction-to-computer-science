@@ -1,0 +1,1618 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Data Representation in a Computer</title>
+  <metadata>
+  <md:content-id>m27737</md:content-id><md:title>Data Representation in a Computer</md:title>
+  <md:abstract/>
+  <md:uuid>41c52590-efc9-4131-a71f-917f77ae0000</md:uuid>
+</metadata>
+
+<content>
+    <para id="id7685674">Computer must not only be able to carry out computations, they must be able to do them quickly and efficiently. There are several data representations, typically for integers, real numbers, characters, and logical values. </para>
+    <section id="id-740150046126">
+      <title>Number Representation in Various Numeral Systems </title>
+      <para id="id7685690">A numeral system is a collection of symbols used to represent small numbers, together with a system of rules for representing larger numbers. Each numeral system uses a set of digits. The number of various unique digits, including zero, that a numeral system uses to represent numbers is called base or radix.</para>
+      <section id="id-569613275218">
+        <title>Base - b numeral system</title>
+        <para id="id7685717">b basic symbols (or digits) corresponding to natural numbers between 0 and b − 1 are used in the representation of numbers. </para>
+        <para id="id7685726">To generate the rest of the numerals, the position of the symbol in the figure is used. The symbol in the last position has its own value, and as it moves to the left its value is multiplied by b.</para>
+        <para id="id7685733">We write a number in the numeral system of base b by expressing it in the form</para>
+        <equation id="element-148"><m:math display="block">
+ <m:semantics>
+  <m:mrow>
+   <m:msub>
+    <m:mi>N</m:mi>
+    <m:mrow>
+     <m:mo stretchy="false">(</m:mo><m:mi>b</m:mi><m:mo stretchy="false">)</m:mo>
+    </m:mrow>
+   </m:msub>
+   <m:mo>=</m:mo><m:msub>
+    <m:mi>a</m:mi>
+    <m:mi>n</m:mi>
+   </m:msub>
+   <m:msub>
+    <m:mi>a</m:mi>
+    <m:mrow>
+     <m:mi>n</m:mi><m:mo>−</m:mo><m:mn>1</m:mn>
+    </m:mrow>
+   </m:msub>
+   <m:msub>
+    <m:mi>a</m:mi>
+    <m:mrow>
+     <m:mi>n</m:mi><m:mo>−</m:mo><m:mn>2</m:mn>
+    </m:mrow>
+   </m:msub>
+   <m:mn>...</m:mn><m:msub>
+    <m:mi>a</m:mi>
+    <m:mn>1</m:mn>
+   </m:msub>
+   <m:msub>
+    <m:mi>a</m:mi>
+    <m:mn>0</m:mn>
+   </m:msub>
+   <m:msub>
+    <m:mi>a</m:mi>
+    <m:mrow>
+     <m:mo>−</m:mo><m:mn>1</m:mn>
+    </m:mrow>
+   </m:msub>
+   <m:msub>
+    <m:mi>a</m:mi>
+    <m:mrow>
+     <m:mo>−</m:mo><m:mn>2</m:mn>
+    </m:mrow>
+   </m:msub>
+   <m:mn>...</m:mn><m:msub>
+    <m:mi>a</m:mi>
+    <m:mrow>
+     <m:mo>−</m:mo><m:mi>m</m:mi>
+    </m:mrow>
+   </m:msub>
+   
+  </m:mrow>
+ <m:annotation encoding="MathType-MTEF">
+ MathType@MTEF@5@5@+=feaagaart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr4rNCHbGeaGqiVCI8FfYJH8YrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfeaY=biLkVcLq=JHqpepeea0=as0Fb9pgeaYRXxe9vr0=vr0=vqpWqaaeaabiGaciaacaqabeaadaqaaqaaaOqaaiaad6eadaWgaaWcbaGaaiikaiaadkgacaGGPaaabeaakiabg2da9iaadggadaWgaaWcbaGaamOBaaqabaGccaWGHbWaaSbaaSqaaiaad6gacqGHsislcaaIXaaabeaakiaadggadaWgaaWcbaGaamOBaiabgkHiTiaaikdaaeqaaOGaaiOlaiaac6cacaGGUaGaamyyamaaBaaaleaacaaIXaaabeaakiaadggadaWgaaWcbaGaaGimaaqabaGccaWGHbWaaSbaaSqaaiabgkHiTiaaigdaaeqaaOGaamyyamaaBaaaleaacqGHsislcaaIYaaabeaakiaac6cacaGGUaGaaiOlaiaadggadaWgaaWcbaGaeyOeI0IaamyBaaqabaaaaa@5402@</m:annotation>
+ </m:semantics>
+</m:math>
+</equation><para id="id7685771">N(b), with n+1 digit for integer and m digits for fractional part, represents the sum: </para>
+        <figure id="id7685781">
+          <media id="id1171737114059" alt=""><image src="../../media/graphics2-d3e9.png" mime-type="image/png" height="96" width="573"/></media>
+        </figure>
+        <para id="id7685805">in the decimal system. Note that <m:math display="inline">
+ <m:semantics>
+  <m:msub>
+   <m:mi>a</m:mi>
+   <m:mi>i</m:mi>
+  </m:msub>
+  
+ <m:annotation encoding="MathType-MTEF">
+ MathType@MTEF@5@5@+=feaagaart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr4rNCHbGeaGqiVCI8FfYJH8YrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfeaY=biLkVcLq=JHqpepeea0=as0Fb9pgeaYRXxe9vr0=vr0=vqpWqaaeaabiGaciaacaqabeaadaqaaqaaaOqaaiaadggadaWgaaWcbaGaamyAaaqabaaaaa@37E2@</m:annotation>
+ </m:semantics>
+</m:math>
+ is the <m:math display="inline">
+ <m:semantics>
+  <m:msup>
+   <m:mi>i</m:mi>
+   <m:mrow>
+    <m:mi>t</m:mi><m:mi>h</m:mi>
+   </m:mrow>
+  </m:msup>
+  
+ <m:annotation encoding="MathType-MTEF">
+ MathType@MTEF@5@5@+=feaagaart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr4rNCHbGeaGqiVCI8FfYJH8YrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfeaY=biLkVcLq=JHqpepeea0=as0Fb9pgeaYRXxe9vr0=vr0=vqpWqaaeaabiGaciaacaqabeaadaqaaqaaaOqaaiaadMgadaahaaWcbeqaaiaadshacaWGObaaaaaa@38E3@</m:annotation>
+ </m:semantics>
+</m:math>
+ digit from the position of <m:math display="inline">
+ <m:semantics>
+  <m:msub>
+   <m:mi>a</m:mi>
+   <m:mn>0</m:mn>
+  </m:msub>
+  
+ <m:annotation encoding="MathType-MTEF">
+ MathType@MTEF@5@5@+=feaagaart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr4rNCHbGeaGqiVCI8FfYJH8YrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfeaY=biLkVcLq=JHqpepeea0=as0Fb9pgeaYRXxe9vr0=vr0=vqpWqaaeaabiGaciaacaqabeaadaqaaqaaaOqaaiaadggadaWgaaWcbaGaaGimaaqabaaaaa@37AE@</m:annotation>
+ </m:semantics>
+</m:math>
+</para>
+        <para id="id7685834">Decimal, Binary, Octal and Hexadecimal are common used numeral system. The decimal system has ten as its base. It is the most widely used numeral system, because humans have four fingers and a thumb on each hand, giving total of ten digit over both hand.</para>
+        <para id="id7685843">Switches, mimicked by their electronic successors built of vacuum tubes, have only two possible states: "open" and "closed". Substituting open=1 and closed=0 yields the entire set of binary digits. Modern computers use transistors that represent two states with either high or low voltages. Binary digits are arranged in groups to aid in processing, and to make the binary numbers shorter and more manageable for humans.Thus base 16 (hexadecimal) is commonly used as shorthand. Base 8 (octal) has also been used for this purpose.</para>
+        <para id="id7685858">Decimal System</para>
+        <para id="id7685866">Decimal notation is the writing of numbers in the base-ten numeral system, which uses various symbols (called digits) for no more than ten distinct values (0, 1, 2, 3, 4, 5, 6, 7, 8 and 9) to represent any number, no matter how large. These digits are often used with a decimal separator which indicates the start of a fractional part, and with one of the sign symbols + (positive) or − (negative) in front of the numerals to indicate sign.</para>
+        <para id="id7685885">Decimal system is a place-value system. This means that the place or location where you put a numeral determines its corresponding numerical value. A two in the one's place means two times one or two. A two in the one-thousand's place means two times one thousand or two thousand.</para>
+        <para id="id7685894">The place values increase from right to left. The first place just before the decimal point is the one's place, the second place or next place to the left is the ten's place, the third place is the hundred's place, and so on. </para>
+        <para id="id7685902">The place-value of the place immediately to the left of the "decimal" point is one in all place-value number systems. The place-value of any place to the left of the one's place is a whole number computed from a product (multiplication) in which the base of the number system is repeated as a factor one less number of times than the position of the place. </para>
+        <para id="id7685913">For example, 5246 can be expressed like in the following expressions</para>
+        <equation id="element-587"><m:math display="block">
+ <m:semantics>
+  <m:mtable columnalign="left">
+   <m:mtr>
+    <m:mtd>
+     <m:mtext>5246</m:mtext><m:mtext> </m:mtext><m:mtext>=5</m:mtext><m:mo>×</m:mo><m:msup>
+      <m:mtext>10</m:mtext>
+      <m:mn>3</m:mn>
+     </m:msup>
+     <m:mo>+</m:mo><m:mn>2</m:mn><m:mo>×</m:mo><m:msup>
+      <m:mtext>10</m:mtext>
+      <m:mn>2</m:mn>
+     </m:msup>
+     <m:mo>+</m:mo><m:mn>4</m:mn><m:mo>×</m:mo><m:msup>
+      <m:mtext>10</m:mtext>
+      <m:mn>1</m:mn>
+     </m:msup>
+     <m:mtext>+6</m:mtext><m:mo>×</m:mo><m:msup>
+      <m:mtext>10</m:mtext>
+      <m:mn>0</m:mn>
+     </m:msup>
+     
+    </m:mtd>
+   </m:mtr>
+   <m:mtr>
+    <m:mtd>
+     <m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mo>=</m:mo><m:mn>5</m:mn><m:mo>×</m:mo><m:mn>1000</m:mn><m:mo>+</m:mo><m:mn>2</m:mn><m:mo>×</m:mo><m:mn>100</m:mn><m:mo>+</m:mo><m:mn>4</m:mn><m:mo>×</m:mo><m:mn>10</m:mn><m:mo>+</m:mo><m:mn>6</m:mn><m:mo>×</m:mo><m:mn>1</m:mn>
+    </m:mtd>
+   </m:mtr>
+  </m:mtable>
+  
+ <m:annotation encoding="MathType-MTEF">
+ MathType@MTEF@5@5@+=feaagaart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr4rNCHbGeaGqiVCI8FfYJH8YrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfeaY=biLkVcLq=JHqpepeea0=as0Fb9pgeaYRXxe9vr0=vr0=vqpWqaaeaabiGaciaacaqabeaadaqaaqaaaOabaeqabaGaaeynaiaabkdacaqG0aGaaeOnaiaaywW7caqG9aGaaeynaiabgEna0kaabgdacaqGWaWaaWbaaSqabeaacaaIZaaaaOGaey4kaSIaaGOmaiabgEna0kaabgdacaqGWaWaaWbaaSqabeaacaaIYaaaaOGaey4kaSIaaGinaiabgEna0kaabgdacaqGWaWaaWbaaSqabeaacaaIXaaaaOGaae4kaiaabAdacqGHxdaTcaqGXaGaaeimamaaCaaaleqabaGaaGimaaaaaOqaaiaaywW7caaMf8UaaGjbVlaaysW7caaMe8Uaeyypa0JaaGynaiabgEna0kaaigdacaaIWaGaaGimaiaaicdacqGHRaWkcaaIYaGaey41aqRaaGymaiaaicdacaaIWaGaey4kaSIaaGinaiabgEna0kaaigdacaaIWaGaey4kaSIaaGOnaiabgEna0kaaigdaaaaa@703F@</m:annotation>
+ </m:semantics>
+</m:math>
+</equation>
+        
+        <para id="id7685997">The place-value of any place to the right of the decimal point is a fraction computed from a product in which the reciprocal of the base—or a fraction with one in the numerator and the base in the denominator—is repeated as a factor exactly as many times as the place is to the right of the decimal point.</para><para id="element-767">For example</para>
+        <equation id="element-688"><m:math display="block">
+ <m:semantics>
+  <m:mtable columnalign="left">
+   <m:mtr>
+    <m:mtd>
+     <m:mn>254.68</m:mn><m:mo>=</m:mo><m:mn>2</m:mn><m:mo>×</m:mo><m:msup>
+      <m:mn>10</m:mn>
+      <m:mn>2</m:mn>
+     </m:msup>
+     <m:mo>+</m:mo><m:mn>5</m:mn><m:mo>×</m:mo><m:msup>
+      <m:mn>10</m:mn>
+      <m:mn>1</m:mn>
+     </m:msup>
+     <m:mo>+</m:mo><m:mn>4</m:mn><m:mo>×</m:mo><m:msup>
+      <m:mn>10</m:mn>
+      <m:mn>0</m:mn>
+     </m:msup>
+     <m:mo>+</m:mo><m:mn>6</m:mn><m:mo>×</m:mo><m:msup>
+      <m:mn>10</m:mn>
+      <m:mrow>
+       <m:mo>−</m:mo><m:mn>1</m:mn>
+      </m:mrow>
+     </m:msup>
+     <m:mo>+</m:mo><m:mn>8</m:mn><m:mo>×</m:mo><m:msup>
+      <m:mn>10</m:mn>
+      <m:mrow>
+       <m:mo>−</m:mo><m:mn>2</m:mn>
+      </m:mrow>
+     </m:msup>
+     
+    </m:mtd>
+   </m:mtr>
+   <m:mtr>
+    <m:mtd>
+     <m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mo>=</m:mo><m:mn>200</m:mn><m:mo>+</m:mo><m:mn>50</m:mn><m:mo>+</m:mo><m:mn>4</m:mn><m:mo>+</m:mo><m:mfrac>
+      <m:mn>6</m:mn>
+      <m:mrow>
+       <m:mn>10</m:mn>
+      </m:mrow>
+     </m:mfrac>
+     <m:mo>+</m:mo><m:mfrac>
+      <m:mn>8</m:mn>
+      <m:mrow>
+       <m:mn>100</m:mn>
+      </m:mrow>
+     </m:mfrac>
+     
+    </m:mtd>
+   </m:mtr>
+  </m:mtable>
+  
+ <m:annotation encoding="MathType-MTEF">
+ MathType@MTEF@5@5@+=feaagaart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr4rNCHbGeaGqiVCI8FfYJH8YrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfeaY=biLkVcLq=JHqpepeea0=as0Fb9pgeaYRXxe9vr0=vr0=vqpWqaaeaabiGaciaacaqabeaadaqaaqaaaOabaeqabaGaaGOmaiaaiwdacaaI0aGaaiOlaiaaiAdacaaI4aGaeyypa0JaaGOmaiabgEna0kaaigdacaaIWaWaaWbaaSqabeaacaaIYaaaaOGaey4kaSIaaGynaiabgEna0kaaigdacaaIWaWaaWbaaSqabeaacaaIXaaaaOGaey4kaSIaaGinaiabgEna0kaaigdacaaIWaWaaWbaaSqabeaacaaIWaaaaOGaey4kaSIaaGOnaiabgEna0kaaigdacaaIWaWaaWbaaSqabeaacqGHsislcaaIXaaaaOGaey4kaSIaaGioaiabgEna0kaaigdacaaIWaWaaWbaaSqabeaacqGHsislcaaIYaaaaaGcbaGaaGzbVlaaywW7caaMf8Uaeyypa0JaaGOmaiaaicdacaaIWaGaey4kaSIaaGynaiaaicdacqGHRaWkcaaI0aGaey4kaSYaaSaaaeaacaaI2aaabaGaaGymaiaaicdaaaGaey4kaSYaaSaaaeaacaaI4aaabaGaaGymaiaaicdacaaIWaaaaaaaaa@6DD5@</m:annotation>
+ </m:semantics>
+</m:math>
+</equation>
+        <para id="id7686072">
+          <media id="id1171745982802" alt=""><image src="graphics3.wmf" mime-type="image/wmf" height="46" width="157"/></media>
+        </para>
+      </section>
+      <section id="id-960303733863">
+        <title>Binary System</title>
+        <para id="id7686114">The binary number system is base 2 and therefore requires only two digits, 0 and 1. The binary system is useful for computer programmers, because it can be used to represent the digital on/off method in which computer chips and memory work.</para>
+        <para id="id7686122">A binary number can be represented by any sequence of bits (binary digits), which in turn may be represented by any mechanism capable of being in two mutually exclusive states.</para>
+        <para id="id7686129">Counting in binary is similar to counting in any other number system. Beginning with a single digit, counting proceeds through each symbol, in increasing order. Decimal counting uses the symbols 0 through 9, while binary only uses the symbols 0 and 1.</para>
+        <para id="id7686138">When the symbols for the first digit are exhausted, the next-higher digit (to the left) is incremented, and counting starts over at 0A single bit can represent one of two values, 0 or 1.Binary numbers are convertible to decimal numbers.</para>
+        <para id="id7686146">Here's an example of a binary number, <m:math display="inline">
+ <m:semantics>
+  <m:msub>
+   <m:mn>11101.11</m:mn>
+   <m:mrow>
+    <m:mo stretchy="false">(</m:mo><m:mn>2</m:mn><m:mo stretchy="false">)</m:mo>
+   </m:mrow>
+  </m:msub>
+  
+ <m:annotation encoding="MathType-MTEF">
+ MathType@MTEF@5@5@+=feaagaart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr4rNCHbGeaGqiVCI8FfYJH8YrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfeaY=biLkVcLq=JHqpepeea0=as0Fb9pgeaYRXxe9vr0=vr0=vqpWqaaeaabiGaciaacaqabeaadaqaaqaaaOqaaiaaigdacaaIXaGaaGymaiaaicdacaaIXaGaaiOlaiaaigdacaaIXaWaaSbaaSqaaiaacIcacaaIYaGaaiykaaqabaaaaa@3DF1@</m:annotation>
+ </m:semantics>
+</m:math>
+
+, and its representation in the decimal notation </para>
+        <figure id="id7686168">
+          <media id="id4431751" alt=""><image src="../../media/graphics4-ad2f.png" mime-type="image/png" height="229" width="500"/></media>
+        </figure>
+        <equation id="element-751"><m:math display="block">
+ <m:semantics>
+  <m:mrow>
+   <m:msub>
+    <m:mrow>
+     <m:mn>235.64</m:mn>
+    </m:mrow>
+    <m:mrow>
+     <m:mo stretchy="false">(</m:mo><m:mn>8</m:mn><m:mo stretchy="false">)</m:mo>
+    </m:mrow>
+   </m:msub>
+   <m:mo>=</m:mo><m:mn>2</m:mn><m:mo>×</m:mo><m:msup>
+    <m:mn>8</m:mn>
+    <m:mn>2</m:mn>
+   </m:msup>
+   <m:mo>+</m:mo><m:mn>3</m:mn><m:mo>×</m:mo><m:msup>
+    <m:mn>8</m:mn>
+    <m:mn>1</m:mn>
+   </m:msup>
+   <m:mo>+</m:mo><m:mn>5</m:mn><m:mo>×</m:mo><m:msup>
+    <m:mn>8</m:mn>
+    <m:mn>0</m:mn>
+   </m:msup>
+   <m:mo>+</m:mo><m:mn>6</m:mn><m:mo>×</m:mo><m:msup>
+    <m:mn>8</m:mn>
+    <m:mrow>
+     <m:mo>−</m:mo><m:mn>1</m:mn>
+    </m:mrow>
+   </m:msup>
+   <m:mo>+</m:mo><m:mn>4</m:mn><m:mo>×</m:mo><m:msup>
+    <m:mn>8</m:mn>
+    <m:mrow>
+     <m:mo>−</m:mo><m:mn>2</m:mn>
+    </m:mrow>
+   </m:msup>
+   <m:mo>=</m:mo><m:msub>
+    <m:mrow>
+     <m:mn>157.8125</m:mn>
+    </m:mrow>
+    <m:mrow>
+     <m:mo stretchy="false">(</m:mo><m:mn>10</m:mn><m:mo stretchy="false">)</m:mo>
+    </m:mrow>
+   </m:msub>
+   
+  </m:mrow>
+ <m:annotation encoding="MathType-MTEF">
+ MathType@MTEF@5@5@+=feaagaart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr4rNCHbGeaGqiVCI8FfYJH8YrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfeaY=biLkVcLq=JHqpepeea0=as0Fb9pgeaYRXxe9vr0=vr0=vqpWqaaeaabiGaciaacaqabeaadaqaaqaaaOqaaiaaikdacaaIZaGaaGynaiaac6cacaaI2aGaaGinamaaBaaaleaacaGGOaGaaGioaiaacMcaaeqaaOGaeyypa0JaaGOmaiabgEna0kaaiIdadaahaaWcbeqaaiaaikdaaaGccqGHRaWkcaaIZaGaey41aqRaaGioamaaCaaaleqabaGaaGymaaaakiabgUcaRiaaiwdacqGHxdaTcaaI4aWaaWbaaSqabeaacaaIWaaaaOGaey4kaSIaaGOnaiabgEna0kaaiIdadaahaaWcbeqaaiabgkHiTiaaigdaaaGccqGHRaWkcaaI0aGaey41aqRaaGioamaaCaaaleqabaGaeyOeI0IaaGOmaaaakiabg2da9iaaigdacaaI1aGaaG4naiaac6cacaaI4aGaaGymaiaaikdacaaI1aWaaSbaaSqaaiaacIcacaaIXaGaaGimaiaacMcaaeqaaaaa@6396@</m:annotation>
+ </m:semantics>
+</m:math>
+</equation>
+      </section>
+      <section id="id-839312428564">
+        <title>Hexadecimal System</title>
+        <para id="id7686288">The hexadecimal system is base 16. Therefore, it requires 16 digits. The digits 0 through 9 are used, along with the letters A through F, which represent the decimal values 10 through 15. Here is an example of a hexadecimal number and its decimal equivalent:</para>
+        <equation id="element-549"><m:math display="block">
+ <m:semantics>
+  <m:mrow>
+   <m:mn>34</m:mn><m:mi>F</m:mi><m:mn>5</m:mn><m:msub>
+    <m:mi>C</m:mi>
+    <m:mrow>
+     <m:mo stretchy="false">(</m:mo><m:mn>16</m:mn><m:mo stretchy="false">)</m:mo>
+    </m:mrow>
+   </m:msub>
+   <m:mo>=</m:mo><m:mn>3</m:mn><m:mo>×</m:mo><m:msup>
+    <m:mrow>
+     <m:mn>16</m:mn>
+    </m:mrow>
+    <m:mn>4</m:mn>
+   </m:msup>
+   <m:mo>+</m:mo><m:mn>4</m:mn><m:mo>×</m:mo><m:msup>
+    <m:mrow>
+     <m:mn>16</m:mn>
+    </m:mrow>
+    <m:mn>3</m:mn>
+   </m:msup>
+   <m:mo>+</m:mo><m:mn>15</m:mn><m:mo>×</m:mo><m:msup>
+    <m:mrow>
+     <m:mn>16</m:mn>
+    </m:mrow>
+    <m:mn>2</m:mn>
+   </m:msup>
+   <m:mo>+</m:mo><m:mn>5</m:mn><m:mo>×</m:mo><m:msup>
+    <m:mrow>
+     <m:mn>16</m:mn>
+    </m:mrow>
+    <m:mn>1</m:mn>
+   </m:msup>
+   <m:mo>+</m:mo><m:mn>12</m:mn><m:mo>×</m:mo><m:msup>
+    <m:mrow>
+     <m:mn>16</m:mn>
+    </m:mrow>
+    <m:mn>0</m:mn>
+   </m:msup>
+   <m:mo>=</m:mo><m:msub>
+    <m:mrow>
+     <m:mn>216294</m:mn>
+    </m:mrow>
+    <m:mrow>
+     <m:mo stretchy="false">(</m:mo><m:mn>10</m:mn><m:mo stretchy="false">)</m:mo>
+    </m:mrow>
+   </m:msub>
+   
+  </m:mrow>
+ <m:annotation encoding="MathType-MTEF">
+ MathType@MTEF@5@5@+=feaagaart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr4rNCHbGeaGqiVCI8FfYJH8YrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfeaY=biLkVcLq=JHqpepeea0=as0Fb9pgeaYRXxe9vr0=vr0=vqpWqaaeaabiGaciaacaqabeaadaqaaqaaaOqaaiaaiodacaaI0aGaamOraiaaiwdacaWGdbWaaSbaaSqaaiaacIcacaaIXaGaaGOnaiaacMcaaeqaaOGaeyypa0JaaG4maiabgEna0kaaigdacaaI2aWaaWbaaSqabeaacaaI0aaaaOGaey4kaSIaaGinaiabgEna0kaaigdacaaI2aWaaWbaaSqabeaacaaIZaaaaOGaey4kaSIaaGymaiaaiwdacqGHxdaTcaaIXaGaaGOnamaaCaaaleqabaGaaGOmaaaakiabgUcaRiaaiwdacqGHxdaTcaaIXaGaaGOnamaaCaaaleqabaGaaGymaaaakiabgUcaRiaaigdacaaIYaGaey41aqRaaGymaiaaiAdadaahaaWcbeqaaiaaicdaaaGccqGH9aqpcaaIYaGaaGymaiaaiAdacaaIYaGaaGyoaiaaisdadaWgaaWcbaGaaiikaiaaigdacaaIWaGaaiykaaqabaaaaa@657F@</m:annotation>
+ </m:semantics>
+</m:math>
+</equation>
+        <para id="id7686366">The hexadecimal system (often called the hex system) is useful in computer work because it is based on powers of 2. Each digit in the hex system is equivalent to a four-digit binary number. Table below shows some hex/decimal/binary equivalents.</para>
+        <table id="id7686374" summary="">
+          <tgroup cols="3">
+            <colspec colnum="1" colname="c1"/>
+            <colspec colnum="2" colname="c2"/>
+            <colspec colnum="3" colname="c3"/>
+            <tbody>
+              <row>
+                <entry>Hexadecimal Digit</entry>
+                <entry>Decimal Equivalent</entry>
+                <entry>Binary Equivalent</entry>
+              </row>
+              <row>
+                <entry>0</entry>
+                <entry>0</entry>
+                <entry>0000</entry>
+              </row>
+              <row>
+                <entry>1</entry>
+                <entry>1</entry>
+                <entry>0001</entry>
+              </row>
+              <row>
+                <entry>2</entry>
+                <entry>2</entry>
+                <entry>0010</entry>
+              </row>
+              <row>
+                <entry>3</entry>
+                <entry>3</entry>
+                <entry>0011</entry>
+              </row>
+              <row>
+                <entry>4</entry>
+                <entry>4</entry>
+                <entry>0100</entry>
+              </row>
+              <row>
+                <entry>5</entry>
+                <entry>5</entry>
+                <entry>0101</entry>
+              </row>
+              <row>
+                <entry>6</entry>
+                <entry>6</entry>
+                <entry>0110</entry>
+              </row>
+              <row>
+                <entry>7</entry>
+                <entry>7</entry>
+                <entry>0111</entry>
+              </row>
+              <row>
+                <entry>8</entry>
+                <entry>8</entry>
+                <entry>1000</entry>
+              </row>
+              <row>
+                <entry>9</entry>
+                <entry>9</entry>
+                <entry>1001</entry>
+              </row>
+              <row>
+                <entry>A</entry>
+                <entry>10</entry>
+                <entry>1010</entry>
+              </row>
+              <row>
+                <entry>B</entry>
+                <entry>11</entry>
+                <entry>1011</entry>
+              </row>
+              <row>
+                <entry>C</entry>
+                <entry>12</entry>
+                <entry>1100</entry>
+              </row>
+              <row>
+                <entry>D</entry>
+                <entry>13</entry>
+                <entry>1101</entry>
+              </row>
+              <row>
+                <entry>E</entry>
+                <entry>14</entry>
+                <entry>1110</entry>
+              </row>
+              <row>
+                <entry>F</entry>
+                <entry>15</entry>
+                <entry>1111</entry>
+              </row>
+              <row>
+                <entry>10</entry>
+                <entry>16</entry>
+                <entry>10000</entry>
+              </row>
+              <row>
+                <entry>F0</entry>
+                <entry>240</entry>
+                <entry>11110000</entry>
+              </row>
+              <row>
+                <entry>FF</entry>
+                <entry>255</entry>
+                <entry>11111111</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+      <section id="id-455609487369">
+        <title>Octal System</title>
+        <para id="id7217309">Binary is also easily converted to the octal numeral system, since octal uses a radix of 8, which is a power of two (namely, 23, so it takes exactly three binary digits to represent an octal digit). The correspondence between octal and binary numerals is the same as for the first eight digits of hexadecimal in the table above. Binary 000 is equivalent to the octal digit 0, binary 111 is equivalent to octal 7, and so forth.</para>
+        <para id="id7217321">Converting from octal to binary proceeds in the same fashion as it does for hexadecimal:</para>
+        <equation id="element-470"><m:math display="block">
+ <m:semantics>
+  <m:mrow>
+   <m:msub>
+    <m:mrow>
+     <m:mn>65</m:mn>
+    </m:mrow>
+    <m:mrow>
+     <m:mo stretchy="false">(</m:mo><m:mn>8</m:mn><m:mo stretchy="false">)</m:mo>
+    </m:mrow>
+   </m:msub>
+   <m:mo>=</m:mo><m:mn>110</m:mn><m:mtext> </m:mtext><m:mn>1012</m:mn>
+  </m:mrow>
+ <m:annotation encoding="MathType-MTEF">
+ MathType@MTEF@5@5@+=feaagaart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr4rNCHbGeaGqiVCI8FfYJH8YrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfeaY=biLkVcLq=JHqpepeea0=as0Fb9pgeaYRXxe9vr0=vr0=vqpWqaaeaabiGaciaacaqabeaadaqaaqaaaOqaaiaaiAdacaaI1aWaaSbaaSqaaiaacIcacaaI4aGaaiykaaqabaGccqGH9aqpcaaIXaGaaGymaiaaicdacaaMe8UaaGymaiaaicdacaaIXaGaaGOmaaaa@4161@</m:annotation>
+ </m:semantics>
+</m:math>
+</equation>
+        <equation id="element-101"><m:math display="block">
+ <m:semantics>
+  <m:mrow>
+   <m:msub>
+    <m:mrow>
+     <m:mn>17</m:mn>
+    </m:mrow>
+    <m:mrow>
+     <m:mo stretchy="false">(</m:mo><m:mn>8</m:mn><m:mo stretchy="false">)</m:mo>
+    </m:mrow>
+   </m:msub>
+   <m:mo>=</m:mo><m:mn>001</m:mn><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mn>1112</m:mn>
+  </m:mrow>
+ <m:annotation encoding="MathType-MTEF">
+ MathType@MTEF@5@5@+=feaagaart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr4rNCHbGeaGqiVCI8FfYJH8YrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfeaY=biLkVcLq=JHqpepeea0=as0Fb9pgeaYRXxe9vr0=vr0=vqpWqaaeaabiGaciaacaqabeaadaqaaqaaaOqaaiaaigdacaaI3aWaaSbaaSqaaiaacIcacaaI4aGaaiykaaqabaGccqGH9aqpcaaIWaGaaGimaiaaigdacaaMc8UaaGjbVlaaigdacaaIXaGaaGymaiaaikdaaaa@42E9@</m:annotation>
+ </m:semantics>
+</m:math>
+</equation>
+        <para id="id7217346">And from octal to decimal:</para>
+        <equation id="element-758"><m:math display="block">
+ <m:semantics>
+  <m:mrow>
+   <m:msub>
+    <m:mrow>
+     <m:mn>235.64</m:mn>
+    </m:mrow>
+    <m:mrow>
+     <m:mo stretchy="false">(</m:mo><m:mn>8</m:mn><m:mo stretchy="false">)</m:mo>
+    </m:mrow>
+   </m:msub>
+   <m:mo>=</m:mo><m:mn>2</m:mn><m:mo>×</m:mo><m:msup>
+    <m:mn>8</m:mn>
+    <m:mn>2</m:mn>
+   </m:msup>
+   <m:mo>+</m:mo><m:mn>3</m:mn><m:mo>×</m:mo><m:msup>
+    <m:mn>8</m:mn>
+    <m:mn>1</m:mn>
+   </m:msup>
+   <m:mo>+</m:mo><m:mn>5</m:mn><m:mo>×</m:mo><m:msup>
+    <m:mn>8</m:mn>
+    <m:mn>0</m:mn>
+   </m:msup>
+   <m:mo>+</m:mo><m:mn>6</m:mn><m:mo>×</m:mo><m:msup>
+    <m:mn>8</m:mn>
+    <m:mrow>
+     <m:mo>−</m:mo><m:mn>1</m:mn>
+    </m:mrow>
+   </m:msup>
+   <m:mo>+</m:mo><m:mn>4</m:mn><m:mo>×</m:mo><m:msup>
+    <m:mn>8</m:mn>
+    <m:mrow>
+     <m:mo>−</m:mo><m:mn>2</m:mn>
+    </m:mrow>
+   </m:msup>
+   <m:mo>=</m:mo><m:msub>
+    <m:mrow>
+     <m:mn>157.8125</m:mn>
+    </m:mrow>
+    <m:mrow>
+     <m:mo stretchy="false">(</m:mo><m:mn>10</m:mn><m:mo stretchy="false">)</m:mo>
+    </m:mrow>
+   </m:msub>
+   
+  </m:mrow>
+ <m:annotation encoding="MathType-MTEF">
+ MathType@MTEF@5@5@+=feaagaart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr4rNCHbGeaGqiVCI8FfYJH8YrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfeaY=biLkVcLq=JHqpepeea0=as0Fb9pgeaYRXxe9vr0=vr0=vqpWqaaeaabiGaciaacaqabeaadaqaaqaaaOqaaiaaikdacaaIZaGaaGynaiaac6cacaaI2aGaaGinamaaBaaaleaacaGGOaGaaGioaiaacMcaaeqaaOGaeyypa0JaaGOmaiabgEna0kaaiIdadaahaaWcbeqaaiaaikdaaaGccqGHRaWkcaaIZaGaey41aqRaaGioamaaCaaaleqabaGaaGymaaaakiabgUcaRiaaiwdacqGHxdaTcaaI4aWaaWbaaSqabeaacaaIWaaaaOGaey4kaSIaaGOnaiabgEna0kaaiIdadaahaaWcbeqaaiabgkHiTiaaigdaaaGccqGHRaWkcaaI0aGaey41aqRaaGioamaaCaaaleqabaGaeyOeI0IaaGOmaaaakiabg2da9iaaigdacaaI1aGaaG4naiaac6cacaaI4aGaaGymaiaaikdacaaI1aWaaSbaaSqaaiaacIcacaaIXaGaaGimaiaacMcaaeqaaaaa@6396@</m:annotation>
+ </m:semantics>
+</m:math>
+</equation>
+      </section>
+      <section id="id-26458802878">
+        <title>Converting from decimal to base–b </title>
+        <para id="id7217426">To convert a decimal fraction to another base, say base b, you split it into an integer and a fractional part. Then divide the integer by b repeatedly to get each digit as a remainder. Namely, with value of integer part = <m:math display="inline">
+ <m:semantics>
+  <m:mrow>
+   <m:msub>
+    <m:mi>d</m:mi>
+    <m:mrow>
+     <m:mi>n</m:mi><m:mo>−</m:mo><m:mn>1</m:mn>
+    </m:mrow>
+   </m:msub>
+   <m:msub>
+    <m:mi>d</m:mi>
+    <m:mrow>
+     <m:mi>n</m:mi><m:mo>−</m:mo><m:mn>2</m:mn>
+    </m:mrow>
+   </m:msub>
+   <m:mn>...</m:mn><m:msub>
+    <m:mi>d</m:mi>
+    <m:mn>2</m:mn>
+   </m:msub>
+   <m:msub>
+    <m:mi>d</m:mi>
+    <m:mn>1</m:mn>
+   </m:msub>
+   <m:msub>
+    <m:mi>d</m:mi>
+    <m:mrow>
+     <m:mn>0</m:mn><m:mo stretchy="false">(</m:mo><m:mn>10</m:mn><m:mo stretchy="false">)</m:mo>
+    </m:mrow>
+   </m:msub>
+   
+  </m:mrow>
+ <m:annotation encoding="MathType-MTEF">
+ MathType@MTEF@5@5@+=feaagaart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr4rNCHbGeaGqiVCI8FfYJH8YrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfeaY=biLkVcLq=JHqpepeea0=as0Fb9pgeaYRXxe9vr0=vr0=vqpWqaaeaabiGaciaacaqabeaadaqaaqaaaOqaaiaadsgadaWgaaWcbaGaamOBaiabgkHiTiaaigdaaeqaaOGaamizamaaBaaaleaacaWGUbGaeyOeI0IaaGOmaaqabaGccaGGUaGaaiOlaiaac6cacaWGKbWaaSbaaSqaaiaaikdaaeqaaOGaamizamaaBaaaleaacaaIXaaabeaakiaadsgadaWgaaWcbaGaaGimaiaacIcacaaIXaGaaGimaiaacMcaaeqaaaaa@47BF@</m:annotation>
+ </m:semantics>
+</m:math>
+, first divide value by b the remainder is the least significant digit <m:math display="inline">
+ <m:semantics>
+  <m:mrow>
+   <m:msub>
+    <m:mi>a</m:mi>
+    <m:mn>0</m:mn>
+   </m:msub>
+   
+  </m:mrow>
+ <m:annotation encoding="MathType-MTEF">
+ MathType@MTEF@5@5@+=feaagaart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr4rNCHbGeaGqiVCI8FfYJH8YrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfeaY=biLkVcLq=JHqpepeea0=as0Fb9pgeaYRXxe9vr0=vr0=vqpWqaaeaabiGaciaacaqabeaadaqaaqaaaOqaaiaadggadaWgaaWcbaGaaGimaaqabaaaaa@37AE@</m:annotation>
+ </m:semantics>
+</m:math>
+. Divide the result by b, the remainder is <m:math display="inline">
+ <m:semantics>
+  <m:mrow>
+   <m:msub>
+    <m:mi>a</m:mi>
+    <m:mn>1</m:mn>
+   </m:msub>
+   
+  </m:mrow>
+ <m:annotation encoding="MathType-MTEF">
+ MathType@MTEF@5@5@+=feaagaart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr4rNCHbGeaGqiVCI8FfYJH8YrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfeaY=biLkVcLq=JHqpepeea0=as0Fb9pgeaYRXxe9vr0=vr0=vqpWqaaeaabiGaciaacaqabeaadaqaaqaaaOqaaiaadggadaWgaaWcbaGaaGymaaqabaaaaa@37AF@</m:annotation>
+ </m:semantics>
+</m:math>
+.Continue this process until the result is zero, giving the most significant digit, <m:math display="inline">
+ <m:semantics>
+  <m:mrow>
+   <m:msub>
+    <m:mi>a</m:mi>
+    <m:mrow>
+     <m:mi>n</m:mi><m:mo>−</m:mo><m:mn>1</m:mn>
+    </m:mrow>
+   </m:msub>
+   
+  </m:mrow>
+ <m:annotation encoding="MathType-MTEF">
+ MathType@MTEF@5@5@+=feaagaart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr4rNCHbGeaGqiVCI8FfYJH8YrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfeaY=biLkVcLq=JHqpepeea0=as0Fb9pgeaYRXxe9vr0=vr0=vqpWqaaeaabiGaciaacaqabeaadaqaaqaaaOqaaiaadggadaWgaaWcbaGaamOBaiabgkHiTiaaigdaaeqaaaaa@398F@</m:annotation>
+ </m:semantics>
+</m:math>
+. Let's convert <m:math display="inline">
+ <m:semantics>
+  <m:mrow>
+   <m:msub>
+    <m:mrow>
+     <m:mn>43868</m:mn>
+    </m:mrow>
+    <m:mrow>
+     <m:mo stretchy="false">(</m:mo><m:mn>10</m:mn><m:mo stretchy="false">)</m:mo>
+    </m:mrow>
+   </m:msub>
+   
+  </m:mrow>
+ <m:annotation encoding="MathType-MTEF">
+ MathType@MTEF@5@5@+=feaagaart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr4rNCHbGeaGqiVCI8FfYJH8YrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfeaY=biLkVcLq=JHqpepeea0=as0Fb9pgeaYRXxe9vr0=vr0=vqpWqaaeaabiGaciaacaqabeaadaqaaqaaaOqaaiaaisdacaaIZaGaaGioaiaaiAdacaaI4aWaaSbaaSqaaiaacIcacaaIXaGaaGimaiaacMcaaeqaaaaa@3C9B@</m:annotation>
+ </m:semantics>
+</m:math>
+ to hexadecimal:</para>
+        <figure id="id7217567"><media id="id1171742322759" alt=""><image src="../../media/graphics5-cd60.png" mime-type="image/png" height="331" width="479"/></media>
+        <caption>Converting from decimal to hexadecimal</caption></figure>
+        
+        <para id="id7217596">After that, multiply the fractional part by b repeatedly to get each digit as an integer part. We will continue this process until we get a zero as our fractional part or until we recognize an infinite repeating pattern.</para>
+        <para id="id7217604">Now convert 0.625 to hexadecimal :</para>
+        <para id="id7217608">.</para>
+        <para id="id7217615">0.39625 * 16 = 0.625 -------------------------------------&gt; 0</para>
+        <para id="id7217622">.625* 16 = 10 ---------------------------&gt; A. </para>
+        <para id="id7217633">We get fractional part is zero.</para>
+        <para id="id7217638">In summary, the result of conversion <m:math display="inline">
+ <m:semantics>
+  <m:mrow>
+   <m:msub>
+    <m:mrow>
+     <m:mn>43868.39625</m:mn>
+    </m:mrow>
+    <m:mrow>
+     <m:mo stretchy="false">(</m:mo><m:mn>10</m:mn><m:mo stretchy="false">)</m:mo>
+    </m:mrow>
+   </m:msub>
+   
+  </m:mrow>
+ <m:annotation encoding="MathType-MTEF">
+ MathType@MTEF@5@5@+=feaagaart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr4rNCHbGeaGqiVCI8FfYJH8YrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfeaY=biLkVcLq=JHqpepeea0=as0Fb9pgeaYRXxe9vr0=vr0=vqpWqaaeaabiGaciaacaqabeaadaqaaqaaaOqaaiaaisdacaaIZaGaaGioaiaaiAdacaaI4aGaaiOlaiaaiodacaaI5aGaaGOnaiaaikdacaaI1aWaaSbaaSqaaiaacIcacaaIXaGaaGimaiaacMcaaeqaaaaa@4108@</m:annotation>
+ </m:semantics>
+</m:math>
+ to hexadecimal is AB5C.0A </para>
+      </section>
+    </section>
+    <section id="id-292570991083">
+      <title>Data Representation in a Computer. Units of Information</title>
+      <section id="id-930665159191">
+        <title>Basic Principles</title>
+        <para id="id7217674">Data Representation refers to the methods used internally to represent information stored in a computer. Computers store lots of different types of information: </para>
+        <list id="id7217681" list-type="bulleted">
+          <item>numbers</item>
+          <item>text</item>
+          <item>graphics of many varieties (stills, video, animation)</item>
+          <item>sound</item>
+        </list>
+        <para id="id7217707">At least, these all seem different to us. However, all types of information stored in a computer are stored internally in the same simple format: a sequence of 0's and 1's. How can a sequence of 0's and 1's represent things as diverse as your photograph, your favorite song, a recent movie, and your term paper?</para>
+        <list id="id7217717" list-type="bulleted">
+          <item>Numbers must be expressed in binary form following some specific standard.</item>
+          <item>Character data are assigned a sequence of binary digits</item>
+          <item>Other types of data, such as sounds, videos or other physical signals are converted to digital following the schema below</item>
+        </list>
+        <para id="id7217743">Digital signal</para>
+        <para id="id7217769">Continuous signalPhysical signalComputerConvert ADSensor</para>
+        
+        <figure id="element-585"><media id="id1171739822256" alt=""><image src="../../media/21.PNG" mime-type="image/png"/></media>
+        <caption>Process of converting from physical signal to digital signal</caption></figure>
+        <para id="id7759176">Depending on the nature of its internal representation, data items are divided into:</para>
+        <list id="id7759182" list-type="bulleted">
+          <item>Basic types (simple types or type primitives) : the standard scalar predefined types that one would expect to find ready for immediate use in any programming language</item>
+          <item>Structured types(Higher level types) are then made up from such basic types or other existing higher level types. </item>
+        </list>
+      </section>
+      <section id="id-0953736572425">
+        <title>Units of Information</title>
+        <para id="id7759211">The most basic unit of information in a digital computer is called a BIT, which is a contraction of Binary Digit. In the concrete sense, a bit is nothing more than a state of "on" or "off" (or "high" and "low") within a computer circuit. In 1964, the designers of the IBM System/360 mainframe computer established a convention of using groups of 8 bits as the basic unit of addressable computer storage. They called this collection of 8 bits a byte.</para>
+        <para id="id7759223">Computer words consist of two or more adjacent bytes that are sometimes addressed and almost always are manipulated collectively. The word size represents the data size that is handled most efficiently by a particular architecture. Words can be 16 bits, 32 bits, 64 bits, or any other size that makes sense within the context of a computer's organization.</para>
+        <para id="id7759233">Some other units of information are described in the following table :</para>
+        <figure id="id7759242"><media id="id1171739866464" alt=""><image src="../../media/graphics6-e10d.png" mime-type="image/png"/></media>
+        </figure>
+        <para id="id7759266">Representation of Integers</para>
+        <para id="id7759274">An integer is a number with no fractional part; it can be positive, negative or zero. In ordinary usage, one uses a minus sign to designate a negative integer. However, a computer can only store information in bits, which can only have the values zero or one. We might expect, therefore, that the storage of negative integers in a computer might require some special technique - allocating one sign bit (often the most significant bit) to represent the sign: set that bit to 0 for a positive number, and set to 1 for a negative number.</para>
+      </section>
+      <section id="id-703674925063">
+        <title>Unsigned Integers</title>
+        <para id="id7759298">Unsigned integers are represented by a fixed number of bits (typically 8, 16, 32, and/or 64) </para>
+        <list id="id7759304" list-type="bulleted"><item>With 8 bits, 0…255 (0016…FF16) can be represented;</item>
+          <item>With 16 bits, 0…65535 (000016…FFFF16) can be represented;</item>
+          <item>In general, an unsigned integer containing n bits can have a value between 0 and <m:math display="inline">
+ <m:semantics>
+  <m:mrow>
+   <m:msup>
+    <m:mn>2</m:mn>
+    <m:mi>n</m:mi>
+   </m:msup>
+   <m:mo>−</m:mo><m:mn>1</m:mn>
+  </m:mrow>
+ <m:annotation encoding="MathType-MTEF">
+ MathType@MTEF@5@5@+=feaagaart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr4rNCHbGeaGqiVCI8FfYJH8YrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfeaY=biLkVcLq=JHqpepeea0=as0Fb9pgeaYRXxe9vr0=vr0=vqpWqaaeaabiGaciaacaqabeaadaqaaqaaaOqaaiaaikdadaahaaWcbeqaaiaad6gaaaGccqGHsislcaaIXaaaaa@3970@</m:annotation>
+ </m:semantics>
+</m:math>
+</item>
+        </list>
+        <para id="id7759338">If an operation on bytes has a result outside this range, it will cause an ‘overflow’ </para>
+      </section>
+      <section id="id-920043602876">
+        <title>Signed Integers</title>
+        <para id="id7759354">The binary representation discussed above is a standard code for storing unsigned integer numbers. However, most computer applications use signed integers as well; i.e. the integers that may be either positive or negative. </para>
+        <para id="id7759367">In binary we can use one bit within a representation (usually the most significant or leading bit) to indicate either positive (0) or negative (1), and store the unsigned binary representation of the magnitude in the remaining bits. </para>
+        <para id="id7759375">However, for reasons of ease of design of circuits to do arithmetic on signed binary numbers (e.g. addition and subtraction), a more common representation scheme is used called two's complement. In this scheme, positive numbers are represented in binary, the same as for unsigned numbers. On the other hand, a negative number is represented by taking the binary representation of the magnitude:</para>
+        <list id="id7759386" list-type="bulleted">
+          <item>Complement the bits : Replace all the 1's with 0's, and all the 0's with 1's;</item>
+          <item>Add one to the complemented number.</item>
+        </list>
+        <para id="id7759410">Example</para>
+        <code id="id1171747925256" display="block">+4210 =  001010102
+and so
+-4210   =  110101102 
+</code>
+        
+        
+        <list id="id7759444" list-type="bulleted">
+          <item>Binary number with leading 0 is positive</item>
+          <item>Binary number with leading 1 is negative</item>
+        </list>
+        <para id="id7759458">Example</para>
+        <para id="id7759463">Performing two's complement on the decimal 42 to get -42</para>
+        <para id="id7759468">Using a eight-bit representation</para>
+        <code id="id1171741376212" display="block">42= 00101010   Convert to binary
+
+    11010101   Complement the bits
+
+    11010101   Add 1 to the complement
+  + 00000001
+    --------
+    11010110  Result is  -42 in two's complement
+</code>
+        
+        
+        
+        
+      </section>
+    </section>
+    <section id="id-166764607991">
+      <title>Arithmetic Operations on Integers</title>
+      <section id="id-399029716089">
+        <title>Addition and Subtraction of integers</title>
+        <para id="id7759546">Addition and subtraction of unsigned binary numbers</para>
+        <para id="id7759554">Binary Addition is much like normal everyday (decimal) addition, except that it carries on a value 2 instead of value 10.</para>
+        <para id="id7759560">0 + 0 = 0 </para>
+        <para id="id7759565">0 + 1 = 1 </para>
+        <para id="id7759569">1 + 0 = 1 </para>
+        <para id="id7759573">1 + 1 = 0, and carry 1 to the next more significant bit </para>
+        <para id="id7759579">
+          <emphasis>Example</emphasis>
+        </para>
+        <code id="id2499677" display="block">00011010 + 00001100 = 00100110	        	       
+           1 1	            carries
+     0 0 0 1 1 0 1 0	=   26(base 10)
+  +  0 0 0 0 1 1 0 0	=   12(base 10)
+     ---------------- 
+     0 0 1 0 0 1 1 0	=   38(base 10)
+
+
+     11010001 + 00111110 = 100011010
+
+     1 1           1	      carries
+     1 1 0 1 0 0 0 1	 =    208 (base 10)
+   + 0 1 0 0 1 0 0 1	 =    73 (base 10)
+     ----------------
+   1 0 0 0 1 1 0 1 0     =    281 (base 10)
+
+</code>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <para id="id7759847">The result exceeds the magnitude which can be represented with 8 bits. This is an <emphasis>overflow</emphasis>.</para>
+        <para id="id7759861">Subtraction is executed by using two's complement</para>
+        <para id="id7759866">
+          <emphasis>Addition and subtraction of signed binary numbers</emphasis>
+        </para>
+      </section>
+      <section id="id-88333954114">
+        <title>Multiplication and Division of Integers</title>
+        <para id="id7759882">Binary Multiplication</para>
+        <para id="id7759887">Multiplication in the binary system works the same way as in the decimal system:</para>
+        <para id="id7759893">0 x 0 = 0 </para>
+        <para id="id7759897">0 x 1 = 0 </para>
+        <para id="id7759902">1 x 0 = 0 </para>
+        <para id="id7759906">1 x 1 = 1, and no carry or borrow bits </para>
+        <para id="id7759910">Example</para>
+        <code id="id1171735850105" display="block">00101001 × 00000110 = 11110110	        	
+
+
+      0  0  1  0  1  0  0  1	   =   	41(base 10)
+×     0  0  0  0  0  1  1  0	   =   	6(base 10)
+      ----------------------
+         0  0  0  0  0  0  0	 
+      0  1  0  1  0  0  1   	 
+   0  1  0  1  0  0  1   
+----------------------------   	 
+0  0  1  1  1  1  0  1  1  0	   =   	246(base 10)
+
+
+00010111 × 00000011 = 01000101	        	
+      
+      0  0  0  1  0  1  1  1	   =   	23(base 10)
+×     0  0  0  0  0  0  1  1	   =   	3(base 10)
+      ----------------------
+            1  1  1  1  1      	 	carries
+         0  0  1  0  1  1  1	 
+      0  0  1  0  1  1  1   	 
+   0  0  1  0  0  0  1  0  1	   =   	69(base 10)
+</code>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <para id="id7449114">Binary division follow the same rules as in decimal division.</para>
+        
+        
+        
+        
+        
+        
+        
+        <figure id="element-846"><media id="id1171742076152" alt=""><image src="../../media/22.PNG" mime-type="image/png"/></media>
+       </figure>
+      </section>
+    </section>
+    <section id="id-967884435418">
+      <title>Logical operations on Binary Numbers</title>
+      <para id="id7449453">
+        <emphasis>Logical Operation with one or two bits</emphasis>
+      </para>
+      <para id="id7449463">NOT : Changes the value of a single bit. If it is a "1", the result is "0"; if it is a "0", the result is "1". </para>
+      <para id="id7449472">AND: Compares 2 bits and if they are both "1", then the result is "1", otherwise, the result is "0". </para>
+      <para id="id7449481">OR : Compares 2 bits and if either or both bits are "1", then the result is "1", otherwise, the result is "0". </para>
+      <para id="id7449490">XOR : Compares 2 bits and if exactly one of them is "1" (i.e., if they are different values), then the result is "1"; otherwise (if the bits are the same), the result is "0". </para>
+      <para id="id7449501">Logical operators between two bits have the following truth table</para>
+      <table id="id7449506" summary="">
+<tgroup cols="5"><colspec colnum="1" colname="c1"/>
+          <colspec colnum="2" colname="c2"/>
+          <colspec colnum="3" colname="c3"/>
+          <colspec colnum="4" colname="c4"/>
+          <colspec colnum="5" colname="c5"/>
+          <tbody>
+            <row>
+              <entry>x</entry>
+              <entry>y</entry>
+              <entry>x <emphasis>AND</emphasis> y</entry>
+              <entry>x <emphasis>OR</emphasis> y</entry>
+              <entry>x <emphasis>XOR</emphasis> y</entry>
+            </row>
+            <row>
+              <entry>1</entry>
+              <entry>1</entry>
+              <entry>1</entry>
+              <entry>1</entry>
+              <entry>0</entry>
+            </row>
+            <row>
+              <entry>1</entry>
+              <entry>0</entry>
+              <entry>0</entry>
+              <entry>1</entry>
+              <entry>1</entry>
+            </row>
+            <row>
+              <entry>0</entry>
+              <entry>1</entry>
+              <entry>0</entry>
+              <entry>1</entry>
+              <entry>1</entry>
+            </row>
+            <row>
+              <entry>0</entry>
+              <entry>0</entry>
+              <entry>0</entry>
+              <entry>0</entry>
+              <entry>0</entry>
+            </row>
+          </tbody>
+        
+</tgroup>
+</table>
+      <para id="id7449788">
+        <emphasis>Logical Operation with one or two binary numbers</emphasis>
+      </para>
+      <para id="id7449798">A logical (bitwise) operation operates on one or two bit patterns or binary numerals at the level of their individual bits.</para>
+      <para id="id7449806">Example</para>
+      <code id="id1171738032431" display="block">NOT 0111 
+  = 1000
+</code>
+      
+      <para id="id7449822">
+        <emphasis>AND operation</emphasis>
+      </para>
+      <para id="id7449830">An AND operation takes two binary representations of equal length and performs the logical AND operation on each pair of corresponding bits. In each pair, the result is 1 if the first bit is 1 AND the second bit is 1. Otherwise, the result is 0. </para>
+      <para id="id7449839">Example</para>
+      <code id="id1171740908600" display="block">
+     0101
+AND  0011
+   = 0001
+</code>
+      
+      
+      <para id="id7449865">
+        <emphasis>OR operation</emphasis>
+      </para>
+      <para id="id7449873">An OR operation takes two bit patterns of equal length, and produces another one of the same length by matching up corresponding bits (the first of each; the second of each; and so on) and performing the logical OR operation on each pair of corresponding bits. </para>
+      <para id="id7411894">Example</para>
+      <code id="id1171737138214" display="block">
+      0101
+   OR 0011
+    = 0111
+ 
+</code>
+      
+      
+      <para id="id7411915">
+        <emphasis>XOR Operation</emphasis>
+      </para>
+      <para id="id7411923">An exclusive or operation takes two bit patterns of equal length and performs the logical XOR operation on each pair of corresponding bits. </para>
+      <para id="id7411930">Example</para>
+      <code id="id1171746060691" display="block">  
+     0101
+ XOR 0011
+   = 0110
+</code>
+      
+      
+    </section>
+    <section id="id-945562031843">
+      <title>Symbol Representation</title>
+      <section id="id-805776137081">
+        <title>Basic Principles</title>
+        <para id="id7411968">It is important to handle character data. Character data is not just alphabetic characters, but also numeric characters, punctuation, spaces, etc. They need to be represented in binary.</para>
+        <para id="id7411981">There aren't mathematical properties for character data, so assigning binary codes for characters is somewhat arbitrary.</para>
+        <para id="id7411985">ASCII Code Table</para>
+        <para id="id7411993">ASCII stands for American Standard Code for Information Interchange. The ASCII standard was developed in 1963, permitted machines from different manufacturers to exchange data. </para>
+        <para id="id7412003">ASCII code table consists of 128 binary values (0 to 127), each associated with a character or command. The non-printing characters are used to control peripherals such as printer. </para>
+        <figure id="id7412015"><media id="id1171743916435" alt=""><image src="../../media/graphics7-5202.png" mime-type="image/png"/></media>
+        <caption>ASCII coding table</caption></figure>
+        
+        <para id="id7412047">The extended ASCII character set also consists 128 128 characters representing additional special, mathematical, graphic and foreign characters.</para>
+        <figure id="id7412057"><media id="id6691677" alt=""><image src="../../media/ascii.png" mime-type="image/png"/></media>
+        <caption>The extended ASCII characters</caption></figure>
+        
+      </section>
+      <section id="id-849533722997">
+        <title>Unicode Code Table</title>
+        <para id="id7412094">There are some problems with the ASCII code table. With ASCII character set, string datatypes allocated one byte per character. But logographic languages such as Chinese, Japanese, and Korean need far more than 256 characters for reasonable representation. Even Vietnamese, a language uses almost Latin letters, need 61 characters for representation. Where can we find numbers for our characters? is it a solution : 2 bytes per character?</para>
+        <para id="id7412113">Hundreds of different encoding systems were invented. But these encoding systems conflict with one another : two encodings can use the same number for two different characters, or use different numbers for the same character. </para>
+        <para id="id7412121">The Unicode standard was first published in 1991. With two bytes for each character, it can represent 216-1 different characters.</para>
+        <para id="id7412135">The Unicode standard has been adopted by such industry leaders as HP, IBM, Microsoft, Oracle, Sun, and many others. It is supported in many operating systems, all modern browsers, and many other products.</para>
+        <para id="id7412143">The obvious advantages of using Unicode are :</para>
+        <list id="id7412148" list-type="bulleted">
+          <item>To offer significant cost savings over the use of legacy character sets.</item>
+          <item>To enable a single software product or a single website to be targeted across multiple platforms, languages and countries without re-engineering.</item>
+          <item>To allow data to be transported through many different systems without corruption.</item>
+        </list>
+      </section>
+    </section>
+    <section id="id-317845696353">
+      <title>Representation of Real Numbers</title>
+      <section id="id-420794133088">
+        <title>Basic Principles</title>
+        <para id="id7412188">No human system of numeration can give a unique representation to real numbers. If you give the first few decimal places of a real number, you are giving an approximation to it.</para>
+        <para id="id7412195">Mathematicians may think of one approach : a real number x can be approximated by any number in the range from x - epsilon to x + epsilon. It is fixed-point representation. Fixed-point representations are unsatisfactory for most applications involving real numbers.</para>
+        <para id="id7412212">Scientists or engineers will probably use scientific notation: a number is expressed as the product of a mantissa and some power of ten. </para>
+        <para id="id7412218">A system of numeration for real numbers will typically store the same three data -- a sign, a mantissa, and an exponent -- into an allocated region of storage </para>
+        <para id="id7412225">The analogues of scientific notation in computer are described as floating-point representations. </para>
+        <para id="id7412235">In the decimal system, the decimal point indicates the start of negative powers of 10.</para>
+        <equation id="element-645"><m:math display="block">
+ <m:semantics>
+  <m:mrow>
+   <m:mn>12.34</m:mn><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>∗</m:mo><m:msup>
+    <m:mrow>
+     <m:mn>10</m:mn>
+    </m:mrow>
+    <m:mn>1</m:mn>
+   </m:msup>
+   <m:mo>+</m:mo><m:mn>2</m:mn><m:mo>∗</m:mo><m:msup>
+    <m:mrow>
+     <m:mn>10</m:mn>
+    </m:mrow>
+    <m:mn>0</m:mn>
+   </m:msup>
+   <m:mo>+</m:mo><m:mn>3</m:mn><m:mo>∗</m:mo><m:msup>
+    <m:mrow>
+     <m:mn>10</m:mn>
+    </m:mrow>
+    <m:mrow>
+     <m:mo>−</m:mo><m:mn>1</m:mn>
+    </m:mrow>
+   </m:msup>
+   <m:mo>+</m:mo><m:mn>4</m:mn><m:mo>∗</m:mo><m:msup>
+    <m:mrow>
+     <m:mn>10</m:mn>
+    </m:mrow>
+    <m:mrow>
+     <m:mo>−</m:mo><m:mn>2</m:mn>
+    </m:mrow>
+   </m:msup>
+   
+  </m:mrow>
+ <m:annotation encoding="MathType-MTEF">
+ MathType@MTEF@5@5@+=feaagaart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr4rNCHbGeaGqiVCI8FfYJH8YrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfeaY=biLkVcLq=JHqpepeea0=as0Fb9pgeaYRXxe9vr0=vr0=vqpWqaaeaabiGaciaacaqabeaadaqaaqaaaOqaaiaaigdacaaIYaGaaiOlaiaaiodacaaI0aGaeyypa0JaaGymaiabgEHiQiaaigdacaaIWaWaaWbaaSqabeaacaaIXaaaaOGaey4kaSIaaGOmaiabgEHiQiaaigdacaaIWaWaaWbaaSqabeaacaaIWaaaaOGaey4kaSIaaG4maiabgEHiQiaaigdacaaIWaWaaWbaaSqabeaacqGHsislcaaIXaaaaOGaey4kaSIaaGinaiabgEHiQiaaigdacaaIWaWaaWbaaSqabeaacqGHsislcaaIYaaaaaaa@4F4C@</m:annotation>
+ </m:semantics>
+</m:math>
+</equation>
+        <para id="id7412303">If we are using a system in base k (ie the radix is k), the ‘radix point’ serves the same function:</para>
+        <equation id="element-292"><m:math display="block">
+ <m:semantics>
+  <m:mtable columnalign="left">
+   <m:mtr>
+    <m:mtd>
+     <m:mn>101.1012</m:mn><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>∗</m:mo><m:msup>
+      <m:mn>2</m:mn>
+      <m:mn>2</m:mn>
+     </m:msup>
+     <m:mo>+</m:mo><m:mn>0</m:mn><m:mo>∗</m:mo><m:msup>
+      <m:mn>2</m:mn>
+      <m:mn>1</m:mn>
+     </m:msup>
+     <m:mo>+</m:mo><m:mn>1</m:mn><m:mo>∗</m:mo><m:msup>
+      <m:mn>2</m:mn>
+      <m:mn>0</m:mn>
+     </m:msup>
+     <m:mo>+</m:mo><m:mn>1</m:mn><m:mo>∗</m:mo><m:msup>
+      <m:mn>2</m:mn>
+      <m:mrow>
+       <m:mo>−</m:mo><m:mn>1</m:mn>
+      </m:mrow>
+     </m:msup>
+     <m:mo>+</m:mo><m:mn>0</m:mn><m:mo>∗</m:mo><m:msup>
+      <m:mn>2</m:mn>
+      <m:mrow>
+       <m:mo>−</m:mo><m:mn>2</m:mn>
+      </m:mrow>
+     </m:msup>
+     <m:mo>+</m:mo><m:mn>1</m:mn><m:mo>∗</m:mo><m:msup>
+      <m:mn>2</m:mn>
+      <m:mn>2</m:mn>
+     </m:msup>
+     
+    </m:mtd>
+   </m:mtr>
+   <m:mtr>
+    <m:mtd>
+     <m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mo>=</m:mo><m:mtext> </m:mtext><m:msub>
+      <m:mn>4</m:mn>
+      <m:mrow>
+       <m:mo stretchy="false">(</m:mo><m:mn>10</m:mn><m:mo stretchy="false">)</m:mo>
+      </m:mrow>
+     </m:msub>
+     <m:mo>+</m:mo><m:msub>
+      <m:mn>1</m:mn>
+      <m:mrow>
+       <m:mo stretchy="false">(</m:mo><m:mn>10</m:mn><m:mo stretchy="false">)</m:mo>
+      </m:mrow>
+     </m:msub>
+     <m:mo>+</m:mo><m:msub>
+      <m:mn>0.5</m:mn>
+      <m:mrow>
+       <m:mo stretchy="false">(</m:mo><m:mn>10</m:mn><m:mo stretchy="false">)</m:mo>
+      </m:mrow>
+     </m:msub>
+     <m:mo>+</m:mo><m:msub>
+      <m:mn>0.125</m:mn>
+      <m:mrow>
+       <m:mo stretchy="false">(</m:mo><m:mn>10</m:mn><m:mo stretchy="false">)</m:mo>
+      </m:mrow>
+     </m:msub>
+     
+    </m:mtd>
+   </m:mtr>
+   <m:mtr>
+    <m:mtd>
+     <m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mo>=</m:mo><m:mtext> </m:mtext><m:msub>
+      <m:mn>5.625</m:mn>
+      <m:mrow>
+       <m:mo stretchy="false">(</m:mo><m:mn>10</m:mn><m:mo stretchy="false">)</m:mo>
+      </m:mrow>
+     </m:msub>
+     
+    </m:mtd>
+   </m:mtr>
+  </m:mtable>
+  
+ <m:annotation encoding="MathType-MTEF">
+ MathType@MTEF@5@5@+=feaagaart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr4rNCHbGeaGqiVCI8FfYJH8YrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfeaY=biLkVcLq=JHqpepeea0=as0Fb9pgeaYRXxe9vr0=vr0=vqpWqaaeaabiGaciaacaqabeaadaqaaqaaaOabaeqabaGaaGymaiaaicdacaaIXaGaaiOlaiaaigdacaaIWaGaaGymaiaaikdacqGH9aqpcaaIXaGaey4fIOIaaGOmamaaCaaaleqabaGaaGOmaaaakiabgUcaRiaaicdacqGHxiIkcaaIYaWaaWbaaSqabeaacaaIXaaaaOGaey4kaSIaaGymaiabgEHiQiaaikdadaahaaWcbeqaaiaaicdaaaGccqGHRaWkcaaIXaGaey4fIOIaaGOmamaaCaaaleqabaGaeyOeI0IaaGymaaaakiabgUcaRiaaicdacqGHxiIkcaaIYaWaaWbaaSqabeaacqGHsislcaaIYaaaaOGaey4kaSIaaGymaiabgEHiQiaaikdadaahaaWcbeqaaiaaikdaaaaakeaacaaMe8UaaGjbVlaaysW7caaMf8UaaGzbVlaaywW7cqGH9aqpcaaMe8UaaGinamaaBaaaleaacaGGOaGaaGymaiaaicdacaGGPaaabeaakiabgUcaRiaaigdadaWgaaWcbaGaaiikaiaaigdacaaIWaGaaiykaaqabaGccqGHRaWkcaaIWaGaaiOlaiaaiwdadaWgaaWcbaGaaiikaiaaigdacaaIWaGaaiykaaqabaGccqGHRaWkcaaIWaGaaiOlaiaaigdacaaIYaGaaGynamaaBaaaleaacaGGOaGaaGymaiaaicdacaGGPaaabeaaaOqaaiaaysW7caaMe8UaaGjbVlaaywW7caaMf8UaaGzbVlabg2da9iaaysW7caaI1aGaaiOlaiaaiAdacaaIYaGaaGynamaaBaaaleaacaGGOaGaaGymaiaaicdacaGGPaaabeaaaaaa@8B7C@</m:annotation>
+ </m:semantics>
+</m:math>
+</equation>
+        <para id="id7412456">A floating point representation allows a large range of numbers to be represented in a relatively small number of digits by separating the digits used for precision from the digits used for range.</para>
+        <para id="id7412480">To avoid multiple representations of the same number floating point numbers are usually normalized so that there is only one nonzero digit to the left of the ‘radix’ point, called the leading digit.</para>
+        <para id="id7412495">A normalized (non-zero) floating-point number will be represented using</para>
+        <equation id="element-452"><m:math display="block">
+ <m:semantics>
+  <m:mrow>
+   <m:msup>
+    <m:mrow>
+     <m:mo stretchy="false">(</m:mo><m:mo>−</m:mo><m:mn>1</m:mn><m:mo stretchy="false">)</m:mo>
+    </m:mrow>
+    <m:mi>s</m:mi>
+   </m:msup>
+   <m:msub>
+    <m:mi>d</m:mi>
+    <m:mn>0</m:mn>
+   </m:msub>
+   <m:mo>·</m:mo><m:msub>
+    <m:mi>d</m:mi>
+    <m:mn>1</m:mn>
+   </m:msub>
+   <m:msub>
+    <m:mi>d</m:mi>
+    <m:mn>2</m:mn>
+   </m:msub>
+   <m:mn>...</m:mn><m:msub>
+    <m:mi>d</m:mi>
+    <m:mrow>
+     <m:mi>p</m:mi><m:mo>−</m:mo><m:mn>1</m:mn>
+    </m:mrow>
+   </m:msub>
+   <m:mo>×</m:mo><m:msup>
+    <m:mi>b</m:mi>
+    <m:mi>e</m:mi>
+   </m:msup>
+   
+  </m:mrow>
+ <m:annotation encoding="MathType-MTEF">
+ MathType@MTEF@5@5@+=feaagaart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr4rNCHbGeaGqiVCI8FfYJH8YrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfeaY=biLkVcLq=JHqpepeea0=as0Fb9pgeaYRXxe9vr0=vr0=vqpWqaaeaabiGaciaacaqabeaadaqaaqaaaOqaaiaacIcacqGHsislcaaIXaGaaiykamaaCaaaleqabaGaam4CaaaakiaadsgadaWgaaWcbaGaaGimaaqabaGccqWIpM+zcaWGKbWaaSbaaSqaaiaaigdaaeqaaOGaamizamaaBaaaleaacaaIYaaabeaakiaac6cacaGGUaGaaiOlaiaadsgadaWgaaWcbaGaamiCaiabgkHiTiaaigdaaeqaaOGaey41aqRaamOyamaaCaaaleqabaGaamyzaaaaaaa@4BF7@</m:annotation>
+ </m:semantics>
+</m:math>
+</equation>
+        <para id="id7412562">where </para>
+        <list id="id7412566" list-type="bulleted"><item>s is the sign, </item>
+          <item><m:math display="inline">
+ <m:semantics>
+  <m:mrow>
+   <m:msub>
+    <m:mi>d</m:mi>
+    <m:mn>0</m:mn>
+   </m:msub>
+   <m:mo>·</m:mo><m:msub>
+    <m:mi>d</m:mi>
+    <m:mn>1</m:mn>
+   </m:msub>
+   <m:msub>
+    <m:mi>d</m:mi>
+    <m:mn>2</m:mn>
+   </m:msub>
+   <m:mn>...</m:mn><m:msub>
+    <m:mi>d</m:mi>
+    <m:mrow>
+     <m:mi>p</m:mi><m:mo>−</m:mo><m:mn>1</m:mn>
+    </m:mrow>
+   </m:msub>
+   
+  </m:mrow>
+ <m:annotation encoding="MathType-MTEF">
+ MathType@MTEF@5@5@+=feaagaart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr4rNCHbGeaGqiVCI8FfYJH8YrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfeaY=biLkVcLq=JHqpepeea0=as0Fb9pgeaYRXxe9vr0=vr0=vqpWqaaeaabiGaciaacaqabeaadaqaaqaaaOqaaiaadsgadaWgaaWcbaGaaGimaaqabaGccqWIpM+zcaWGKbWaaSbaaSqaaiaaigdaaeqaaOGaamizamaaBaaaleaacaaIYaaabeaakiaac6cacaGGUaGaaiOlaiaadsgadaWgaaWcbaGaamiCaiabgkHiTiaaigdaaeqaaaaa@43A8@</m:annotation>
+ </m:semantics>
+</m:math>
+ - termed the significand - has p significant digits, each digit satisfies 0<m:math display="inline">
+ <m:semantics>
+  <m:mrow>
+   <m:mo>≤</m:mo><m:msub>
+    <m:mi>d</m:mi>
+    <m:mi>i</m:mi>
+   </m:msub>
+   
+  </m:mrow>
+ <m:annotation encoding="MathType-MTEF">
+ MathType@MTEF@5@5@+=feaagaart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr4rNCHbGeaGqiVCI8FfYJH8YrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfeaY=biLkVcLq=JHqpepeea0=as0Fb9pgeaYRXxe9vr0=vr0=vqpWqaaeaabiGaciaacaqabeaadaqaaqaaaOqaaiabgsMiJkaadsgadaWgaaWcbaGaamyAaaqabaaaaa@399A@</m:annotation>
+ </m:semantics>
+</m:math>
+
+&lt;b</item>
+          <item><m:math display="inline">
+ <m:semantics>
+  <m:mrow>
+   <m:mi>e</m:mi><m:mo>,</m:mo><m:mtext> </m:mtext><m:msub>
+    <m:mi>e</m:mi>
+    <m:mrow>
+     <m:mi>min</m:mi><m:mo>⁡</m:mo>
+    </m:mrow>
+   </m:msub>
+   <m:mo>≤</m:mo><m:mi>e</m:mi><m:mo>≤</m:mo><m:msub>
+    <m:mi>e</m:mi>
+    <m:mrow>
+     <m:mi>max</m:mi><m:mo>⁡</m:mo>
+    </m:mrow>
+   </m:msub>
+   
+  </m:mrow>
+ <m:annotation encoding="MathType-MTEF">
+ MathType@MTEF@5@5@+=feaagaart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr4rNCHbGeaGqiVCI8FfYJH8YrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfeaY=biLkVcLq=JHqpepeea0=as0Fb9pgeaYRXxe9vr0=vr0=vqpWqaaeaabiGaciaacaqabeaadaqaaqaaaOqaaiaadwgacaGGSaGaaGjbVlaadwgadaWgaaWcbaGaciyBaiaacMgacaGGUbaabeaakiabgsMiJkaadwgacqGHKjYOcaWGLbWaaSbaaSqaaiGac2gacaGGHbGaaiiEaaqabaaaaa@4539@</m:annotation>
+ </m:semantics>
+</m:math>
+ , is the exponent </item>
+          <item>b is the base (or radix)</item>
+        </list>
+        <para id="id7412697">Example</para>
+        <para id="id7412701">If k = 10 (base 10) and p = 3, the number 0·1 is represented as 0.100</para>
+        <para id="id7412712">If k = 2 (base 2) and p = 24, the decimal number 0·1 cannot be represented exactly but is approximately <m:math display="inline">
+ <m:semantics>
+  <m:mrow>
+   <m:mtext>1</m:mtext><m:mo>·</m:mo><m:mtext>1</m:mtext><m:mn>00</m:mn><m:mtext>11</m:mtext><m:mn>00</m:mn><m:mtext>11</m:mtext><m:mn>00</m:mn><m:mtext>11</m:mtext><m:mn>00</m:mn><m:mtext>11</m:mtext><m:mn>00</m:mn><m:mtext>11</m:mtext><m:mn>0</m:mn><m:mtext>1</m:mtext><m:mo>×</m:mo><m:msup>
+    <m:mn>2</m:mn>
+    <m:mrow>
+     <m:mo>−</m:mo><m:mn>4</m:mn>
+    </m:mrow>
+   </m:msup>
+   
+  </m:mrow>
+ <m:annotation encoding="MathType-MTEF">
+ MathType@MTEF@5@5@+=feaagaart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr4rNCHbGeaGqiVCI8FfYJH8YrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfeaY=biLkVcLq=JHqpepeea0=as0Fb9pgeaYRXxe9vr0=vr0=vqpWqaaeaabiGaciaacaqabeaadaqaaqaaaOqaaiaabgdacaGG3cGaaeymaiaaicdacaaIWaGaaeymaiaabgdacaaIWaGaaGimaiaabgdacaqGXaGaaGimaiaaicdacaqGXaGaaeymaiaaicdacaaIWaGaaeymaiaabgdacaaIWaGaaGimaiaabgdacaqGXaGaaGimaiaabgdacqGHxdaTcaaIYaWaaWbaaSqabeaacqGHsislcaaI0aaaaaaa@4CEA@</m:annotation>
+ </m:semantics>
+</m:math>
+</para>
+        <para id="id7412736">Formally, </para>
+        <para id="id7412740"><m:math display="inline">
+ <m:semantics>
+  <m:mrow>
+   <m:msup>
+    <m:mrow>
+     <m:mo stretchy="false">(</m:mo><m:mo>−</m:mo><m:mn>1</m:mn><m:mo stretchy="false">)</m:mo>
+    </m:mrow>
+    <m:mi>s</m:mi>
+   </m:msup>
+   <m:msub>
+    <m:mi>d</m:mi>
+    <m:mn>0</m:mn>
+   </m:msub>
+   <m:mo>·</m:mo><m:msub>
+    <m:mi>d</m:mi>
+    <m:mn>1</m:mn>
+   </m:msub>
+   <m:msub>
+    <m:mi>d</m:mi>
+    <m:mn>2</m:mn>
+   </m:msub>
+   <m:mn>...</m:mn><m:msub>
+    <m:mi>d</m:mi>
+    <m:mrow>
+     <m:mi>p</m:mi><m:mo>−</m:mo><m:mn>1</m:mn>
+    </m:mrow>
+   </m:msub>
+   
+  </m:mrow>
+ <m:annotation encoding="MathType-MTEF">
+ MathType@MTEF@5@5@+=feaagaart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr4rNCHbGeaGqiVCI8FfYJH8YrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfeaY=biLkVcLq=JHqpepeea0=as0Fb9pgeaYRXxe9vr0=vr0=vqpWqaaeaabiGaciaacaqabeaadaqaaqaaaOqaaiaacIcacqGHsislcaaIXaGaaiykamaaCaaaleqabaGaam4CaaaakiaadsgadaWgaaWcbaGaaGimaaqabaGccqWIpM+zcaWGKbWaaSbaaSqaaiaaigdaaeqaaOGaamizamaaBaaaleaacaaIYaaabeaakiaac6cacaGGUaGaaiOlaiaadsgadaWgaaWcbaGaamiCaiabgkHiTiaaigdaaeqaaaaa@47D8@</m:annotation>
+ </m:semantics>
+</m:math>
+be represents the value <m:math display="inline">
+ <m:semantics>
+  <m:mrow>
+   <m:msup>
+    <m:mrow>
+     <m:mo stretchy="false">(</m:mo><m:mo>−</m:mo><m:mn>1</m:mn><m:mo stretchy="false">)</m:mo>
+    </m:mrow>
+    <m:mi>s</m:mi>
+   </m:msup>
+   <m:mo stretchy="false">(</m:mo><m:msub>
+    <m:mi>d</m:mi>
+    <m:mn>0</m:mn>
+   </m:msub>
+   <m:mo>+</m:mo><m:msub>
+    <m:mi>d</m:mi>
+    <m:mn>1</m:mn>
+   </m:msub>
+   <m:msup>
+    <m:mi>b</m:mi>
+    <m:mrow>
+     <m:mo>−</m:mo><m:mn>1</m:mn>
+    </m:mrow>
+   </m:msup>
+   <m:mo>+</m:mo><m:msub>
+    <m:mi>d</m:mi>
+    <m:mn>2</m:mn>
+   </m:msub>
+   <m:msup>
+    <m:mi>b</m:mi>
+    <m:mrow>
+     <m:mo>−</m:mo><m:mn>2</m:mn>
+    </m:mrow>
+   </m:msup>
+   <m:mn>...</m:mn><m:msub>
+    <m:mi>d</m:mi>
+    <m:mrow>
+     <m:mo>−</m:mo><m:mn>1</m:mn>
+    </m:mrow>
+   </m:msub>
+   <m:msup>
+    <m:mi>b</m:mi>
+    <m:mrow>
+     <m:mo stretchy="false">(</m:mo><m:mi>p</m:mi><m:mo>−</m:mo><m:mn>1</m:mn><m:mo stretchy="false">)</m:mo>
+    </m:mrow>
+   </m:msup>
+   <m:mo stretchy="false">)</m:mo><m:msup>
+    <m:mi>b</m:mi>
+    <m:mi>e</m:mi>
+   </m:msup>
+   
+  </m:mrow>
+ <m:annotation encoding="MathType-MTEF">
+ MathType@MTEF@5@5@+=feaagaart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr4rNCHbGeaGqiVCI8FfYJH8YrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfeaY=biLkVcLq=JHqpepeea0=as0Fb9pgeaYRXxe9vr0=vr0=vqpWqaaeaabiGaciaacaqabeaadaqaaqaaaOqaaiaacIcacqGHsislcaaIXaGaaiykamaaCaaaleqabaGaam4CaaaakiaacIcacaWGKbWaaSbaaSqaaiaaicdaaeqaaOGaey4kaSIaamizamaaBaaaleaacaaIXaaabeaakiaadkgadaahaaWcbeqaaiabgkHiTiaaigdaaaGccqGHRaWkcaWGKbWaaSbaaSqaaiaaikdaaeqaaOGaamOyamaaCaaaleqabaGaeyOeI0IaaGOmaaaakiaac6cacaGGUaGaaiOlaiaadsgadaWgaaWcbaGaeyOeI0IaaGymaaqabaGccaWGIbWaaWbaaSqabeaacaGGOaGaamiCaiabgkHiTiaaigdacaGGPaaaaOGaaiykaiaadkgadaahaaWcbeqaaiaadwgaaaaaaa@5439@</m:annotation>
+ </m:semantics>
+</m:math>
+</para>
+        <para id="id7412874">In brief, a normalized representation of a real number consist of</para>
+        <list id="id7412880" list-type="bulleted"><item>The range of the number : the number of digits in the exponent (i.e. by <m:math display="inline">
+ <m:semantics>
+  <m:mrow>
+   <m:msub>
+    <m:mi>e</m:mi>
+    <m:mrow>
+     <m:mi>max</m:mi><m:mo>⁡</m:mo>
+    </m:mrow>
+   </m:msub>
+   
+  </m:mrow>
+ <m:annotation encoding="MathType-MTEF">
+ MathType@MTEF@5@5@+=feaagaart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr4rNCHbGeaGqiVCI8FfYJH8YrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfeaY=biLkVcLq=JHqpepeea0=as0Fb9pgeaYRXxe9vr0=vr0=vqpWqaaeaabiGaciaacaqabeaadaqaaqaaaOqaaiaadwgadaWgaaWcbaGaciyBaiaacggacaGG4baabeaaaaa@39CC@</m:annotation>
+ </m:semantics>
+</m:math>
+ ) and the base b to which it is raised</item>
+          <item>The precision : the number of digits p in the significand and its base b</item>
+        </list>
+      </section>
+      <section id="id-884645263046">
+        <title>IEEE 754/85 Standard</title>
+        <para id="id7412929">There are many ways to represent floating point numbers. In order to improve portability most computers use the IEEE 754 floating point standard. </para>
+        <para id="id7412936">There are two primary formats:</para>
+        <list id="id7412940" list-type="bulleted">
+          <item>32 bit single precision.</item>
+          <item>64 bit double precision.</item>
+        </list>
+        <para id="id6113365">Single precision consists of:</para>
+        <list id="id6113374" list-type="bulleted"><item>A single sign bit, 0 for positive and 1 for negative;</item>
+          <item>An 8 bit base-2 (b = 2) excess-127 exponent, with <m:math display="inline">
+ <m:semantics>
+  <m:mrow>
+   <m:msub>
+    <m:mi>e</m:mi>
+    <m:mrow>
+     <m:mi>min</m:mi><m:mo>⁡</m:mo>
+    </m:mrow>
+   </m:msub>
+   
+  </m:mrow>
+ <m:annotation encoding="MathType-MTEF">
+ MathType@MTEF@5@5@+=feaagaart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbuLwBLnhiov2DGi1BTfMBaeXatLxBI9gBaerbd9wDYLwzYbItLDharqqtubsr4rNCHbGeaGqiVCI8FfYJH8YrFfeuY=Hhbbf9v8qqaqFr0xc9pk0xbba9q8WqFfeaY=biLkVcLq=JHqpepeea0=as0Fb9pgeaYRXxe9vr0=vr0=vqpWqaaeaabiGaciaacaqabeaadaqaaqaaaOqaaiaadwgadaWgaaWcbaGaciyBaiaacMgacaGGUbaabeaaaaa@39CA@</m:annotation>
+ </m:semantics>
+</m:math>
+ = –126 (stored as <m:math display="inline">
+ <m:semantics>
+  <m:mrow>
+   <m:msub>
+    <m:mrow>
+     <m:mn>127</m:mn>
+    </m:mrow>
+    <m:mrow>
+     <m:mo stretchy="false">(</m:mo><m:mn>10</m:mn><m:mo stretchy="false">)</m:mo>
+    </m:mrow>
+   </m:msub>
+   <m:mo>−</m:mo><m:msub>
+    <m:mrow>
+     <m:mn>126</m:mn>
+    </m:mrow>
+    <m:mrow>
+     <m:mo stretchy="false">(</m:mo><m:mn>10</m:mn><m:mo stretchy="false">)</m:mo>
+    </m:mrow>
+   </m:msub>
+   <m:mo>=</m:mo><m:mn>1</m:mn><m:mo>=</m:mo><m:msub>
+    <m:mrow>
+     <m:mn>00000001</m:mn>
+    </m:mrow>
+    <m:mrow>
+     <m:mo stretchy="false">(</m:mo><m:mn>2</m:mn><m:mo stretchy="false">)</m:mo>
+    </m:mrow>
+   </m:msub>
+   
+  </m:mrow>
+ </m:semantics>
+</m:math>
+
+) and <m:math display="inline">
+ <m:semantics>
+  <m:mrow>
+   <m:msub>
+    <m:mi>e</m:mi>
+    <m:mrow>
+     <m:mi>max</m:mi><m:mo>⁡</m:mo>
+    </m:mrow>
+   </m:msub>
+   
+  </m:mrow>
+
+ </m:semantics>
+</m:math> = 127 (stored as <m:math display="inline">
+ <m:semantics>
+  <m:mrow>
+   <m:msub>
+    <m:mrow>
+     <m:mn>127</m:mn>
+    </m:mrow>
+    <m:mrow>
+     <m:mo stretchy="false">(</m:mo><m:mn>10</m:mn><m:mo stretchy="false">)</m:mo>
+    </m:mrow>
+   </m:msub>
+   <m:mo>+</m:mo><m:msub>
+    <m:mrow>
+     <m:mn>127</m:mn>
+    </m:mrow>
+    <m:mrow>
+     <m:mo stretchy="false">(</m:mo><m:mn>10</m:mn><m:mo stretchy="false">)</m:mo>
+    </m:mrow>
+   </m:msub>
+   <m:mo>=</m:mo><m:msub>
+    <m:mrow>
+     <m:mn>254</m:mn>
+    </m:mrow>
+    <m:mrow>
+     <m:mo stretchy="false">(</m:mo><m:mn>10</m:mn><m:mo stretchy="false">)</m:mo>
+    </m:mrow>
+   </m:msub>
+   <m:mo>=</m:mo><m:msub>
+    <m:mrow>
+     <m:mn>11111110</m:mn>
+    </m:mrow>
+    <m:mrow>
+     <m:mo stretchy="false">(</m:mo><m:mn>2</m:mn><m:mo stretchy="false">)</m:mo>
+    </m:mrow>
+   </m:msub>
+   
+  </m:mrow>
+ 
+ </m:semantics>
+</m:math>
+). </item>
+          <item>a 23 bit base-2 (k=2) significand, with a hidden bit giving a precision of 24 bits (i.e. <m:math display="inline">
+ <m:semantics>
+  <m:mrow>
+   <m:mn>1.</m:mn><m:msub>
+    <m:mi>d</m:mi>
+    <m:mn>1</m:mn>
+   </m:msub>
+   <m:msub>
+    <m:mi>d</m:mi>
+    <m:mn>2</m:mn>
+   </m:msub>
+   <m:mn>...</m:mn><m:msub>
+    <m:mi>d</m:mi>
+    <m:mrow>
+     <m:mn>23</m:mn>
+    </m:mrow>
+   </m:msub>
+   
+  </m:mrow>
+ 
+ </m:semantics>
+</m:math>
+)</item>
+        </list>
+        <figure id="id6113482"><media id="id1171741211463" alt=""><image src="../../media/graphics8-14b6.png" mime-type="image/png"/></media>
+        <caption>Single precision memory format</caption></figure>
+        
+        <para id="id6113510">Notes</para>
+        <list id="id6113514" list-type="bulleted"><item>Single precision has 24 bits precision, equivalent to about 7.2 decimal digits.</item>
+          <item>The largest representable non-infinite number is almost <m:math display="inline">
+ <m:semantics>
+  <m:mrow>
+   <m:mn>2</m:mn><m:mo>×</m:mo><m:msup>
+    <m:mn>2</m:mn>
+    <m:mrow>
+     <m:mn>127</m:mn>
+    </m:mrow>
+   </m:msup>
+   <m:mo>≅</m:mo><m:mn>3.402823</m:mn><m:mo>×</m:mo><m:msup>
+    <m:mrow>
+     <m:mn>10</m:mn>
+    </m:mrow>
+    <m:mrow>
+     <m:mn>38</m:mn>
+    </m:mrow>
+   </m:msup>
+   
+  </m:mrow>
+ 
+ </m:semantics>
+</m:math>
+</item>
+          <item>The smallest representable non-zero normalized number is <m:math display="inline">
+ <m:semantics>
+  <m:mrow>
+   <m:mn>1</m:mn><m:mo>×</m:mo><m:msup>
+    <m:mn>2</m:mn>
+    <m:mrow>
+     <m:mo>−</m:mo><m:mn>127</m:mn>
+    </m:mrow>
+   </m:msup>
+   <m:mo>≅</m:mo><m:mn>1.17549</m:mn><m:mo>×</m:mo><m:msup>
+    <m:mrow>
+     <m:mn>10</m:mn>
+    </m:mrow>
+    <m:mrow>
+     <m:mo>−</m:mo><m:mn>38</m:mn>
+    </m:mrow>
+   </m:msup>
+   
+  </m:mrow>
+ 
+ </m:semantics>
+</m:math>
+</item>
+          <item>Denormalized numbers (eg <m:math display="inline">
+ <m:semantics>
+  <m:mrow>
+   <m:mn>0.01</m:mn><m:mo>×</m:mo><m:msup>
+    <m:mn>2</m:mn>
+    <m:mrow>
+     <m:mo>−</m:mo><m:mn>126</m:mn>
+    </m:mrow>
+   </m:msup>
+   
+  </m:mrow>
+ 
+ </m:semantics>
+</m:math>
+) can be represented.</item>
+          <item>There are two zeros, <m:math display="inline">
+ <m:semantics>
+  <m:mo>±</m:mo>
+ 
+ </m:semantics>
+</m:math>
+0.</item>
+          <item>There are two infinities, <m:math display="inline">
+ <m:semantics>
+  <m:mrow>
+   <m:mo>±</m:mo><m:mi>∞</m:mi>
+  </m:mrow>
+ 
+ </m:semantics>
+</m:math>
+.</item>
+          <item>A NaN (not a number) is used for results from undefined operations</item>
+        </list>
+        <para id="id6113638">Double precision floating point standard requires a 64 bit word</para>
+        <list id="id6113647" list-type="bulleted">
+          <item>The first bit is the sign bit</item>
+          <item>The next eleven bits are the exponent bits</item>
+          <item>The final 52 bits are the fraction</item>
+        </list>
+        <para id="id6113666">Range of double numbers : [±2.225×10−308÷±1.7977×10308]</para>
+        <figure id="id6113676"><media id="id1171740946166" alt=""><image src="../../media/graphics9-6edb.png" mime-type="image/png"/></media>
+        <caption>Double precision memory format</caption></figure>
+        
+      </section>
+    </section>
+  </content>
+</document>

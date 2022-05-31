@@ -1,0 +1,307 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Strings</title>
+  <metadata>
+  <md:content-id>m27761</md:content-id><md:title>Strings</md:title>
+  <md:abstract/>
+  <md:uuid>e5b63c4a-120e-4549-812b-2431d7473c3a</md:uuid>
+</metadata>
+
+<content>
+    <section id="id-834125748481">
+      <title>Basic of strings</title>
+      <para id="id5562109">A <emphasis>string</emphasis> is a continuous sequence of characters terminated by '\0', the null character. The <emphasis>length</emphasis> of a string is considered to be the number of characters excluding the terminating null character. There is no string type in C, and consequently there are no operators that accept strings as operands.</para>
+      <para id="id6634055">Instead, strings are stored in arrays whose elements have the type <emphasis>char</emphasis> or wchar_t. Strings of wide characters that is, characters of the type wchar_tare also called <emphasis>wide strings</emphasis>. The C standard library provides numerous functions to perform basic operations on strings, such as comparing, copying, and concatenating them.</para>
+    </section>
+    <section id="id-513954035338">
+      <title>Declarations and Uses of Strings</title>
+      <para id="id7507511">You can initialize arrays of char or wchar_t using string literals. For example, the following two array definitions are equivalent:</para>
+      <code id="id1167733182872" display="block">char str1[30] = "Let's go";     // String length: 8; array length: 30.
+
+char str1[30] = { 'L', 'e', 't', '\'', 's',' ', 'g', 'o', '\0' };
+</code>
+      
+      <para id="id6392030">An array holding a string must always be at least one element longer than the string length to accommodate the terminating null character. Thus the array str1 can store strings up to a maximum length of 29. It would be a mistake to define the array with length 8 rather than 30, because then it wouldn't contain the terminating null character.</para>
+      <para id="id6024069">If you define a character array without an explicit length and initialize it with a string literal, the array created is one element longer than the string length. An Example</para>
+      <code id="id1167730946849" display="block">char str2[ ] = " to London!";// String length: 11 (note leading space);
+                              // array length: 12.
+</code>
+      
+      <para id="id7151647">The following statement uses the standard function <emphasis>strcat()</emphasis> to append the string in str2 to the string in str1. The array str1 must be large enough to hold all the characters in the concatenated string.</para>
+      <code id="id1167735135846" display="block">#include &lt;string.h&gt;
+
+char str1[30] = "Let's go";
+char str2[ ] = " to London!";
+
+/* ... */
+
+strcat( str1, str2 );
+puts( str1 );
+</code>
+      
+      
+      
+      
+      
+      <para id="id6262755">The output printed by the <emphasis>puts()</emphasis> call is the new content of the array str1:</para>
+      <para id="id7005817">Let's go to London!</para>
+      <para id="id6384166">The names str1 and str2 are pointers to the first character of the string stored in each array. Such a pointer is called a <emphasis>pointer to a string</emphasis>, or a <emphasis>string pointer</emphasis> for short. String manipulation functions such as <emphasis>strcat()</emphasis> and <emphasis>puts()</emphasis> receive the beginning addresses of strings as their arguments. Such functions generally process a string character by character until they reach the terminator, '\0'. The function in is one possible implementation of the standard function <emphasis>strcat()</emphasis>. It uses pointers to step through the strings referenced by its arguments.</para>
+    </section>
+    <section id="id-305383538709">
+      <title>Built-in Functions for Character and String Processing</title>
+      <section id="id-67303695253">
+        <title>Character Processing Functions</title>
+        <para id="id6715960">The standard library provides a number of functions to classify characters and to perform conversions on them. The header ctype.h declares such functions for byte characters, with character codes from 0 to 255. </para>
+        <para id="id7558404">The results of these functions, except for <emphasis>isdigit()</emphasis> and <emphasis>isxdigit()</emphasis>, depends on the current locale setting for the locale category LC_CTYPE. You can query or change the locale using the <emphasis>setlocale()</emphasis> function.</para>
+      </section>
+      <section id="id-439529443644">
+        <title>Character Classification Functions</title>
+        <para id="id7648464">The functions listed in <link target-id="id4236748"/> test whether a character belongs to a certain category. Their return value is nonzero, or true, if the argument is a character code in the given category.</para>
+        
+        <table id="id4236748" summary="">
+<title>Character classification functions</title>
+<tgroup cols="2"><colspec colnum="1" colname="c1"/>
+            <colspec colnum="2" colname="c2"/>
+            <tbody>
+              <row>
+                <entry><emphasis>Category</emphasis></entry>
+                <entry><emphasis>Functions</emphasis></entry>
+              </row>
+              <row>
+                <entry>Letters</entry>
+                <entry>isalpha( )</entry>
+              </row>
+              <row>
+                <entry>Lowercase letters</entry>
+                <entry>islower( )</entry>
+              </row>
+              <row>
+                <entry>Uppercase letters</entry>
+                <entry>isupper( )</entry>
+              </row>
+              <row>
+                <entry>Decimal digits</entry>
+                <entry>isdigit( )</entry>
+              </row>
+              <row>
+                <entry>Hexadecimal digits</entry>
+                <entry>isxdigit( )</entry>
+              </row>
+              <row>
+                <entry>Letters and decimal digits</entry>
+                <entry>isalnum( )</entry>
+              </row>
+              <row>
+                <entry>Printable characters (including whitespace)</entry>
+                <entry>isprint( )</entry>
+              </row>
+              <row>
+                <entry>Printable, non-whitespace characters</entry>
+                <entry>isgraph( )</entry>
+              </row>
+              <row>
+                <entry>Whitespace characters</entry>
+                <entry>isspace( )</entry>
+              </row>
+              <row>
+                <entry>Whitespace characters that separate words in a line of text</entry>
+                <entry>isblank( )</entry>
+              </row>
+              <row>
+                <entry>Punctuation marks</entry>
+                <entry>ispunct( )</entry>
+              </row>
+              <row>
+                <entry>Control characters</entry>
+                <entry>iscntrl( )</entry>
+              </row>
+            </tbody>
+          
+
+</tgroup>
+</table>
+        <para id="id3177725">The functions <emphasis>isgraph()</emphasis> and <emphasis>iswgraph()</emphasis> behave differently if the execution character set contains other byte-coded, printable, whitespace characters (that is, whitespace characters which are not control characters) in addition to the space character (' '). In that case, <emphasis>iswgraph()</emphasis> returns false for all such printable whitespace characters, while <emphasis>isgraph()</emphasis> returns false only for the space character (' ').</para>
+        
+      </section>
+      <section id="id-684232493754">
+        <title>Case Mapping Functions</title>
+        <para id="id6897999">The functions listed in <link target-id="id6593806"/> yield the uppercase letter that corresponds to a given lowercase letter, and vice versa. All other argument values are returned unchanged.</para>
+        
+        <table id="id6593806" summary="">
+<title>Character conversion functions</title>
+<tgroup cols="2"><colspec colnum="1" colname="c1"/>
+            <colspec colnum="2" colname="c2"/>
+           
+<thead>
+              <row>
+                <entry>Conversion</entry>
+                <entry>Functions in ctype.h</entry>
+              </row>
+</thead>
+ <tbody>
+              <row>
+                <entry>Upper- to lowercase</entry>
+                <entry>tolower( )</entry>
+              </row>
+              <row>
+                <entry>Lower- to uppercase</entry>
+                <entry>toupper( )</entry>
+              </row>
+            </tbody>
+          
+
+</tgroup>
+</table>
+        <section id="id-991907985865">
+          <title>String Processing Functions</title>
+          <para id="id6723355">A <emphasis>string</emphasis> is a continuous sequence of characters terminated by '\0', the string terminator character. The length of a string is considered to be the number of characters before the string terminator. Strings are stored in arrays whose elements have the type char or wchar_t. Strings of wide characters that is, characters of the type wchar_tare also called <emphasis>wide strings</emphasis>.</para>
+          <para id="id6869248">C does not have a basic type for strings, and hence has no operators to concatenate, compare, or assign values to strings. Instead, the standard library provides numerous functions, listed in </para>
+          <para id="id6353907"><link target-id="id3697389"/> to perform these and other operations with strings. The header <emphasis>string.h</emphasis> declares the functions for conventional strings of char. The names of these functions begin with str. </para>
+          <para id="id6498780">Like any other array, a string that occurs in an expression is implicitly converted into a pointer to its first element. Thus when you pass a string as an argument to a function, the function receives only a pointer to the first character, and can determine the length of the string only by the position of the string terminator character.</para>
+          
+          
+          <table id="id3697389" summary="">
+<title>String-processing functions</title>
+<tgroup cols="2"><colspec colnum="1" colname="c1"/>
+              <colspec colnum="2" colname="c2"/>
+             <thead>
+                <row>
+                  <entry>
+                    Purpose
+                  </entry>
+                  <entry>
+                    Functions 
+                  </entry>
+                </row>
+ </thead>
+ <tbody>
+                <row>
+                  <entry>Find the length of a string.</entry>
+                  <entry>strlen( )</entry>
+                </row>
+                <row>
+                  <entry>Copy a string.</entry>
+                  <entry>strcpy( ), strncpy( )</entry>
+                </row>
+                <row>
+                  <entry>Concatenate strings.</entry>
+                  <entry>strcat( ), strncat( )</entry>
+                </row>
+                <row>
+                  <entry>Compare strings.</entry>
+                  <entry>strcmp( ), strncmp( ), strcoll( )</entry>
+                </row>
+                <row>
+                  <entry>Transform a string so that a comparison of two transformed strings using strcmp( ) yields the same result as a comparison of the original strings using the locale-sensitive function strcoll( ).</entry>
+                  <entry>strxfrm( )</entry>
+                </row>
+                <row>
+                  <entry>In a string, find:</entry>
+                  <entry> </entry>
+                </row>
+                <row>
+                  <entry>
+            -
+          The first or last occurrence of a given character</entry>
+                  <entry>strchr( ), strrchr( )</entry>
+                </row>
+                <row>
+                  <entry>
+           -
+          The first occurrence of another string</entry>
+                  <entry>strstr( )</entry>
+                </row>
+                <row>
+                  <entry>
+          -
+          The first occurrence of any of a given set of characters</entry>
+                  <entry>strcspn( ), strpbrk( )</entry>
+                </row>
+                <row>
+                  <entry>
+           -
+          The first character that is not a member of a given set</entry>
+                  <entry>strspn( )</entry>
+                </row>
+                <row>
+                  <entry>Parse a string into tokens</entry>
+                  <entry>strtok( )</entry>
+                </row>
+              </tbody>
+            
+
+</tgroup>
+</table>
+          <example id="element-457"><code id="id1167729144178" display="block">#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+#include &lt;string.h&gt;	// You must declare the library string.h  
+// to use functions strcpy, strcmp...
+void main()
+{
+	char str1[10] = “abc”;
+	char str2[10] = “def”;
+	clrscr();
+	printf(“ str1: %s”,str1);
+	printf(“\n str2: %s”,str2);
+	printf(“\n strcmp(str1,str2) = %d”,strcmp(str1,str2));
+	printf(“\n strcat(str1,str2) = %s”,strcat(str1,str2));
+	printf(“\n str1: %s”,str1);
+	printf(“\n str2: %s”,str2);
+	printf(“\n strcpy(str1,str2) = %s”,strcpy(str1,str2));
+	printf(“\n str1: %s”,str1);
+	printf(“\n str2: %s”,str2);
+	strcpy(str1,”ab”);
+	strcpy(str2,”abc”);
+	printf(“\n strcmp(str1,str2) = %d”,strcmp(str1,str2));
+	getch();
+}
+</code>
+</example>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <para id="id6883457">here is the sample session with the above program</para>
+          <code id="id1167725286209" display="block"> str1: abc
+ str2: def
+ strcmp(str1,str2) = -3
+ strcat(str1,str2) = abcdef
+ str1: abcdef
+ str2: def
+ strcpy(str1,str2) = def
+ str1: def
+ str2: def
+ strcmp(str1,str2) = -3
+</code>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </section>
+      </section>
+    </section>
+  </content>
+</document>

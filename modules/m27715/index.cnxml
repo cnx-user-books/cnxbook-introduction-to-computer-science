@@ -1,0 +1,140 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Basic concepts</title>
+  <metadata>
+  <md:content-id>m27715</md:content-id><md:title>Basic concepts</md:title>
+  <md:abstract>Basic concepts of computer science.</md:abstract>
+  <md:uuid>56267bae-db42-4f29-96f2-e99efabdf711</md:uuid>
+</metadata>
+
+<content>
+    <section id="id-646645301892">
+      <title>Information &amp; Information Processing</title>
+      <section id="id-520474883178">
+        <title>Data – Information – Knowledge</title>
+        <para id="id5323125">The content of the human mind can be classified into four categories:</para>
+        <list id="id7331015" list-type="bulleted">
+          <item>Data: symbols;</item>
+          <item>Information: data that are processed to be useful; provides answers to "who", "what", "where", and "when" questions;</item>
+          <item>Knowledge: understanding of data and information; answers "how" questions;</item>
+          <item>Wisdom: evaluated understanding.</item>
+        </list>
+        <para id="id5324941"><emphasis>Data</emphasis></para>
+        <para id="id7273544">Data consist of raw facts and figures - it does not have any meaning until it is processed and turned into something useful.</para>
+        <para id="id6193486">Data comes in many forms; the main ones are letters, numbers and symbols.</para>
+        <para id="id6897004">Data is a prerequisite to information. For example, the two data items below could represent some very important information:</para>
+        <code id="id14074688" display="block">DATA 	             INFORMATION 
+123424331911 	     Your winning Lottery ticket number 
+211192 	             Your Birthday
+</code>
+        
+        
+        <para id="id5690924">An organization sometimes has to decide on the nature and volume of data that is required for creating the necessary information.</para>
+        <para id="id6194042"><emphasis>Information</emphasis></para>
+        <para id="id6411365">Information is the data that has been processed in such a way as to be meaningful to the person who receives it. </para>
+        <code id="id14362457" display="block">INFORMATION = DATA + CONTEXT + MEANING</code>
+        <para id="id3122814"><emphasis>Example </emphasis></para>
+        <para id="id6007537">Consider the number19051890. It has no meaning or context. It is an instance of data. </para>
+        <para id="id6007251">If a context is given : it is a date (Vietnamese use French format ddmmyyyy). This allows us to register it as 19th May 1890. It still has no meaning and is therefore not information </para>
+        <para id="id6254594">Meaning : The birth date of Vietnamese President Ho Chi Minh.</para>
+        <para id="id3687548">This gives us all the elements required for it to be called 'information'</para>
+        <para id="id6424492"><emphasis>Knowledge</emphasis></para>
+        <para id="id6424496">By knowledge we mean the human understanding of a subject matter that has been acquired through proper study and experience. </para>
+        <para id="id6317754">Knowledge is usually based on learning, thinking, and proper understanding of the problem area. It can be considered as the integration of human perceptive processes that helps them to draw meaningful conclusions.</para>
+        <para id="id6135352">Consider this scenario: A person puts his finger into very hot water.</para>
+        <para id="id5033941">Data gathered: The finger nerve sends pain data to the brain.</para>
+        <para id="id7328843">Processing: The brain considers the data and comes up with...</para>
+        <para id="id2876758">Information: The painful finger means it is not in a good place.</para>
+        <para id="id7332464">Action: The brain tells finger to remove itself from hot water.</para>
+        <para id="id6280402">Knowledge: Sticking the finger in hot water is a bad idea.</para>
+        <para id="id5609800">Knowledge is having an understanding of the "rules".</para>
+        <para id="id6209559">The terms Data, Information, Knowledge, and Wisdom are sometimes presented in a form that suggests a scale.</para>
+        <figure id="id3052152"><media id="id4936666" alt=""><image src="../../media/graphics1-6288.png" mime-type="image/png" height="118" width="336"/></media>
+        <caption>Data, Information, knowledge, wisdom along a scale</caption></figure>
+        
+      </section>
+      <section id="id-761599561727">
+        <title>Information Processing</title>
+        <para id="id6891393">Information processing is the change (processing) of information in any manner detectable by an observer. Information processing may more specifically be defined in terms by Claude E. Shannon as the conversion of latent information into manifest.Input, process, output is a typical model for information processing. Each stage possibly requires data storage.</para>
+        <figure id="element-229"><media id="id11279784" alt=""><image src="../../media/1.PNG" mime-type="image/png"/></media>
+        <caption>Model of information processing</caption></figure>
+        
+        <para id="id7377652">Now that computer systems have become so powerful, some have been designed to make use of information in a knowledgeable way. The following definition is of information processing</para>
+        <para id="id5314580">The electronic capture, collection, storage, manipulation, transmission, retrieval, and presentation of information in the form of data, text, voice, or image and includes telecommunications and office automation functions.</para>
+        <para id="id6282314">History and Classification of Computers</para>
+      </section>
+      <section id="id-730765305944">
+        <title>History of Computers</title>
+        <para id="id6271425">Webster's Dictionary defines "computer" as any programmable electronic device that can store, retrieve, and process data. </para>
+        <para id="id4317833">Blaise Pascal invents the first commercial calculator, a hand powered adding machine </para>
+        <para id="id6434805">In 1946, ENIAC, based on John Von Neuman model completes.The first commercially successful computer is IBM 701.</para>
+        <para id="id6256227">A generation refers to the state of improvement in the development of a product. This term is also used in the different advancements of computer technology. With each generation, the circuitry has gotten smaller and more advanced than the previous generations before it. As a result of the miniaturization, the speed, power and memory of computers has proportionally increased. New discoveries are constantly being developed that affect the way we live, work and play. In terms of technological developments over time, computers have been broadly classed into five generations.</para>
+        <section id="id-45703774155">
+          <title>The First Generation - 1940-1956</title>
+          <para id="id6020131">The first computers used vacuum tubes for circuitry and magnetic drums for memory, and were often enormous, taking up entire rooms. They were very expensive to operate and in addition to using a great deal of electricity, they generated a lot of heat, which was often the cause of malfunctions. First generation computers relied on machine language to perform operations, and they could only solve one problem at a time. Input was based on punched cards and paper tape, and output was displayed on printouts. </para>
+          <para id="id5323151">The computers UNIVAC , ENIAC of the US and BESEM of the former Soviet Union are examples of first-generation computing devices. </para>
+        </section>
+        <section id="id-861508575132">
+          <title>The Second Generation - 1956-1963</title>
+          <para id="id6482066">Transistors replaced vacuum tubes and ushered in the second generation of computers. Computers becomed smaller, faster, cheaper, more energy-efficient and more reliable than their first-generation predecessors. Second-generation computers still relied on punched cards for input and printouts for output. High-level programming languages were being developed, such as early versions of COBOL and FORTRAN. </para>
+          <para id="id6719669">The first computers of this generation were developed for the atomic energy industry. </para>
+          <para id="id6256475">The computers IBM-1070 of the US and MINSK of the former Soviet Union belonged to the second generation. </para>
+        </section>
+        <section id="id-229157925518">
+          <title>The Third Generation - 1964-1971: Integrated Circuits</title>
+          <para id="id6875981">The development of the integrated circuit was the hallmark of the third generation of computers. Transistors were miniaturized and placed on silicon chips, called semiconductors, which drastically increased the speed and efficiency of computers. Users interacted with third generation computers through keyboards and monitors and interfaced with an operating system, which allowed the device to run many different applications at one time. Typical computers of the third generation are IBM 360 (United States) and EC (former Soviet Union).</para>
+        </section>
+        <section id="id-850312295212">
+          <title>The Fourth Generation - 1971-Present: Microprocessors</title>
+          <para id="id6891748">The microprocessor brought the fourth generation of computers, as thousands of integrated circuits were built onto a single silicon chip. What in the first generation filled an entire room could now fit in the palm of the hand. The Intel 4004 chip, developed in 1971, located all the components of the computer - from the central processing unit and memory to input/output controls - on a single chip. </para>
+          <para id="id6891752">In 1981 IBM introduced its first computer for the home user, and in 1984 Apple introduced the Macintosh. Microprocessors also moved out of the realm of desktop computers and into many areas of life as more and more everyday products began to use microprocessors. </para>
+          <para id="id7202069">As these small computers became more powerful, they could be linked together to form networks, which eventually led to the development of the Internet. Fourth generation computers also saw the development of GUI (Graphic User Interface), the mouse and handheld devices. </para>
+        </section>
+        <section id="id-222308536647">
+          <title>The Fifth Generation - Present and Beyond: Artificial Intelligence</title>
+          <para id="id6507009">Fifth generation computing devices, based on artificial intelligence, are still in development, though there are some applications, such as voice recognition, that are being used today. The use of parallel processing and superconductors is helping to make artificial intelligence a reality. Quantum computation and molecular and nanotechnology will radically change the face of computers in years to come. The goal of fifth-generation computing is to develop devices that respond to natural language input and are capable of learning and self-organization.</para>
+        </section>
+      </section>
+      <section id="id-118038136121">
+        <title>Classification of Computers</title>
+        <para id="id6124832">Computers are available in different shapes, sizes and weights, due to these different shapes and sizes they perform different sorts of jobs from one another.</para>
+        <list id="id6125559" list-type="bulleted">
+          <item>
+            <emphasis>Mainframe and Super Computers </emphasis>
+          </item>
+        </list>
+        <para id="id6202713">The biggest in size, the most expensive in price than any other is classified and known as super computer. It can process trillions of instructions in seconds. Governments specially use this type of computer for their different calculations and heavy jobs. This kind of computer is also helpful for forecasting weather reports worldwide.</para>
+        <para id="id6130241">Another giant in computers after the super computer is Mainframe, which can also process millions of instruction per second and capable of accessing billions of data. This computer is commonly used in big hospitals, airline reservations companies, and many other huge companies prefer mainframe because of its capability of retrieving data on a huge basis. This is normally too expensive and out of reach from a salary-based person who wants a computer for his home.</para>
+        <list id="id4355204" list-type="bulleted">
+          <item>
+            <emphasis>Minicomputers </emphasis>
+          </item>
+        </list>
+        <para id="id5972720">This computer offers less than mainframe in work and performance. These are the computers, which are mostly preferred by the small type of business personals, colleges, and so on.</para>
+        <list id="id4569312" list-type="bulleted">
+          <item>
+            <emphasis>Microcomputers </emphasis>
+          </item>
+        </list>
+        <para id="id4569196">These computers are lesser in cost than the computers given above and also, small in size; They can store a big amount of data and have a memory to meet the assignments of students and other necessary tasks of business people. There are many types of microcomputers: desktop, workstation, laptop, PDA , etc.</para>
+      </section>
+      <section id="id-0772293773294">
+        <title>Computer Science and Relevant Sciences</title>
+        <para id="id6411977">In 1957 the German computer scientist Karl Steinbuch coined the word informatik by publishing a paper called Informatik: Automatische Informationsverarbeitung (i.e. "Informatics: automatic information processing"). The French term informatique was coined in 1962 by Philippe Dreyfus together with various translations—informatics (English), informatica (Italian, Spanish, Portuguese), informatika (Russian) referring to the application of computers to store and process information.</para>
+        <para id="id4010120">The term was coined as a combination of "information" and "automation", to describe the science of automatic information processing.</para>
+        <para id="id5356494">Informatics is more oriented towards mathematics than computer science.</para>
+        <section id="id-546965236085">
+          <title>Computer Science</title>
+          <para id="id4530585">Computer Science is the study of computers, including both hardware and software design. Computer science is composed of many broad disciplines, for instance, artificial intelligence and software engineering. </para>
+        </section>
+        <section id="id-20044815303">
+          <title>Information Technology</title>
+          <para id="id5616536">Includes all matters concerned with the furtherance of computer science and technology and with the design, development, installation, and implementation of information systems and applications</para>
+        </section>
+        <section id="id-92770309717">
+          <title>Information and Communication Technology </title>
+          <para id="id6442811">ICT (information and communications technology - or technologies) is an umbrella term that includes any communication device or application, encompassing: radio, television, cellular phones, computer and network hardware and software, satellite systems and so on, as well as the various services and applications associated with them, such as videoconferencing and distance learning. </para>
+        </section>
+      </section>
+    </section>
+  </content>
+</document>

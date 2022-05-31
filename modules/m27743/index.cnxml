@@ -1,0 +1,1252 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Files</title>
+  <metadata>
+  <md:content-id>m27743</md:content-id><md:title>Files</md:title>
+  <md:abstract/>
+  <md:uuid>247686fc-5e05-485b-9c80-b954792d5185</md:uuid>
+</metadata>
+
+<content>
+    <section id="id-597685449724">
+      <title>Basics and Classification of Files</title>
+      <para id="id10452469">When reading input from the keyboard and writing output to the monitor you have been using a special case of file I/O (input/output). You already know how to read and write text data, as you have been doing it every time you use <emphasis>scanf()</emphasis> and <emphasis>printf()</emphasis>. All you need to do now is learn how to direct I/O to file other than from your keyboard or to your monitor.</para>
+      <para id="id11810871">Abstractly, a file is a collection of bytes stored on a secondary storage device, which is generally a disk of some kind. The collection of bytes may be interpreted, for example, as characters, words, lines, paragraphs and pages from a textual document; fields and records belonging to a database; or pixels from a graphical image. The meaning attached to a particular file is determined entirely by the data structures and operations used by a program to process the file. It is conceivable (and it sometimes happens) that a graphics file will be read and displayed by a program designed to process textual data. The result is that no meaningful output occurs (probably) and this is to be expected. A file is simply a machine decipherable storage media where programs and data are stored for machine usage. </para>
+      <para id="id11810888">Essentially there are two kinds of files that programmers deal with text files and binary files:</para>
+      <list id="id11810894" list-type="bulleted">
+        <item><emphasis>Text files</emphasis> are any files that contain only ASCII characters. Examples include C source code files, HTML files, and any file that can be viewed using a simple text editor.</item>
+        <item><emphasis>Binary files</emphasis> are any files that created by writing on it from a C-program, not by an editor (as with text files). Binary files are very similar to arrays of records, except the records are in a disk file rather than in an array in memory. Because the records in a binary file are on disk, you can create very large collections of them (limited only by your available disk space). They are also permanent and always available. The only disadvantage is the slowness that comes from disk access time. </item>
+      </list>
+      <para id="id12469771"><emphasis>A text file</emphasis> can be a stream of characters that a computer can process sequentially. It is not only processed sequentially but only in forward direction. For this reason a text file is usually opened for only one kind of operation (reading, writing, or appending) at any given time. </para>
+      <para id="id13381878">Similarly, since text files only process characters, they can only read or write data one character at a time. (In C Programming Language, Functions are provided that deal with lines of text, but these still essentially process data one character at a time). A text stream in C is a special kind of file. Depending on the requirements of the operating system, newline characters may be converted to or from carriage-return/linefeed combinations depending on whether data is being written to, or read from, the file. Other character conversions may also occur to satisfy the storage requirements of the operating system. These translations occur transparently and they occur because the programmer has signaled the intention to process a text file.</para>
+      <para id="id13381894"><emphasis>A binary file</emphasis> is no different to a text file. It is a collection of bytes. In C Programming Language a byte and a character are equivalent. Hence a binary file is also referred to as a character stream, but there are two essential differences.</para>
+      <list id="id10644319" list-type="bulleted">
+        <item>No special processing of the data occurs and each byte of data is transferred to or from the disk unprocessed. </item>
+        <item>C Programming Language places no constructs on the file, and it may be read from, or written to, in any manner chosen by the programmer. </item>
+      </list>
+      <para id="id10644337">Binary files can be either processed sequentially or, depending on the needs of the application, they can be processed using random access techniques. In C Programming Language, processing a file using random access techniques involves moving the current file position to an appropriate place in the file before reading or writing data. This indicates a second characteristic of binary files – they a generally processed using read and write operations simultaneously. </para>
+      <para id="id10644341">For example, a database file will be created and processed as a binary file. A record update operation will involve locating the appropriate record, reading the record into memory, modifying it in some way, and finally writing the record back to disk at its appropriate location in the file. These kinds of operations are common to many binary files, but are rarely found in applications that process text files.</para>
+      <para id="id10644352">For all file operations you should always follow the 5-step plan as outlined below.</para>
+      <list id="id11365883" list-type="enumerated">
+        <item>Declare file pointer.</item>
+        <item>Attach the file pointer to the file (open file).</item>
+        <item>Check file opened correctly.</item>
+        <item>Read or Write the data from or to the file.</item>
+        <item>Close the file.</item>
+      </list>
+    </section>
+    <section id="id-783786042907">
+      <title>Operations on Files</title>
+      <section id="id-802525050423">
+        <title>Declarations</title>
+        <para id="id10312851">In C, we usually create variables of type <emphasis>FILE</emphasis> * to point to a file located on the computer. </para>
+        
+        <code id="id1166738036265" display="block">FILE *file_pointer_name;</code><para id="id11945229">Example</para><code id="id1166738373918" display="block">FILE * f1, * f2;</code>
+        
+      </section>
+      <section id="id-371701071572">
+        <title>Open Files</title>
+        <para id="id11084342">First things first: we have to open a file to be able to do anything else with it. For this, we use <emphasis>fopen</emphasis> function, like all the I/O functions, is made available by the <emphasis>stdio.h</emphasis> library. The <emphasis>fopen()</emphasis> function prototype is as follows.</para>
+        <code id="id1166734526824" display="block">FILE *fopen(char *filename, char *mode);</code>
+        <para id="id12060117">In the above prototype, there are two arguments:</para>
+        <list id="id12060122" list-type="bulleted">
+          <item><emphasis>filename</emphasis> is a string containing the name of the file to be opened. So if your file sits in the same directory as your C source file, you can simply enter the filename in here - this is probably the one you'll use most. </item>
+          <item><emphasis>mode</emphasis> determines how the file may be accessed. </item>
+        </list>
+        <table id="id9663266" summary="">
+          <tgroup cols="2">
+            <colspec colnum="1" colname="c1"/>
+            <colspec colnum="2" colname="c2"/>
+            <tbody>
+              <row>
+                <entry>
+                  <emphasis>Mode</emphasis>
+                </entry>
+                <entry>
+                  <emphasis>Meaning</emphasis>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <emphasis>“r”</emphasis>
+                </entry>
+                <entry>Open a file for read only, starts at beginning of file (default mode).</entry>
+              </row>
+              <row>
+                <entry>
+                  <emphasis>“w”</emphasis>
+                </entry>
+                <entry>Write-only, truncates existing file to zero length or create a new file for writing.</entry>
+              </row>
+              <row>
+                <entry>
+                  <emphasis>“a”</emphasis>
+                </entry>
+                <entry>Write-only, starts at end of file if file exists,otherwise creates a new file for writing.</entry>
+              </row>
+              <row>
+                <entry>
+                  <emphasis>“r+”</emphasis>
+                </entry>
+                <entry>Open a file for read-write, starts at beginning of file. If the file is not exist, it will cause an error.</entry>
+              </row>
+              <row>
+                <entry>
+                  <emphasis>“w+”</emphasis>
+                </entry>
+                <entry>Read-write, truncates existing file to zero length or creates a new file for reading and writing.</entry>
+              </row>
+              <row>
+                <entry>
+                  <emphasis>“a+”</emphasis>
+                </entry>
+                <entry>Read-write, starts at end of file if file exists, otherwise creates a new file for reading and writing.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+        <para id="id11476710">So there are 12 different values that could be used: <emphasis>"rt", "wt", "at", "r+t", "w+t", "a+t" and "rb", "wb", "ab", "r+b", "w+b", "a+b".</emphasis></para>
+        <table id="id12253352" summary="">
+          <tgroup cols="3">
+            <colspec colnum="1" colname="c1"/>
+            <colspec colnum="2" colname="c2"/>
+            <colspec colnum="3" colname="c3"/>
+            <tbody>
+              <row>
+                <entry namest="c1" nameend="c2">
+                  <emphasis>Character</emphasis>
+                </entry>
+                <entry>
+                  <emphasis>Type</emphasis>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  <emphasis>“t”</emphasis>
+                </entry>
+                <entry namest="c2" nameend="c3">Text File</entry>
+              </row>
+              <row>
+                <entry>
+                  <emphasis>“b”</emphasis>
+                </entry>
+                <entry namest="c2" nameend="c3">Binary File</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+        <note id="id1166736982825">When work with the text file, you also can use only "r", "w", "a", "r", "w”, "a", instead of "rt", "wt", "at", "r+t", "w+t", "a+t" respectively.</note>
+        <para id="id10641261">Example</para>
+        <code id="id1166739442957" display="block">FILE *f1, *f2, *f3, *f4;</code>
+        <para id="id10641270">To open text file c:\abc.txt for ready only:</para>
+        <code id="id1166738334217" display="block">f1 = fopen("c:\\abc.txt", "r");</code>
+        <para id="id10641287">To open text file c:\list.dat for write only:</para>
+        <code id="id1166727627913" display="block">f2 = fopen("c:\\list.dat", "w");</code>
+        <para id="id13581172">To open text file c:\abc.txt for read-write:</para>
+        <code id="id1166728826586" display="block">f3 = fopen("c:\\abc.txt", "r+");</code>
+        <para id="id13581194">To open binary file c:\liststudent.dat for write only:</para>
+        <code id="id1166740543076" display="block">f4 = fopen("c:\\liststudent.dat", "wb");</code>
+        <para id="id11418081">The file pointer will be used with all other functions that operate on the file and it must never be altered or the object it points to.</para>
+        <para id="id11418093">
+          <emphasis>File checking</emphasis>
+        </para>
+        <code id="id1166739561353" display="block">if (file_pointer_name == NULL) 
+{
+printf("Error opening file.");
+&lt;Action for error &gt;
+}
+else
+{
+&lt;Action for success&gt;
+}
+</code>
+        
+        
+        
+        
+        
+        
+        
+        
+        <para id="id12077720">Before using an input/output file it is worth checking that the file has been correctly opened first. A call to fopen() may result in an error due to a number of reasons including: </para>
+        <list id="id10331221" list-type="bulleted">
+          <item>A file opened for reading does not exist; </item>
+          <item>A file opened for reading is read protected; </item>
+          <item>A file is being opened for writing in a folder or directory where you do not have write access. </item>
+        </list>
+        <para id="id10331243">If the operation is successful, <emphasis>fopen</emphasis>() returns an address which can be used as a stream. If a file is not successfully opened, the value <emphasis>NULL</emphasis> is returned. An error opening a file can occur if the file was to be opened for reading and did not exist, or a file opened for writing could not be created due to lack of disk space. It is important to always check that the file has opened correctly before proceeding in the program.</para>
+        
+        <example id="element-393"><code id="id4298205" display="block">FILE *fp;
+if ((fp = fopen("myfile", "r")) ==NULL){
+  printf("Error opening file\n");
+  exit(1); 
+}
+</code>
+</example>
+        
+        
+        
+        
+        <para id="id11610856">Once a file has been opened, depending upon its mode, you may read and/or write bytes to or from it. </para>
+      </section>
+      <section id="id-184670395171">
+        <title>Access to Text Files</title>
+        <section id="id-781495704315">
+          <title>Write data to text files</title>
+          <para id="id11487890">When writing data to text files, C provides three functions: <emphasis>fprintf()</emphasis>, <emphasis>fputs()</emphasis>, <emphasis>fputc()</emphasis>.</para>
+          <para id="id11487896">The <emphasis>fprintf()</emphasis> function prototype is as follows:</para>
+          <code id="id1166731052432" display="block">int fprintf(FILE *fp, char *format, ...);</code>
+          <para id="id11611995">This function writes to the file specified by file pointer fp a sequence of data formatted as the format argument specifies. After the format parameter, the function expects at least as many additional arguments as specified in format. Depending on the format string, the function may expect a sequence of additional arguments, each containing one value to be inserted instead of each %-tag specified in the format parameter, if any. There should be the same number of these arguments as the number of %-tags that expect a value. </para>
+          <para id="id12509631">Return value: On success, the total number of characters written is returned. On failure, a negative number is returned.</para>
+          <example id="element-841"><code id="id1166731534095" display="block">#include &lt;stdio.h&gt;
+
+int main ()
+{
+   FILE * fp;
+   int n;
+   char name [50];
+
+   fp = fopen ("myfile.txt","w");
+   for (n=0 ; n&lt;3 ; n++)
+   {
+     puts ("Please, enter a name: ");
+     gets (name);
+     fprintf (fp, "Name %d [%-10.10s]\n",n,name);
+   }
+   fclose (fp);
+   return 0;
+}
+</code>
+</example>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <para id="id11327888">This example prompts 3 times the user for a name and then writes them to myfile.txt each one in a line with a fixed length (a total of 19 characters + newline). Two format tags are used: %d : signed decimal integer, %-10.10s : left aligned (-), minimum of ten characters (10), maximum of ten characters (.10), String (s). </para>
+          <para id="id11327902">Assuming that we have entered John, Jean-Francois and Yoko as the 3 names, myfile.txt would contain: </para>
+          <table id="id11628532" summary="">
+<tgroup cols="1"><colspec colnum="1" colname="c1"/>
+              <tbody>
+                <row>
+                  <entry>
+                    <emphasis>myfile.txt</emphasis>
+                  </entry>
+                </row>
+                <row>
+                  <entry>Name 1 [John ]   </entry>
+                </row>
+                <row>
+    <entry>Name 2 [Jean-Franc]</entry>
+  </row>
+  <row>
+    <entry>Name 3 [Yoko ]</entry>
+  </row>
+</tbody>
+            
+
+
+
+</tgroup>
+</table>
+          <para id="id10059353">The <emphasis>fputc()</emphasis> function prototype is as follows.</para>
+          <code id="id1166730045064" display="block">int fputc(int character, FILE *fp);</code>
+          <para id="id10059364">The <emphasis>fputc()</emphasis> function writes a character to the file associated with fp. The character is written at the current position of the fp as indicated by the internal position indicator, which is then advanced one character</para>
+          <para id="id10059372">Return value: If there are no errors, the same character that has been written is returned.If an error occurs, EOF is returned and the error indicator is set.</para>
+        
+          <example id="element-665"><para id="element-306">Write the program that creates a file called alphabet.txt and writes ABCDEFGHIJKLMNOPQRSTUVWXYZ to it.
+	</para><code id="id7122350" display="block">#include &lt;stdio.h&gt;
+int main ()
+{
+  FILE * fp;
+  char c;
+
+  fp = fopen ("alphabet.txt","w");
+  if (fp!=NULL)
+  {
+    for (c = 'A' ; c &lt;= 'Z' ; c++)
+    {
+      fputc ((int) c , fp);
+    }
+    fclose (fp);
+  }
+  return 0;
+}
+</code>
+</example>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <para id="id8224770">The <emphasis>fputs()</emphasis> function prototype is as follows.</para>
+          <code id="id8916848" display="block">int fputs(char *str,FILE *fp);</code>
+          <para id="id12547318">The <emphasis>fputs()</emphasis> function writes the string pointed to by str to the file associated with fp. </para>
+          <para id="id12547338">Return value: On success, a non-negative value is returned. On error, the function returns EOF. The null that terminates str is not written and it does not automatically append a carriage return/linefeed sequence. </para>
+          <example id="element-475"><para id="element-244">Write the program allows to append a line to a file called myfile.txt each time it is run.
+	</para><code id="id8370439" display="block">#include &lt;stdio.h&gt;
+int main ()
+{
+   FILE * fp;
+   char name [50];
+
+   puts ("Please, enter a name: ");
+   gets (name);
+   fp = fopen ("myfile.txt","a");
+   fputs (name,fp);
+   fclose (fp);
+   return 0;
+}
+</code>
+</example>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </section>
+        <section id="id-236061038034">
+          <title>Read data from text files</title>
+          <para id="id13787331">When reading data from text files, C provides three functions: <emphasis>fscanf()</emphasis>,<emphasis>fgetc()</emphasis>, <emphasis>fgets()</emphasis>.</para>
+          <para id="id13787337">The <emphasis>fscanf()</emphasis> function prototype is as follows.</para>
+          <code id="id1166740537044" display="block">int fscanf(FILE *fp, char *format, ...);</code>
+          <para id="id12270813">This function reads data from the file specified by file pointer fp and stores them according to the parameter format into the locations pointed by the additional arguments. The additional arguments should point to already allocated objects of the type specified by their corresponding format tag within the format string.</para>
+          <para id="id12270823">Return value: On success, the function returns the number of items successfully read. This count can match the expected number of readings or be less -even zero- in the case of a matching failure. In the case of an input failure before any data could be successfully read, EOF is returned.</para>
+          <example id="element-253"><para id="element-517">Read an integer number and a character from file associated with a file pointer fp and stores them to two variables a and c.
+	</para><code id="id1166736877400" display="block">fscanf(fp, "%d %c",&amp;a, &amp;c);</code>
+</example>
+          
+          
+          <example id="element-177"><code id="id1166739068665" display="block">#include &lt;stdio.h&gt;
+int main ()
+{
+  char str [80];
+  float f;
+  FILE * fp;
+
+  fp = fopen ("myfile.txt","w+");
+  fprintf (fp, "%f %s", 3.1416, "PI");
+  rewind (fp);
+  fscanf (fp, "%f", &amp;f);
+  fscanf (fp, "%s", str);
+  fclose (fp);
+  printf ("I have read: %f and %s \n",f,str);
+  return 0;
+}
+</code>
+</example>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <para id="id13292250">This sample code creates a file called myfile.txt and writes a float number and a string to it. Then, the stream is rewinded and both values are read with fscanf. It finally produces an output similar to: </para>
+          <code id="id1166731257401" display="block">I have read: 3.141600 and PI</code>
+        </section>
+        <section id="id-366441248014">
+          <title>feof() function</title>
+          <code id="id1166734158062" display="block">int feof(FILE *fp);</code>
+          <para id="id11795819">This function check if End-of-File indicator associated with fp is set</para>
+          <para id="id11795836">Return value: A non-zero value is returned in the case that the End-of-File indicator associated with the fp is set. Otherwise, a zero value is returned.</para>
+          <example id="element-54"><para id="element-459">Create a text file called fscanf.txt in Notepad with this content: 
+	</para><code id="id1166738340703" display="block">0	1	2	3	4 
+5	6	7	8	9 
+10 	11 	12 	13
+</code><para id="element-472">Remember how <emphasis>scanf </emphasis> stops reading input when it encounters a space, line break or tab character? fscanf is just the same. So if all goes to plan, this example should open the file, read all the numbers and print them out: </para><code id="id1166730987427" display="block">#include &lt;stdio.h&gt;
+int main() {
+  FILE *fp;
+  int numbers[30]; 
+  /* make sure it is large enough to hold all the data! */
+  int i,j;
+
+  fp = fopen("fscanf.txt", "r");
+
+  if(fp==NULL) {
+    printf("Error: can't open file.\n");
+    return 1;
+  }
+  else {
+    printf("File opened successfully.\n");
+
+    i = 0 ;    
+
+    while(!feof(fp)) { 
+      /* loop through and store the numbers into the array */
+      fscanf(fp, "%d", &amp;numbers[i]);
+      i++;
+    }
+
+    printf("Number of numbers read: %d\n\n", i);
+    printf("The numbers are:\n");
+
+    for(j=0 ; j&lt;i ; j++) { /* now print them out one by one */
+      printf("%d\n", numbers[j]);
+    }
+
+    fclose(fp);
+    return 0;
+  }
+}
+
+</code>
+</example>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </section>
+        <section id="id-255115278198">
+          <title>fflush() function</title>
+          <para id="id12386146">Same as <emphasis>scanf()</emphasis>, before using <emphasis>fscanf()</emphasis> to read the character or string from the file, we need use <emphasis>fflush()</emphasis>.The <emphasis>fflush()</emphasis> function prototype is as follows.</para>
+          <code id="id1166741376292" display="block">int fflush(FILE *fp)</code>
+          <para id="id12386181">If the given file that specified by fp was open for writing and the last I/O operation was an output operation, any unwritten data in the output buffer is written to the file. If the file was open for reading, the behavior depends on the specific implementation. In some implementations this causes the input buffer to be cleared. If the argument is a null pointer, all open files are flushed. The files remains open after this call. When a file is closed, either because of a call to <emphasis>fclose</emphasis> or because the program terminates, all the buffers associated with it are automatically flushed. </para>
+          <para id="id12139838">Return Value: A zero value indicates success. If an error occurs, EOF is returned and the error indicator is set (see feof).</para>
+        </section>
+        <section id="id-692332869742">
+          <title>fgetc() function</title>
+          <para id="id11814615">The <emphasis>fgetc()</emphasis> function prototype is as follows.</para>
+          
+          <code id="id1166740384261" display="block">int fgetc(FILE *fp);</code><para id="id11814647">This function returns the character currently pointed by the internal file position indicator of the specified fp. The internal file position indicator is then advanced by one character to point to the next character. </para>
+          <para id="id8809032">Return value: The character read is returned as an int value. If the EOF is reached or a reading error happens, the function returns EOF and the corresponding error or eof indicator is set. You can use either ferror or feof to determine whether an error happened or the EOF was reached.</para>
+          <example id="element-635"><para id="element-303">Write the program reads an existing file called myfile.txt character by character and uses the n variable to count how many dollar characters ($) does the file contain. </para><code id="id7433566" display="block">#include &lt;stdio.h&gt;
+int main ()
+{
+  FILE * fp;
+  int c;
+  int n = 0;
+  fp=fopen ("myfile.txt","r");
+  if (fp==NULL) printf("Error opening file");
+  else
+  {
+    do {
+      c = fgetc (fp);
+      if (c == '$') n++;
+    } while (c != EOF);
+    fclose (fp);
+    printf ("File contains %d$.\n",n);
+  }
+  return 0;
+}
+</code>
+</example>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <example id="element-908"><para id="element-875">Write the program opens the file called myfile.txt, and counts the number of characters that it contains by reading all of them one by one. Finally the total amount of bytes is printed out.
+	</para><code id="id5420116" display="block">#include &lt;stdio.h&gt;
+int main ()
+{
+  FILE * fp;
+  long n = 0;
+  fp = fopen ("myfile.txt","rb");
+  if (fp==NULL) printf ("Error opening file");
+  else
+  {
+    while (!feof(fp)) {
+      fgetc (fp);
+      n++;
+      }
+    fclose (fp);
+    printf ("Total number of bytes: %d\n",n);
+  }
+  return 0;
+}
+
+</code>
+</example>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <example id="element-774"><para id="element-18">Opens a file called input.txt which has some random text (less than 200 characters), stores each character in an array, then spits them back out into another file called "output.txt" in reverse order: 
+	</para><code id="id1166737104826" display="block">#include &lt;stdio.h&gt;
+int main() {
+  char c;         /* declare a char variable */
+  char name[200]; /* Initialize array of total 
+                     200 for characters */
+  FILE *f_input, *f_output; /* declare FILE pointers  */
+  int counter = 0; /* Initialize variable for counter to zero */
+
+  f_input = fopen("input.txt", "r"); 
+  /* open a text file for reading */
+
+  if(f_input==NULL) {
+    printf("Error: can't open file.\n");
+    return 1;
+  }
+  else {
+    while(1) { /* loop continuously */
+      c = fgetc(f_input); /* fetch the next character */
+      if(c==EOF) { 
+        /* if end of file reached, break out of loop */
+        break;
+      }
+      else if (counter&lt;200) { /* else put character into array */
+        name[counter] = c;
+        counter++; /* increment the counter */
+      }
+      else {
+        break;
+      }
+    }
+
+    fclose(f_input); /* close input file */
+
+    f_output = fopen("output.txt", "w"); 
+    /* create a text file for writing */
+
+    if(f_output==NULL) {
+      printf("Error: can't create file.\n");
+      return 1;
+    }
+    else {
+      counter--; /* we went one too step far */
+      while(counter &gt;= 0) { /* loop while counter's above zero */
+        fputc(name[counter], f_output); 
+        /* write character into output file */
+        counter--; /* decrease counter */
+      }
+
+      fclose(f_output); /* close output file */
+      printf("All done!\n");
+      return 0;
+    }
+  }
+}
+</code>
+</example>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <para id="id10536802">Reading one character at a time can be a little inefficient, so we can use <emphasis>fgets</emphasis> to read one line at a time. The <emphasis>fgets()</emphasis> function prototype is as follows.</para>
+          <code id="id1166733442009" display="block">char *fgets(char *str, int num, FILE *fp);</code>
+          <para id="id12329833">The <emphasis>fgets()</emphasis> function reads characters from the file associated with fp into a string pointed to by str until num-1 characters have been read, a newline character is encountered, or the end of the file is reached. The string is null-terminated and the newline character is retained. </para>
+          <para id="id11518229">Return value: the function returns str if successful and a null pointer if an error occurs. </para>
+          <para id="id11518253">You can't use an !=EOF check here, as we're not reading one character at a time (but you can use feof).</para>
+          <example id="element-230"><para id="element-690">Create a file called myfile.txt in Notepad, include 3 lines and put tabs in the last line. 
+	</para><code id="id1166727597536" display="block">111 222 333
+444 555 666
+777	888	999 
+</code><code id="id1166727943846" display="block">#include &lt;stdio.h&gt;
+int main() 
+{
+  char c[10];  /* declare a char array */
+  FILE *file;  /* declare a FILE pointer  */
+
+  file = fopen("myfile.txt", "r"); 
+  /* open a text file for reading */
+
+  if(file==NULL) 
+  {
+    printf("Error: can't open file.\n");
+    /* fclose(file); DON'T PASS A NULL POINTER TO fclose !! */
+    return 1;
+  }
+  else 
+  {
+    printf("File opened successfully. Contents:\n\n");
+    
+    while(fgets(c, 10, file)!=NULL) { 
+      /* keep looping until NULL pointer... */
+      printf("String: %s", c);        
+      /* print the file one line at a time  */
+    }
+
+    printf("\n\nNow closing file...\n");
+    fclose(file);
+    return 0;
+  }
+}
+</code>
+</example>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <para id="id12451024">Output: </para>
+          
+          <code id="id1166736488639" display="block">File opened successfully. Contents: 
+
+String: 111 222 3String: 33 
+String: 444 555 6String: 66 
+String: 777     888     9String: 99 
+
+Now closing file... 
+
+</code><para id="id11353585">The main area of focus is the while loop - notice how I performed the check for the return of a NULL pointer. Remember that passing in char * variable, c as the first argument assigns the line read into c, which is printed off by printf. We specified a maximum number of characters to be 10 - we knew the number of characters per line in our text file is more than this, but we wanted to show that fgets reads 10 characters at a time in this case. </para>
+          <para id="id11353608">Notice how fgets returns when the newline character is reached - this would explain why 444 and 777 follow the word "String". Also, the tab character, \t, is treated as one character.</para>
+        </section>
+        <section id="id-166695755201">
+          <title>Other function:</title>
+          <section id="id-487529053199">
+            <title>fseek() function</title>
+            <code id="id1166732915810" display="block">int fseek (FILE *fp, long int offset, int origin);</code>
+            <para id="id8323300">In the above prototype, there are two arguments:</para>
+            <list id="id8323305" list-type="bulleted"><item>fp: Pointer to a FILE object that identifies the stream. </item>
+              <item>offset: Number of bytes to offset from origin. </item>
+              <item>If offset &gt;= 0: set the position indicator toward to the end of file,</item>
+              <item>If offset &lt; 0: set the position indicator toward to the beginning of file.</item>
+              <item>origin: Position from where offset is added. It is specified by one of the following constants defined in &lt;cstdio&gt;:</item>
+            </list>
+            <table id="id13286636" summary="">
+              <tgroup cols="3">
+                <colspec colnum="1" colname="c1"/>
+                <colspec colnum="2" colname="c2"/>
+                <colspec colnum="3" colname="c3"/>
+                <tbody>
+                  <row>
+                    <entry>
+                      <emphasis>Constant</emphasis>
+                    </entry>
+                    <entry>
+                      <emphasis>Value</emphasis>
+                    </entry>
+                    <entry>
+                      <emphasis>Meaning</emphasis>
+                    </entry>
+                  </row>
+                  <row>
+                    <entry>
+                      <emphasis>SEEK_SET</emphasis>
+                    </entry>
+                    <entry>0</entry>
+                    <entry>Beginning of file</entry>
+                  </row>
+                  <row>
+                    <entry>
+                      <emphasis>SEEK_CUR</emphasis>
+                    </entry>
+                    <entry>1</entry>
+                    <entry>Current position of the file pointer</entry>
+                  </row>
+                  <row>
+                    <entry>
+                      <emphasis>SEEK_END</emphasis>
+                    </entry>
+                    <entry>2</entry>
+                    <entry>End of file</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+            <para id="id13308685">This function sets the position indicator associated with the fp to a new position defined by adding offset to a reference position specified by origin. The End-of-File internal indicator of the file is cleared after a call to this function. </para>
+            <para id="id13308696">Return Value: If successful, the function returns a zero value. Otherwise, it returns nonzero value.</para>
+            <example id="element-724"><code id="id1166729399898" display="block">#include &lt;stdio.h&gt;
+int main ()
+{
+  FILE * fp;
+  fp = fopen ( "myfile.txt" , "w" );
+  fputs ( "This is an apple." , fp );
+  fseek ( fp , -8 , SEEK_END );
+  fputs ( " sam" , fp );
+  fclose ( fp );
+  return 0;
+}
+
+</code>
+</example>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <para id="id12488356">After this code is successfully executed, the file myfile.txt contains:</para>
+            <code id="id1166736921457" display="block">This is a sample.</code>
+            <example id="element-863"><code id="id1166740303118" display="block">#include &lt;stdio.h&gt;
+int main ()
+{
+  FILE * fp;
+  fp = fopen ( "myfile.txt" , "w" );
+  fputs ( "This is an apple." , fp );
+  fseek ( fp , 9 , SEEK_SET );
+  fputs ( " sam" , fp );
+  fclose ( fp );
+  return 0;
+}
+</code>
+</example>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <para id="id12110984">After this code is successfully executed, the file myfile.txt contains:</para><code id="id4464962" display="block">This is a sample.</code>
+            
+          </section>
+          <section id="id-738674214775">
+            <title>rewind() function</title>
+            <code id="id1166740397671" display="block">void rewind (FILE *fp);</code>
+            <para id="id12374056">This function sets the current position indicator associated with fp to the beginning of the file. A call to rewind is equivalent to: </para>
+            <code id="id1166735655389" display="block">fseek (fp, 0, SEEK_SET); </code>
+            <para id="id13362933">except that, unlike fseek, rewind clears the error indicator.</para>
+            <para id="id13362957">On streams open for update (read+write), a call to rewind allows to switch between reading and writing. </para>
+            <example id="element-100"><code id="id1166735365774" display="block">#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+int main ()
+{
+  char str [80];
+  int n;
+  FILE * fp;
+  fp = fopen ("myfile.txt","w+");
+  for ( n='A' ; n&lt;='Z' ; n++)
+    fputc ( n, fp);
+  rewind (fp);
+  n=0;
+  while (!feof(fp))
+  {
+     str[n]= fgetc(fp);
+     n++;
+  }
+  fclose (fp);
+  printf ("I have read: %s \n",str);
+  getch();
+  return 0;
+}
+
+</code>
+</example>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <para id="id11789482">A file called myfile.txt is created for reading and writing and filled with the alphabet. The file is then rewinded, read and its content is stored in a buffer, that then is written to the standard output: </para>
+            <code id="id8018488" display="block">ABCDEFGHIJKLMNOPQRSTUVWXYZ</code>
+            <example id="element-201"><code id="id6158116" display="block">#include &lt;stdio.h&gt;
+int main() 
+{
+  FILE *file;
+  char sentence[50];
+  int i;
+
+  file = fopen("sentence.txt", "w+");
+  /* we create a file for reading and writing */
+
+  if(file==NULL) {
+    printf("Error: can't create file.\n");
+    return 1;
+  }
+  else {
+    printf("File created successfully.\n");
+
+    printf("Enter a sentence less than 50 characters: ");
+    gets(sentence);
+
+    for(i=0 ; sentence[i] ; i++) {
+      fputc(sentence[i], file);
+    }
+
+    rewind(file); /* reset the file pointer's position */
+
+    printf("Contents of the file: \n\n");
+
+    while(!feof(file)) {
+      printf("%c", fgetc(file));
+    }
+
+    printf("\n");
+    fclose(file);
+    return 0;
+  }
+}
+</code>
+</example>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <para id="id11442232">Output depends on what you entered. First of all, we stored the inputted sentence in a char array, since we're writing to a file one character at a time it'd be useful to detect for the null character. Recall that the null character, \0, returns 0, so putting sentence[i] in the condition part of the for loop iterates until the null character is met. </para>
+            <para id="id11442242">Then we call rewind, which takes the file pointer to the beginning of the file, so we can read from it. In the while loop we print the contents a character at a time, until we reach the end of the file - determined by using the feof function. </para>
+            <para id="id8200603">Note that it is essential to have the include file stdio.h referenced at the top of your program in order to use any of these functions: fscanf(), fgets(), fgetc(), fflush(), fprintf(), fputs(), fputc(), feof(), fseek() và rewind().</para>
+
+ </section>
+          <section id="id-738674214776">
+            <title>EOF and errors</title>
+
+            <para id="id8200622">When a function returns <emphasis>EOF</emphasis> (or, occasionally, 0 or NULL, as in the case of fread and fgets respectively), we commonly say that we have reached “end of file” but it turns out that it's also possible that there's been some kind of I/O error. When you want to distinguish between end-of-file and error, you can do so with the feof and ferror functions. <emphasis>feof(fp)</emphasis> returns nonzero (that is, “true”) if end-of-file has been reached on the file pointer fp, and <emphasis>ferror(fp)</emphasis> returns nonzero if there has been an error.</para>
+            <para id="id9385288">Notice <emphasis>feof</emphasis> returns nonzero if end-of-file has been reached. It does not tell you that the next attempt to read from the stream will reach end-of-file, but rather that the previous attempt (by some other function) already did. (If you know Pascal, you may notice that the end-of-file detection situation in C is therefore quite different from Pascal.) Therefore, you would never write a loop like </para>
+            <code id="id8442628" display="block">while(!feof(fp))
+   fgets(line, max, fp);
+</code>
+            
+            <para id="id10362879">Instead, check the return value of the input function directly:</para>
+            <code id="id1166736872911" display="block">while(fgets(line, max, fp) != NULL)</code>
+            <para id="id10362898">With a very few possible exceptions, you don't use feof to <emphasis>detect</emphasis> end-of-file; you use feof or ferror to distinguish between end-of-file and error. (You can also use ferror to diagnose error conditions on output files.) </para>
+            <para id="id11658584">Since the end-of-file and error conditions tend to persist on a stream, it's sometimes necessary to clear (reset) them, which you can do with <emphasis>clearerr(FILE *fp)</emphasis>. </para>
+            <para id="id11456797">What should your program do if it detects an I/O error? Certainly, it cannot continue as usual; usually, it will print an error message. The simplest error messages are of the form </para>
+            <code id="id1166739588627" display="block">fp = fopen(filename, "r");
+	if(fp == NULL)
+	{
+		fprintf(stderr, "can't open file\n");
+		return;
+	}
+</code>
+            
+            
+            
+            
+            
+            <para id="id11229530">or </para>
+            <code id="id1166731413946" display="block">while(fgets(line, max, fp) != NULL)
+	{
+	  ... process input ...
+	}
+
+	if(ferror(fp))
+	   fprintf(stderr, "error reading input\n");
+</code>
+            
+            
+            
+            
+            
+            <para id="id13787118">or </para>
+            <code id="id7509336" display="block">fprintf(fp, "%d %d %d\n", a, b, c);
+ if(ferror(fp))
+      fprintf(stderr, "output write error\n");
+</code>
+            
+            
+            <para id="id13787156">Error messages are much more useful, however, if they include a bit more information, such as the name of the file for which the operation is failing, and if possible <emphasis>why</emphasis> it is failing. For example, here is a more polite way to report that a file could not be opened: </para>
+            <code id="id1166731213437" display="block">        #include &lt;stdio.h&gt;	/* for fopen */
+	#include &lt;errno.h&gt;	/* for errno */
+	#include &lt;string.h&gt;	/* for strerror */
+
+	fp = fopen(filename, "r");
+	if(fp == NULL)
+	{
+		fprintf(stderr, "can't open %s for reading: %s\n",
+					filename, strerror(errno));
+		return;
+	}
+</code>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <para id="id10445357">errno is a global variable, declared in &lt;errno.h&gt;, which may contain a numeric code indicating the reason for a recent system-related error such as inability to open a file. The <emphasis>strerror</emphasis> function takes an errno code and returns a human-readable string such as “No such file” or “Permission denied”. </para>
+            <para id="id10445397">An even more useful error message, especially for a “toolkit” program intended to be used in conjunction with other programs, would include in the message text the name of the program reporting the error. </para>
+          </section>
+        </section>
+      </section>
+      <section id="id-793459416992">
+        <title>Access to Binary Files</title>
+        <section id="id-168538513029">
+          <title>Write data to binary files</title>
+          <code id="id1166737105151" display="block">size_t fwrite(void *buf, size_t sz, size_t n, FILE *fp)</code>
+          <para id="id11720891">This function writes to file associated with fp, num number of objects, each object size bytes long, from the buffer pointed to by buffer. </para>
+          <para id="id11720898">Return value: It returns the number of objects written. This value will be less than num only if an output error as occurred. </para>
+          <para id="id11489154">The <emphasis>void pointer</emphasis> is a pointer that can point to any type of data without the use of a TYPE cast (known as a generic pointer). The type size_t is a variable that is able to hold a value equal to the size of the largest object surported by the compiler.</para>
+          <para id="id11489168">As a simple example, this program write an integer value to a file called MYFILE using its internal, binary representation. </para>
+          <code id="id1166737254851" display="block">#include &lt;stdio.h&gt;  /* header file  */
+#include &lt;stdlib.h&gt;
+void main(void)
+{
+ FILE *fp;   /* file pointer */
+ int i;
+
+ /* open file for output */
+ if ((fp = fopen("myfile", "w"))==NULL){
+  printf("Cannot open file \n");
+  exit(1);
+ }
+ i=100;
+
+ if (fwrite(&amp;i, 2, 1, fp) !=1){
+  printf("Write error occurred");
+  exit(1);
+ }
+ fclose(fp);
+}
+
+</code>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </section>
+        <section id="id-262583598321">
+          <title>Read data from binary files</title>
+          <code id="id6479736" display="block">size_t fread(void *buf, size_t sz, size_t n, FILE *fp)</code>
+          <para id="id13312564">fread reads up to n objects, each of size sz, from the file specified by fp, and copies them to the buffer pointed to by buf. It reads them as a stream of bytes, without doing any particular formatting or other interpretation. (However, the default underlying stdio machinery may still translate newline characters unless the stream is open in binary or "b" mode). </para>
+          <para id="id12607509">Return value: returns the number of items read. It returns 0 (not EOF) at end-of-file. </para>
+          <example id="element-331"><code id="id1166729338890" display="block">#include &lt;stdio.h&gt;
+int main() {
+  FILE *file;
+  char c[30]; /* make sure it is large enough to hold all the data! */
+  char *d;
+  int n;
+
+  file = fopen("numbers.txt", "r");
+
+  if(file==NULL) {
+    printf("Error: can't open file.\n");
+    return 1;
+  }
+  else {
+    printf("File opened successfully.\n");
+    
+    n = fread(c, 1, 10, file); /* passing a char array, 
+                                  reading 10 characters */
+    c[n] = '\0';               /* a char array is only a 
+                                  string if it has the
+                                  null character at the end */
+    printf("%s\n", c);         /* print out the string      */
+    printf("Characters read: %d\n\n", n);
+
+    fclose(file);          /* to read the file from the beginning, */
+                           /* we need to close and reopen the file */
+    file = fopen("numbers.txt", "r");
+
+    n = fread(d, 1, 10, file);
+            /* passing a char pointer this time - 10 is irrelevant */
+    printf("%s\n", d);
+    printf("Characters read: %d\n\n", n);
+
+    fclose(file);
+    return 0;
+  }
+}
+
+</code>
+</example>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <para id="id11488061">Output: </para>
+          <code id="id8804273" display="block">File opened successfully. 
+111 
+222 
+33 
+Characters read: 10 
+
+111 
+222 
+333 
+
+444 
+5ive 
+Characters read: 10 
+</code>
+          <para id="id12682862">The above code: passing a char pointer reads in the entire text file, as demonstrated. Note that the number fread returns in the char pointer case is clearly incorrect. This is because the char pointer (d in the example) must be initialized to point to something first.</para>
+          <para id="id12682870">An important line is: c[n] = '\0'; Previously, we put 10 instead of n (n is the number of characters read). The problem with this was if the text file contained less than 10 characters, the program would put the null character at a point past the end of the file. </para>
+          <para id="id9096466">There are several things you could try with this program: </para>
+          <list id="id9096471" list-type="bulleted">
+            <item>After reading the memory allocation section, try allocating memory for d using malloc() and freeing it later with free().</item>
+            <item>Read 25 characters instead of 10: n = fread(c, 1, 25, file); </item>
+            <item>Not bother adding a null character by removing: c[n] = '\0'; </item>
+            <item>Not bother closing and reopening the file by removing the fclose and fopen after printing the char array. </item>
+          </list>
+          <para id="id11514437">Binary files have two features that distinguish them from text files: You can jump instantly to any record in the file, which provides random access as in an array; and you can change the contents of a record anywhere in the file at any time. Binary files also usually have faster read and write times than text files, because a binary image of the record is stored directly from memory to disk (or vice versa). In a text file, everything has to be converted back and forth to text, and this takes time. </para>
+          <para id="id9096500">Besides reading and writing “blocks” of characters, you can use fread and fwrite to do “binary” I/O. For example, if you have an array of int values: </para>
+          <code id="id7834975" display="block">int array[N];</code>
+          <para id="id9766557">you could write them all out at once by calling </para>
+          <code id="id8642200" display="block">fwrite(array, sizeof(int), N, fp);</code>
+          <para id="id9766570">This would write them all out in a byte-for-byte way, i.e. as a block copy of bytes from memory to the output stream, i.e. <emphasis>not</emphasis> as strings of digits as printf %d would. Since some of the bytes within the array of int might have the same value as the \n character, you would want to make sure that you had opened the stream in binary or "wb" mode when calling fopen. </para>
+          <para id="id12483523">Later, you could try to read the integers in by calling </para>
+          <code id="id5320296" display="block">fread(array, sizeof(int), N, fp);</code>
+          <para id="id12483536">Similarly, if you had a variable of some structure type: </para>
+          <code id="id1166737028805" display="block">struct somestruct x;</code>
+          <para id="id13344714">you could write it out all at once by calling </para>
+          <code id="id1166728939623" display="block">fwrite(&amp;x, sizeof(struct somestruct), 1, fp);</code>
+          <para id="id13344729">and read it in by calling </para>
+          <code id="id7135088" display="block">fread(&amp;x, sizeof(struct somestruct), 1, fp);</code>
+        </section>
+      </section>
+      <section id="id-0586378111916">
+        <title>Close Files</title>
+        <para id="id10757116">The funtion for closing a file :</para>
+        <code id="id8574902" display="block">int fclose(FILE* fp);</code>
+        <para id="id10757125">This function closes the file associated with the fp and disassociates it. All internal buffers associated with the file are flushed: the content of any unwritten buffer is written and the content of any unread buffer is discarded. Even if the call fails, the fp passed as parameter will no longer be associated with the file.</para>
+        <para id="id11044008">Return value: If the file is successfully closed, a zero value is returned.</para>
+        <example id="element-770"><code id="id1166729516707" display="block">#include &lt;stdio.h&gt;
+int main ()
+{
+  FILE * fp;
+  fp = fopen ("myfile.txt","wt");
+  fprintf (fp, "fclose example");
+  fclose (fp);
+  return 0;
+}
+</code>
+</example>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </section>
+    </section>
+  </content>
+</document>

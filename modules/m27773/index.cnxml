@@ -1,0 +1,487 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>The Control Flow</title>
+  <metadata>
+  <md:content-id>m27773</md:content-id><md:title>The Control Flow</md:title>
+  <md:abstract/>
+  <md:uuid>d0fff9b1-2dc9-4367-ae05-7ad5a6156ab4</md:uuid>
+</metadata>
+
+<content>
+    <para id="id20026226">The control flow of a language specify the order in which operations are performed. Each program includes many statements. Statements are processed one after another in sequence, except where such control statements result in jumps.</para>
+    <section id="id-392831378468">
+      <title>Statements and Blocks</title>
+      <para id="id20251979">An expression such as x = 0 or i++ or printf(. . . .) becomes a statement when it is followed by a semicolon, as in</para>
+      <code id="id1167738077549" display="block">x=0;
+i++; 
+printf(. . . .);
+</code>
+      
+      
+      <para id="id20149986">
+        <emphasis>In the C language, the semicolon is a statement terminator.</emphasis>
+      </para>
+      <para id="id19889001">A block also called a compound statement, or compound statement, lets you group any number of data definitions, declarations, and statements into one statement. All definitions, declarations, and statements enclosed within a single set of braces are treated as a single statement. You can use a block wherever a single statement is allowed. </para>
+      <para id="id19855169">In blocks, declarations and definitions can appear anywhere, mixed in with other code. Note that there is no semicolon after the right brace that ends a block.</para>
+      <example id="element-956"><code id="id1167733485812" display="block">{ into I = 0;      /* Declarations  */
+  static long a;
+  extern long max;
+ 
+  ++a;            /* Statements    */
+  if( a &gt;= max)
+  {   . . .    }  /* A nested block */
+  . . .
+}
+</code>
+</example>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <para id="id20361983">An expression statement is an expression followed by a semicolon. The syntax is: </para>
+      <code id="id1205736" display="block">[expression] ;</code>
+      
+      <example id="element-260"><code id="id8629630" display="block">y = x;        // Assignment</code>
+</example>
+      <para id="id20319239">The expression—an assignment or function call, for example—is evaluated for its side effects. The type and value of the expression are discarded. </para>
+      <para id="id18038475">A statement consisting only of a semicolon is called an empty statement, and does not perform any operation. For Example </para>
+      <code id="id1167736677539" display="block">for ( i = 0;  str[i] != '\0'; ++i )
+   ;                     // Empty statement
+
+</code>
+      
+    </section>
+    <section id="id-972492591672">
+      <title>If, If else statements</title>
+      <para id="id20421617">The if statement has two forms:</para>
+      <code id="id4541969" display="block">if(expression) statement</code>
+      <para id="id19009060">and</para>
+      
+      <code id="id1167727830182" display="block">if(expression) statement1
+else statement2
+</code>
+      <para id="id18254048">In the first form, if (and only if) the expression is non-zero, the statement is executed. If the expression is zero, the statement is ignored. Remember that the statement can be compound; that is the way to put several statements under the control of a single if.</para>
+      <para id="id19744214">The second form is like the first except that if the statement shown as statement1 is selected then statement2 will not be, and vice versa.</para>
+      <para id="id19869027">Here are the flowcharts of the two forms of if statement</para>
+      <figure id="id19172092"><media id="id4013408" alt=""><image src="../../media/graphics1-22dc.png" mime-type="image/png"/></media>
+      </figure>
+      <para id="id20321497">The form involving else works the same way, so we can also write this.</para>
+      <code id="id1167723969250" display="block">if(expression)
+  if(expression)
+    statement
+  else
+    statement
+</code>
+      
+      
+      
+      
+      <para id="id20194398">this is now ambiguous. It is not clear, except as indicated by the indentation, which of the ifs is responsible for the else. If we follow the rules that the previous example suggests, then the second if is followed by a statement, and is therefore itself a statement, so the else belongs to the first if.</para>
+      <para id="id18903211">That is not the way that C views it. The rule is that an else belongs to the first if above that hasn't already got an else. In the example we're discussing, the else goes with the second if.</para>
+      <para id="id20426895">To prevent any unwanted association between an else and an if just above it, the if can be hidden away by using a compound statement, here it is.</para>
+      <code id="id4149631" display="block">if(expression){
+    if(expression)
+            statement
+}else
+    statement
+</code>
+      
+      
+      
+      
+      
+      <para id="id18869146">if(expression){</para>
+      <code id="id1167729812114" display="block">if(expression){
+    if(expression){
+        statement
+    }
+}else{
+    statement
+}
+</code>
+      
+      
+      
+      
+      
+      
+      <para id="id20180120">Example</para>
+      <example id="element-885"><code id="id1167735988822" display="block">#include &lt;conio.h&gt;
+#include &lt;stdio.h&gt;
+void main()
+{
+// variable declaration
+float a, b;
+float max;
+printf(“ Enter the values of a and b: “);
+scanf(“%f %f”,&amp;a,&amp;b);
+if(a&lt;b) //Assign the greater of x and y to the variable max
+	max = b;
+else
+	max = a;
+printf(“\n The greater of two numbers %.0f and %.0f is %.0f “,a,b,max);
+getch();
+}
+</code>
+</example>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <figure id="id18570554">
+        <media id="id7352717" alt=""><image src="../../media/graphics2-2e5d.png" mime-type="image/png" height="49" width="380"/></media>
+      </figure></section>
+      <section id="id-463149708062">
+        <title>The Switch Statement</title>
+        <para id="id18890086">It is used to select one of a number of alternative actions depending on the value of an expression, and nearly always makes use of another of the lesser statements: the break. It looks like this.</para>
+        <code id="id1167733748847" display="block">switch (expression){
+case const1:    statements
+case const2:    statements
+. . . .
+default:        statements
+}
+</code>
+        
+        
+        
+        
+        
+        <para id="id18635708">The flowchart of switch statement is shown below:</para>
+        <figure id="id19913728"><media id="id1167734275324" alt=""><image src="../../media/graphics3-77c9.png" mime-type="image/png"/></media>
+        </figure>
+        <para id="id20196693">The expression is evaluated and its value is compared with all of the const etc. expressions, which must all evaluate to different constant values (strictly they are integral constant expressions). If any of them has the same value as the expression then the statement following the case label is selected for execution. If the default is present, it will be selected when there is no matching value found. If there is no default and no matching value, the entire switch statement will do nothing and execution will continue at the next statement.</para>
+        <example id="element-262"><code id="id1167728291608" display="block">OK=1;
+switch (OP)
+{
+	case ‘+’: 
+z=x+y; 
+break;
+	case ‘-’: 
+z=x-y; 
+break;
+	case ‘*’: 
+z=x*y; 
+break;
+case ’/’: 
+if (y!=0 )
+z=x/y;
+			else OK=0;
+	default : 
+OK=0;
+}
+</code>
+</example>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <list id="id19876543" list-type="bulleted">
+          <item>The switch requires an integer-compatible value. This value may be a constant, variable, function call, or expression. The switch statement does not work with floating – point data types.</item>
+          <item>The value after each case label must be a constant.</item>
+          <item>C++ does not support case label with ranges of values. Instead, each value must appear in a separate case label.</item>
+          <item>You need to use a break statement after each set of executable statements. The break statement causes program execution to resume after the end of the current switch statement. If you do not use the break statement, the program execution resumes at subsequent case labels.</item>
+          <item>The default clause is a catch-all clause.</item>
+          <item>The set of statements in each case or grouped case labels need not be enclosed in open and close braces.</item>
+        </list>
+        <para id="id17713349">The following program writes out the day of the week depending on the value of an integer variable day. It assumes that day 1 is Sunday.</para>
+        <code id="id1167730611925" display="block">#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+void main()
+{int day;
+printf(“Enter the value of a weekday”);
+scanf(“%d”,&amp;day);
+switch (day)
+  {
+   case 1 : printf( "Sunday");
+            break;
+   case 2 : printf( "Monday");
+            break;
+   case 3 : printf( "Tuesday");
+            break;
+   case 4 : printf("Wednesday");
+            break;
+   case 5 : printf("Thursday");
+            break;
+   case 6 : printf("Friday");
+            break;
+   case 7 : printf("Saturday");
+            break;
+  default : printf("Not an allowable day number");
+            break;
+  }
+getch();
+}
+</code>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <para id="id20143148">If it has already been ensured that day takes a value between 1 and 7 then the default case may be missed out. It is allowable to associate several case labels with one statement. For example if the above example is amended to write out whether day is a weekday or is part of the weekend:</para>
+        <code id="id1167734140031" display="block">switch (day)
+  {
+    case 1 :
+    case 7 : printf( "This is a weekend day");
+             break;
+    case 2 :
+    case 3 :
+    case 4 :
+    case 5 :
+    case 6 : printf( "This is a weekday");
+             break;
+    default : printf( "Not a legal day");
+              break;
+}
+</code>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </section>
+   
+    <section id="id-539974788617">
+      <title>Loops : While and Do While, For</title>
+      <section id="id-0825859263313">
+        <title>The while statement</title>
+        <para id="id20432024">The syntax of while statement is simple:</para>
+        <code id="id1167732918036" display="block">while(expression)
+    statement
+</code>
+        
+        <figure id="id20318722"><media id="id1167727985239" alt=""><image src="../../media/graphics4-ea65.png" mime-type="image/png"/></media>
+        </figure>
+        <para id="id18751306">The statement is only executed if the expression is non-zero. After every execution of the statement, the expression is evaluated again and the process repeats if it is non-zero. What could be plainer than that? The only point to watch out for is that the statement may never be executed, and that if nothing in the statement affects the value of the expression then the while will either do nothing or loop for ever, depending on the initial value of the expression.</para>
+        <example id="element-555"><code id="id1167729477357" display="block">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+main(){
+      int i;
+
+      /* initialize */
+      i = 0;
+      /* check */
+      while(i &lt;= 10){
+              printf("%d\n", i);
+              /* update */
+              i++;
+      }
+      }
+</code>
+</example>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </section>
+      <section id="id-92550244637">
+        <title>The do statement</title>
+        <para id="id17627771">It is occasionally desirable to guarantee at least one execution of the statement following the while, so an alternative form exists known as the do statement. It looks like this:</para>
+        <code id="id1167740828990" display="block">do
+    statement
+while(expression);
+</code>
+        
+        
+        <figure id="id21077545"><media id="id1167736446009" alt=""><image src="../../media/graphics5-194f.png" mime-type="image/png"/></media>
+        </figure>
+        <para id="id17670441">and you should pay close attention to that semicolon—it is not optional! The effect is that the statement part is executed before the controlling expression is evaluated, so this guarantees at least one trip around the loop. It was an unfortunate decision to use the keyword while for both purposes, but it doesn't seem to cause too many problems in practice.</para>
+      </section>
+      <section id="id-503194794547">
+        <title>The for statement</title>
+        <para id="id19410271">A very common feature in programs is loops that are controlled by variables used as a counter. The counter doesn't always have to count consecutive values, but the usual arrangement is for it to be initialized outside the loop, checked every time around the loop to see when to finish and updated each time around the loop. There are three important places, then, where the loop control is concentrated: initialize, check and update. This example shows them.</para>
+        <para id="id19870631">As you will have noticed, the initialization and check parts of the loop are close together and their location is obvious because of the presence of the while keyword. What is harder to spot is the place where the update occurs, especially if the value of the controlling variable is used within the loop. In that case, which is by far the most common, the update has to be at the very end of the loop: far away from the initialize and check. Readability suffers because it is hard to work out how the loop is going to perform unless you read the whole body of the loop carefully. What is needed is some way of bringing the initialize, check and update parts into one place so that they can be read quickly and conveniently. That is exactly what the for statement is designed to do. Here it is.</para>
+        <code id="id1167724249036" display="block">for (expression1; expression2; expression3) statement</code>
+        <figure id="id20194565"><media id="id1167735604014" alt=""><image src="../../media/graphics6-7986.png" mime-type="image/png"/></media>
+        </figure>
+        <para id="id17627043">The first expression (expression1) is the initialize part; nearly always an assignment expression which is used to initialize the control variable. After the initialization, the check expression (expression2) is evaluated: if it is non-zero, the statement is executed, followed by evaluation of the update expression (expression3) which generally increments the control variable, then the sequence restarts at the check. The loop terminates as soon as the check evaluates to zero.</para>
+        <para id="id20322105">There are two important things to realize about that last description: </para>
+        <para id="id18814967">one, that each of the three parts of the for statement between the parentheses are just expressions; </para>
+        <para id="id19925487">two, that the description has carefully explained what they are intended to be used for without proscribing alternative uses—that was done deliberately. You can use the expressions to do whatever you like, but at the expense of readability if they aren't used for their intended purpose.</para>
+        <para id="id18518752">Here is a program that does the same thing twice, the first time using a while loop, the second time with a for. The use of the increment operator is exactly the sort of use that you will see in everyday practice.</para>
+        <example id="element-963"><code id="id1167725286433" display="block">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+void main(){
+	int i;
+      /* the same done using ``for'' */
+      for(i = 0; i &lt;= 10; i++){
+              printf("%d\n", i);
+      }
+      }
+</code>
+</example>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <para id="id18562834">There isn't any difference between the two, except that in this case the for loop is more convenient and maintainable than the while statement. You should always use the for when it's appropriate; when a loop is being controlled by some sort of counter. The while is more at home when an indeterminate number of cycles of the loop are part of the problem. </para>
+        <para id="id17725141">Any of the initialize, check and update expressions in the for statement can be omitted, although the semicolons must stay. This can happen if the counter is already initialized, or gets updated in the body of the loop. If the check expression is omitted, it is assumed to result in a ‘true’ value and the loop never terminates. A common way of writing never-ending loops is either</para>
+        <code id="id1167738752247" display="block">for(;;)</code>
+        <para id="id20431902">or</para>
+        <code id="id1167727255485" display="block">while(1)</code>
+        <para id="id20357029">and both can be seen in existing programs.</para>
+      </section>
+    </section>
+    <section id="id-985578325548">
+      <title>Loop Flow Control </title>
+      <para id="id19840884">The control of flow statements that we've just seen are quite adequate to write programs of any degree of complexity. They lie at the core of C and even a quick reading of everyday C programs will illustrate their importance, both in the provision of essential functionality and in the structure that they emphasize. The remaining statements are used to give programmers finer control or to make it easier to deal with exceptional conditions. Only the switch statement is enough of a heavyweight to need no justification for its use; yes, it can be replaced with lots of ifs, but it adds a lot of readability. The others, break, continue and goto, should be treated like the spices in a delicate sauce. Used carefully they can turn something commonplace into a treat, but a heavy hand will drown the flavor of everything else.</para>
+      <section id="id-584218978544">
+        <title>The break statement</title>
+        <para id="id20409320">This is a simple statement. It only makes sense if it occurs in the body of a switch, do, while or for statement. When it is executed the control of flow jumps to the statement immediately following the body of the statement containing the break. Its use is widespread in switch statements, where it is more or less essential to get the control that most people want.</para>
+        <para id="id19993528">The use of the break within loops is of dubious legitimacy. It has its moments, but is really only justifiable when exceptional circumstances have happened and the loop has to be abandoned. It would be nice if more than one loop could be abandoned with a single break but that isn't how it works. Here is an example</para>
+        <code id="id1167725285993" display="block">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+main(){
+      int i;
+
+      for(i = 0; i &lt; 10000; i++){
+              if(getchar() == 's')
+                      break;
+              printf("%d\n", i);
+      }
+      }
+</code>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <para id="id20231996">It reads a single character from the program's input before printing the next in a sequence of numbers. If an ‘s’ is typed, the break causes an exit from the loop.</para>
+        <para id="id18817356">If you want to exit from more than one level of loop, the break is the wrong thing to use. The goto is the only easy way, but since it can't be mentioned in polite company, we'll leave it till last.</para>
+      </section>
+      <section id="id-516827923063">
+        <title>The continue statement</title>
+        <para id="id18623110">This statement has only a limited number of uses. The rules for its use are the same as for break, with the exception that it doesn't apply to switch statements. Executing a continue starts the next iteration of the smallest enclosing do, while or for statement immediately. The use of continue is largely restricted to the top of loops, where a decision has to be made whether or not to execute the rest of the body of the loop. In this example it ensures that division by zero (which gives undefined behavior) doesn't happen</para>
+        <code id="id3970275" display="block">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+main(){
+      int i;
+
+      for(i = -10; i &lt; 10; i++){
+              if(i == 0)
+                      continue;
+              printf("%f\n", 15.0/i);
+              /*
+               * Lots of other statements .....
+               */
+      }
+      }
+</code>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <para id="id20384390">Of course the continue can be used in other parts of a loop, too, where it may occasionally help to simplify the logic of the code and improve readability. It deserves to be used sparingly.</para>
+        <para id="id19084706">Do remember that continue has no special meaning to a switch statement, where break does have. Inside a switch, continue is only valid if there is a loop that encloses the switch, in which case the next iteration of the loop will be started.</para>
+        <para id="id19084709">There is an important difference between loops written with while and for. In a while, a continue will go immediately to the test of the controlling expression. The same thing in a for will do two things: first the update expression is evaluated, then the controlling expression is evaluated.</para>
+     
+    </section>
+ </section>
+    <section id="id-734075577389">
+      <title>Goto and Labels</title>
+      <para id="id20385608">Everybody knows that the goto statement is a ‘bad thing’. Used without care it is a great way of making programs hard to follow and of obscuring any structure in their flow. Dijkstra wrote a famous paper in 1968 called ‘Goto Statement Considered Harmful’, which everybody refers to and almost nobody has read.</para>
+      <para id="id20432573">What's especially annoying is that there are times when it is the most appropriate thing to use in the circumstances! In C, it is used to escape from multiple nested loops, or to go to an error handling exit at the end of a function. You will need a label when you use a goto; this example shows both.</para>
+      <code id="id1167736137262" display="block">goto L1;
+/* whatever you like here */
+L1: /* anything else */
+</code>
+      
+      
+      <para id="id17619564">A label is an identifier followed by a colon. Labels have their own ‘name space’ so they can't clash with the names of variables or functions. The name space only exists for the function containing the label, so label names can be re-used in different functions. The label can be used before it is declared, too, simply by mentioning it in a goto statement.</para>
+      <para id="id18759917">Labels must be part of a full statement, even if it's an empty one. This usually only matters when you're trying to put a label at the end of a compound statement—like this.</para>
+      
+      <code id="id1167727789256" display="block">label_at_end: ; /* empty statement */
+}
+</code>
+      <para id="id20231265">The goto works in an obvious way, jumping to the labeled statements. Because the name of the label is only visible inside its own function, you can't jump from one function to another one.</para>
+      <para id="id19086359">It's hard to give rigid rules about the use of gotos, but, as with the do, continue and the break (except in switch statements), over-use should be avoided. Think carefully every time you feel like using one, and convince yourself that the structure of the program demands it. More than one goto every 3–5 functions is a symptom that should be viewed with deep suspicion.</para>
+    </section>
+  </content>
+</document>

@@ -1,0 +1,134 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Computer Networks</title>
+  <metadata>
+  <md:content-id>m27727</md:content-id><md:title>Computer Networks</md:title>
+  <md:abstract/>
+  <md:uuid>465cbff5-a95e-4c0c-a70d-2cab894fc4a4</md:uuid>
+</metadata>
+
+<content>
+    <section id="id-0626801940644">
+      <title>History of Computer Networks</title>
+      <para id="id5206780">
+        <emphasis>Computer network</emphasis>
+      </para>
+      <para id="id5177262">Computer network is composed of multiple connected computers that communicate over a wired or wireless medium to share data and other resources.</para>
+      <para id="id5177269">Network data protocols are used to communicate on the network between computers.</para>
+      <para id="id4480140">The size and scalability of any computer network are determined both by the physical medium of communication and by the software controlling the communication (i.e., the protocols).</para>
+      <para id="id4480147">The field of computer networking and today's Internet trace their beginnings back to the early 1960s, a time at which the telephone network was the world's dominant communication network. The global Internet's origin was the Advanced Research Projects Agency Network (ARPANET) of the U.S. Department of Defense in 1969 Nowadays, computer networks are developed rapidly</para>
+    </section>
+    <section id="id-671350675279">
+      <title>Classification of Computer Networks</title>
+      <para id="id5146456">Networks can be categorized in several different ways, for example,</para>
+      <list id="id5146461" list-type="bulleted">
+        <item>By network layer</item>
+        <item>By scale</item>
+        <item>By connection method</item>
+        <item>By functional relationship</item>
+        <item>By network topology</item>
+        <item>By protocol</item>
+      </list>
+      <section id="id-886689412334">
+        <title>Classification by scale</title>
+        <para id="id4058422">A Local Area Network (LAN) is a group of computers and associated devices that share a common communications line and typically share the resources of a single processor or server within a small geographic area </para>
+        <para id="id5179826">A Wide Area Network (WAN) is a computer network that spans a relatively large geographical area (diameter of about 200 km)</para>
+        <para id="id5179832">GAN (Global Area Network) A network spanning a between geographically distinct cities</para>
+      </section>
+      <section id="id-807236550624">
+        <title>Classification by functional relationship</title>
+        <para id="id5179963"><emphasis>Server based (client/server):</emphasis>Computers set up to be primary providers of services such as file service or mail service. </para>
+        <para id="id5203122">The computers providing the service are called servers </para>
+        <para id="id5176816">The computers that request and use the service are called client computers. </para>
+        <para id="id5176822">
+          <emphasis>Peer-to-peer</emphasis>
+        </para>
+        <para id="id5206067">Various computers on the network can act both as clients and servers.</para>
+        <para id="id5206073">Example Many Microsoft Windows based computers allow file and print sharing. </para>
+        <para id="id5176451">Many networks are combination peer-to-peer and server based networks.</para>
+      </section>
+    </section>
+    <section id="id-589238001597">
+      <title>Major Components of a Computer Network</title>
+      <para id="id5180605">A computer network possibly includes :</para>
+      <list id="id5180610" list-type="bulleted">
+        <item>Computers: critical elements of any computer network. They can be considered nodes</item>
+        <item>A network card, NIC (network interface card) is a piece of computer hardware designed to allow computers to communicate over a computer network.</item>
+        <item>Network media (sometimes referred to as networked media) refers to media mainly used in computer networks : cable, telephone line or wireless.</item>
+        <item>Network connection equipments : HUB, SWITCH, ROUTER,etc.</item>
+        <item>Network Operating System (NOS) is an operating system that includes special functions for connecting computers and devices into a local-area network (LAN) or Inter-networking. Some popular NOSs for DOS and Windows systems include Novell NetWare, Windows NT and 2000, Sun Solaris and IBM OS/2.</item>
+        <item>Network software.</item>
+        <item>Network services, for example email.</item>
+      </list>
+      <section id="id-214799234679">
+        <title>Network Topology </title>
+        <para id="id5177110">Network topology is the arrangement or mapping of the elements (links, nodes, etc.) of a network, especially the physical (real) and logical (virtual) interconnections between nodes .</para>
+        <para id="id4058519">There are three basic categories of network topologies:</para>
+        <list id="id4058527" list-type="bulleted">
+          <item>Physical topologies</item>
+          <item>Signal topologies</item>
+          <item>Logical topologies</item>
+        </list>
+        <para id="id4056093">Here are some physical topology </para>
+      </section>
+      <section id="id-213740367696">
+        <title>Point to point</title>
+        <para id="id5204239">The simplest topology is a permanent link between two endpoints. Switched point-to-point topologies are the basic model of conventional telephony. The value of a permanent point-to-point network is the value of guaranteed, or nearly so, communications between the two endpoints. The value of an on-demand point-to-point connection is proportional to the number of potential pairs of subscribers.</para>
+        <figure id="id5176295"><media id="id8374688" alt="">
+<image mime-type="image/png" src="../../media/11.PNG"/> </media>
+        <caption>Network Topology (Point to Point)</caption></figure>
+        
+      </section>
+      <section id="id-00672078331254">
+        <title>Bus </title>
+        <para id="id4482813">Bus networks (not to be confused with the system bus of a computer) use a common backbone to connect all devices. A single cable, the backbone functions as a shared communication medium that devices attach or tap into with an interface connector. A device wanting to communicate with another device on the network sends a broadcast message onto the wire that all other devices see, but only the intended recipient actually accepts and processes the message.</para>
+      </section>
+      <section id="id-91449261403">
+        <title>Ring </title>
+        <para id="id4482322">In a ring network, every device has exactly two neighbors for communication purposes. All messages travel through a ring in the same direction (either "clockwise" or "counterclockwise"). A failure in any cable or device breaks the loop and can take down the entire network.</para>
+        <figure id="id5176770"><media id="id83746855" alt="">
+<image mime-type="image/png" src="../../media/11.2.PNG"/> </media><caption>Network Topology (Broadcast)</caption></figure>
+        
+      </section>
+    </section>
+    <section id="id-74605988191">
+      <title>The Internet</title>
+      <section id="id-0209661810312">
+        <title>History of the Internet</title>
+        <para id="id4483022">The history of the Internet dates back to the early development of communication networks. The idea of a computer network intended to allow general communication between users of various computers has developed through a large number of stages. The melting pot of developments brought together the network of networks that we know as the Internet. This included both technological developments, as well as the merging together of existing network infrastructure and telecommunication systems.</para>
+        <para id="id5201937">The earliest versions of these ideas appeared in the late 1950s. Practical implementations of the concepts began during the late 1960s and 1970s. By the 1980s, technologies we would now recognize as the basis of the modern Internet began to spread over the globe. In the 1990s the introduction of the World Wide Web saw its use become commonplace.</para>
+      </section>
+      <section id="id-197470695986">
+        <title>Internet Services</title>
+        <list id="id4482294" list-type="bulleted">
+          <item>FTP (Filer Transfer Protocol)</item>
+          <item>Telnet</item>
+          <item>WWW</item>
+          <item>Email</item>
+          <item>Chat </item>
+        </list>
+      </section>
+      <section id="id-0441753646067">
+        <title>Advantages of the Internet</title>
+        <para id="id4055989">The Internet or the World Wide Web is indeed a wonderful and amazing addition in our lives. The Internet can be known as a kind of global meeting place where people from all parts of the world can come together. The major advantages of the internet are:</para>
+        <list id="id4055997" list-type="bulleted">
+          <item>E-mail: E-mail is an online correspondence system. With e-mail you can send and receive instant electronic messages, which works like writing letters. </item>
+          <item>Access Information: The Internet is a virtual treasure trove of information. The ‘search engines’ on the Internet can help you to find data on any subject that you need. </item>
+          <item>Shopping: Along with getting information on the Internet, you can also shop online. There are many online stores and sites that can be used to look for products as well as buy them using your credit card</item>
+          <item>Online Chat: There are many ‘chat rooms’ on the web that can be accessed to meet new people, make new friends, as well as to stay in touch with old friends. </item>
+          <item>Downloading Software: You can download innumerable, games, music, videos, movies, and a host of other entertainment software from the Internet, most of which are free.</item>
+        </list>
+      </section>
+      <section id="id-0827543242565">
+        <title>How to Connect to the Internet?</title>
+        <para id="id5178284">Before you can connect to the Internet and access the World Wide Web, you need to have certain equipment:</para>
+        <list id="id5178290" list-type="bulleted">
+          <item>The Hardware: Modem (dial up, ADSL) or Ethernet Card</item>
+          <item>The Software: Operating System, Connection Software</item>
+          <item>The Browser</item>
+          <item>Connection Options: Dial up, Cable, ADSL, Wireless. . . </item>
+          <item>Locating Internet Access Providers</item>
+        </list>
+      </section>
+    </section>
+  </content>
+</document>

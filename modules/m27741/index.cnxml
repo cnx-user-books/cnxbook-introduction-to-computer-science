@@ -1,0 +1,1002 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Data Types and Expressions</title>
+  <metadata>
+  <md:content-id>m27741</md:content-id><md:title>Data Types and Expressions</md:title>
+  <md:abstract/>
+  <md:uuid>45334d36-ced8-4012-b258-0d182258c338</md:uuid>
+</metadata>
+
+<content>
+    <section id="id-104462858534">
+      <title>Standard Data Types</title>
+      <para id="id20324818">The type of a variable determines how much space it occupies in storage and how the bit pattern stored is interpreted. Standard data types in C are listed in the following table: </para>
+      <table id="id20424582" summary="">
+<title>Table of Variable types</title>
+<tgroup cols="4"><colspec colnum="1" colname="c1"/>
+          <colspec colnum="2" colname="c2"/>
+          <colspec colnum="3" colname="c3"/>
+          <colspec colnum="4" colname="c4"/>
+        <thead>
+            <row>
+              <entry>Variable Type</entry>
+              <entry>Keyword</entry>
+              <entry>Range</entry>
+              <entry>Storage in Bytes</entry>
+            </row>
+</thead>
+  <tbody>
+            <row>
+              <entry>Character</entry>
+              <entry>char</entry>
+              <entry>-127 to 127</entry>
+              <entry>1</entry>
+            </row>
+            <row>
+              <entry>Unsigned character</entry>
+              <entry>unsigned char</entry>
+              <entry>0 to 255</entry>
+              <entry>1</entry>
+            </row>
+            <row>
+              <entry>(Signed) integer</entry>
+              <entry>int</entry>
+              <entry>-32,768 to 32,767</entry>
+              <entry>2</entry>
+            </row>
+            <row>
+              <entry>Unsigned integer</entry>
+              <entry>unsigned int</entry>
+              <entry>0 to 65,535</entry>
+              <entry>2</entry>
+            </row>
+            <row>
+              <entry>Short integer</entry>
+              <entry>short</entry>
+              <entry>-32,768 to 32,767</entry>
+              <entry>2</entry>
+            </row>
+            <row>
+              <entry>Unsigned short integer</entry>
+              <entry>unsigned short</entry>
+              <entry>0 to 65,535</entry>
+              <entry>2</entry>
+            </row>
+            <row>
+              <entry>Long integer</entry>
+              <entry>long</entry>
+              <entry>-2,147,483,648 to 2,147,483,647</entry>
+              <entry>4</entry>
+            </row>
+            <row>
+              <entry>Unsigned long</entry>
+              <entry>integerunsigned long</entry>
+              <entry>0 to 4,294,967,295</entry>
+              <entry>4</entry>
+            </row>
+            <row>
+              <entry>Single precision floating point</entry>
+              <entry>float</entry>
+              <entry>1.2E-38 to 3.4E38, approx. range precision = 7 digits.</entry>
+              <entry>4</entry>
+            </row>
+            <row>
+              <entry>Double precision floating point</entry>
+              <entry>double</entry>
+              <entry>2.2E-308 to 1.8E308, approx. range precision = 19 digits.</entry>
+              <entry>8</entry>
+            </row>
+          </tbody>
+        
+
+</tgroup>
+</table>
+      
+      
+      <section id="id-668842420506">
+        <title>Declaration and Usage of Variables and Constants</title>
+        <para id="id19552835">
+          <emphasis>Variables</emphasis>
+        </para>
+        <para id="id20266426">A variable is an object of a specified type whose value can be changed. In programming languages, a variable is allocated a storage location that can contain data that can be modified during program execution. Each variable has a name that uniquely identifies it within its level of scope.</para>
+        <para id="id20266436">In C, a variable must be <emphasis>declared before use</emphasis>, although certain declarations can be made implicitly by content. Variables can be declared at the start of any block of code, but most are found at the start of each function. Most local variables are created when the function is called, and are destroyed on return from that function. </para>
+        <para id="id19944881">A declaration begins with the type, followed by the name of one or more variables. Syntax of declare statement is described as:</para>
+        <code id="id1166741129608" display="block">data_type  list_of_variables;</code>
+        <para id="id19992293">A list of variables includes one or many variable names separated by commas. </para>
+        <example id="element-910"><para id="element-451">Single declarations
+	</para><code id="id1166741194884" display="block">int age;         //integer variable 
+float amountOfMoney;//float variable
+char initial;// character variable
+</code><para id="element-993">Multiple declarations: </para><code id="id1166741194897" display="block">int age, houseNumber, quantity; 
+float distance, rateOfDiscount;
+char firstInitial, secondInitial; 
+</code>
+</example>
+        
+        
+        
+        
+        
+        
+        
+        
+        <para id="id18466384">Variables can also be initialized when they are declared, this is done by adding an equals sign and the required value after the declaration.</para>
+        <example id="element-376"><code id="id1166741045105" display="block">int high = 250;     //Maximum Temperature
+int low = -40;      //Minimum Temperature 
+int results[20];    //Series of temperature readings 
+</code>
+</example>
+        
+        
+        
+        <para id="id17637552">
+          <emphasis>Constants</emphasis>
+        </para>
+        <para id="id18848598">A constant is an object whose value cannot be changed. There are two method to define constant in C:</para>
+        <list id="id18462279" list-type="bulleted">
+          <item>By #define statement. Syntax of that statement is: </item>
+        </list>
+        <code id="id1166732355661" display="block">#define  constant_name value</code>
+        
+        <example id="element-790"><code id="id1166741037430" display="block">#define  MAX_SALARY_LEVEL  15 //An integer constant
+#define  DEP_NAME  “Computer Science”
+// A string constant
+</code>
+</example>
+        
+        
+        <list id="id18627042" list-type="bulleted">
+          <item>By using const keyword</item>
+        </list>
+        
+        <code id="id1166740803249" display="block">const data_type  variable_name = value; </code>
+        <example id="element-795"><code id="id1166741206516" display="block">const double e = 2.71828182845905;</code>
+</example>
+      </section>
+      <section id="id-841704057873">
+        <title>Functions printf, scanf</title>
+        <para id="id18283705">Usually i/o, input and output, form the most important part of any program. To do anything useful your program needs to be able to accept input data and report back your results. In C, the standard library (stdio.h) provides routines for input and output. The standard library has functions for i/o that handle input, output, and character and string manipulation. Standard input is usually means input using the keyboard. Standard output is usually means output onto the monitor.</para>
+        <list id="id3591872" list-type="bulleted">
+          <item>Input by using the scanf() function</item>
+          <item>Output by using the printf() function</item>
+        </list>
+        <para id="id17621954">To use printf and scanf functions, it is required to declare the header &lt;stdio.h&gt;</para>
+        <para id="id17040466">
+          <emphasis>The printf() function</emphasis>
+        </para>
+        <para id="id20409218">The standard library function printf is used for formatted output. It makes the user input a string and an optional list of variables or strings to output. The variables and strings are output according to the specifications in the printf() function. Here is the general syntax of printf . </para>
+        <code id="id1166741196227" display="block">printf(“[string]”[,list of arguments]);</code>
+        <para id="id19522314">The <emphasis>list of arguments</emphasis> allow expressions, separated by commas.</para>
+        <para id="id18247626">The <emphasis>string</emphasis> is all-important because it specifies the type of each variable in the list and how you want it printed. The string is usually called the control string or the format string. The way that this works is that printf scans the string from left to right and prints on the screen any characters it encounters - except when it reaches a % character. </para>
+        <para id="id20087009">The % character is a signal that what follows it is a specification for how the next variable in the list of variables should be printed. printf uses this information to convert and format the value that was passed to the function by the variable and then moves on to process the rest of the control string and anymore variables it might specify.</para>
+        <para id="id20290775"><media id="id1166741243848" alt=""><image src="../../media/graphics1-9911.png" mime-type="image/png"/></media>
+        </para>
+        <para id="id20282490">For Example</para>
+        <code id="id1166741233345" display="block">printf("Hello World");</code>
+        <para id="id19922041">only has a control string and, as this contains no % characters it results in Hello World being displayed and doesn't need to display any variable values. The specifier %d means convert the next value to a signed decimal integer and so:</para>
+        <code id="id1166741236698" display="block">printf("Total = %d",total);</code>
+        <para id="id19114064">will print Total = and then the value passed by total as a decimal integer.</para>
+        <para id="id20226337">
+          <emphasis>The % Format Specifiers</emphasis>
+        </para>
+        <para id="id20226345">The % specifiers that you can use are: </para>
+        <table id="id20372096" summary="">
+          <tgroup cols="3">
+            <colspec colnum="1" colname="c1"/>
+            <colspec colnum="2" colname="c2"/>
+            <colspec colnum="3" colname="c3"/>
+            <tbody>
+              <row>
+                <entry/>
+                <entry>
+                  <emphasis>Usual variable type</emphasis>
+                </entry>
+                <entry>
+                  <emphasis>Display</emphasis>
+                </entry>
+              </row>
+              <row>
+                <entry>%c </entry>
+                <entry>char </entry>
+                <entry>single character</entry>
+              </row>
+              <row>
+                <entry>%d (%i) </entry>
+                <entry>int</entry>
+                <entry>signed integer</entry>
+              </row>
+              <row>
+                <entry>%e (%E) </entry>
+                <entry>float or double </entry>
+                <entry>exponential format</entry>
+              </row>
+              <row>
+                <entry>%f </entry>
+                <entry>float or double </entry>
+                <entry>signed decimal</entry>
+              </row>
+              <row>
+                <entry>%g (%G) </entry>
+                <entry>float or double </entry>
+                <entry>use %f or %e as required</entry>
+              </row>
+              <row>
+                <entry>%o</entry>
+                <entry>int</entry>
+                <entry>unsigned octal value</entry>
+              </row>
+              <row>
+                <entry>%s</entry>
+                <entry>array of char</entry>
+                <entry>sequence of characters</entry>
+              </row>
+              <row>
+                <entry>%u</entry>
+                <entry>int</entry>
+                <entry>unsigned decimal</entry>
+              </row>
+              <row>
+                <entry>%x (%X)</entry>
+                <entry>int</entry>
+                <entry>unsigned hex value</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+        <para id="id20174386">
+          <emphasis>Formatting Your Output</emphasis>
+        </para>
+        <para id="id20174393">The type conversion specifier only does what you ask of it - it convert a given bit pattern into a sequence of characters that a human can read. If you want to format the characters then you need to know a little more about the printf function's control string. </para>
+        <para id="id20291220">Each specifier can be preceded by a modifier which determines how the value will be printed. The most general modifier is of the form:</para>
+        <code id="id1166741183024" display="block">flag width.precision</code>
+        <para id="id20291228">The flag can be any of</para>
+        <table id="element-251" summary="">
+<tgroup cols="2"><thead>
+  <row>
+    <entry>flag</entry>
+    <entry>meaning</entry>
+  </row>
+</thead>
+<tbody>
+  <row>
+    <entry>-</entry>
+    <entry>left justify</entry>
+  </row>
+  <row>
+    <entry>+</entry>
+    <entry>always display sign</entry>
+  </row>
+  <row>
+    <entry>space</entry>
+    <entry>display space if there is no sign</entry>
+  </row>
+  <row>
+    <entry>0</entry>
+    <entry>pad with leading zeros</entry>
+  </row>
+
+  <row>
+    <entry>#</entry>
+    <entry>use alternate form of specifier</entry>
+  </row>
+</tbody>
+</tgroup>
+</table>
+        
+        
+        
+        
+        
+        <para id="id20321756">The width specifies the number of characters used in total to display the value and precision indicates the number of characters used after the decimal point. </para>
+        <para id="id20321762">For example, </para>
+        <para id="id20321766">%10.3f will display the float using ten characters with three digits after the decimal point. Notice that the ten characters includes the decimal point, and a - sign if there is one. If the value needs more space than the width specifies then the additional space is used - width specifies the smallest space that will be used to display the value. </para>
+        <para id="id19685604">%-10d will display an int left justified in a ten character space. </para>
+        <para id="id19685608">The specifier %+5d will display an int using the next five character locations and will add a + or - sign to the value.</para>
+        <para id="id19685626">Strings will be discussed later but for now remember: if you print a string using the %s specifier then all of the characters stored in the array up to the first null will be printed. If you use a width specifier then the string will be right justified within the space. If you include a precision specifier then only that number of characters will be printed.</para>
+        <para id="id16250032">For Example</para>
+        <code id="id1166741034196" display="block">printf("%s,Hello")</code>
+        <para id="id19685632">will print Hello,</para>
+        <code id="id1166741262059" display="block">printf("%25s ,Hello")</code>
+        <para id="id19573043">will print 25 characters with Hello right justified </para>
+        <para id="id19573048">Also notice that it is fine to pass a constant value to printf as in printf("%s,Hello").</para>
+        <para id="id20386566">Finally there are the control codes:</para>
+        <table id="element-66" summary="">
+<tgroup cols="2"><tbody>
+  <row>
+    <entry>\b</entry>
+    <entry>backspace</entry>
+  </row>
+  <row>
+    <entry>\f</entry>
+    <entry>formfeed</entry>
+  </row>
+  <row>
+    <entry>\n</entry>
+    <entry>new line</entry>
+  </row>
+  <row>
+    <entry>\r</entry>
+    <entry>carriage return</entry>
+  </row>
+  <row>
+    <entry>\t</entry>
+    <entry>horizontal tab</entry>
+  </row>
+  <row>
+    <entry>\'       </entry>
+    <entry>single quote</entry>
+  </row>
+  <row>
+    <entry>\0       </entry>
+    <entry>null</entry>
+  </row>
+</tbody>
+</tgroup>
+</table>
+        
+        
+        
+        
+        
+        
+        <para id="id20362102">If you include any of these in the control string then the corresponding ASCII control code is sent to the screen, or output device, which should produce the effect listed. In most cases you only need to remember \n for new line.</para>
+        <para id="id20478434">
+          <emphasis>The scanf() function</emphasis>
+        </para>
+        <para id="id19614047">The scanf function works in much the same way as the printf. That is it has the general form: </para>
+        <code id="id1166741287264" display="block">scanf(“control string”,variable,variable,...)</code>
+        <para id="id19991822">In this case the control string specifies how strings of characters, usually typed on the keyboard, should be converted into values and stored in the listed variables. However there are a number of important differences as well as similarities between scanf and printf.</para>
+        <para id="id18028414">The most obvious is that scanf has to change the values stored in the parts of computers memory that is associated with parameters (variables).</para>
+        <para id="id18028421">To understand this fully you will have to wait until we have covered functions in more detail. But, just for now, bare with us when we say to do this the scanf function has to have the addresses of the variables rather than just their values. This means that simple variables have to be passed with a preceding &amp;. </para>
+        <para id="id19991827">The second difference is that the control string has some extra items to cope with the problems of reading data in. However, all of the conversion specifiers listed in connection with printf can be used with scanf.</para>
+        <para id="id20387193">The rule is that scanf processes the control string from left to right and each time it reaches a specifier it tries to interpret what has been typed as a value. If you input multiple values then these are assumed to be separated by white space - i.e. spaces, newline or tabs. This means you can type:</para>
+        <para id="id20387202">3 4 5</para>
+        <para id="id19611293">or</para>
+        <para id="id19611297">3</para>
+        <para id="id19611301">4</para>
+        <para id="id19863112">5</para>
+        <para id="id19863115">and it doesn't matter how many spaces are included between items. For Example</para>
+        <code id="id1166741036576" display="block">scanf("%d %d",&amp;i,&amp;j);</code>
+        <para id="id19863125">will read in two integer values into i and j. The integer values can be typed on the same line or on different lines as long as there is at least one white space character between them.</para>
+        <para id="id18540226">The only exception to this rule is the %c specifier which always reads in the next character typed no matter what it is. You can also use a width modifier in scanf. In this case its effect is to limit the number of characters accepted to the width.</para>
+        <para id="id20199959">For Example</para>
+        <code id="id1166741043795" display="block">scanf("%l0d",&amp;i)</code>
+        <para id="id20199968">would use at most the first ten digits typed as the new value for i.</para>
+        <para id="id19611943">Here is an example to demonstrate the usage of printf and scanf functions</para>
+        <code id="id1166741229327" display="block">#include &lt;conio.h&gt;
+#include &lt;stdio.h&gt;
+void main()
+{
+// variable declaration
+int a;
+float x;
+char ch;
+char* str;
+// Enter data
+printf(“Input an integer”);
+scanf(“%d”,&amp;a);
+printf(“\n  Input a real number”);
+scanf(“%f”,&amp;x);
+printf(“\n Input a character”);
+fflush(stdin); scanf(“%c”,&amp;ch);
+printf(“\n Input a string” );
+fflush(stdin); scanf(“%s”,str);
+// Output the data
+printf(“\n Your data”);
+printf(“\n Integer: %d”,a);
+printf(“\n Float : %.2f”,x);
+printf(“\n Char: %c:,ch);
+printf(“\n String : %s”,str);
+}
+</code>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <para id="id18325027">(Function fflush are used to avoid stopping the reading process when meet one or more spaces)</para>
+        <para id="id18347228">There is one main problem with scanf function which can make it unreliable in certain cases. The reason being is that scanf tends to ignore white spaces, i.e. the space character. If you require your input to contain spaces this can cause a problem. </para>
+        <para id="id20426040">Scanf will skip over white space such as blanks, tabs and new lines in the input stream. The exception is when trying to read single characters with the conversion specifiers %c. In this case, white space is read in. So, it is more difficult to use scanf for single characters. An alternate technique, using getchar, will be described later. </para>
+      </section>
+      <section id="id-698108775598">
+        <title>Other Input and Output Functions</title>
+        <para id="id18632608">
+          <emphasis>getch</emphasis>
+        </para>
+        <para id="id17363685">The computer asks the user press a key. This key does not appear on screen. The syntax is:</para>
+        <code id="id1166741212737" display="block">getch();</code>
+        <para id="id19731102">getch() is used to terminate a program when the user press a key.</para>
+        <para id="id19731107">
+          <emphasis>gets</emphasis>
+        </para>
+        <para id="id18069219">gets reads a line of input into a character array. The syntax is:</para>
+        <code id="id1166732369772" display="block">gets(name_of_string); </code>
+        <para id="id18403374">
+          <emphasis>puts</emphasis>
+        </para>
+        <para id="id18806942">puts writes a line of output to standard output. The syntax is:</para>
+        <code id="id1166741035327" display="block">puts(name of string);</code>
+        <para id="id19479622">It terminates the line with a new line, '\n'. It will return EOF is an error occurred. It will return a positive number on success.</para>
+        <para id="id18308886">For using the statements mentioned above, you must declare the library &lt;conio.h&gt;.</para>
+      </section>
+    </section>
+    <section id="id-74402980421">
+      <title>Expressions</title>
+      <section id="id-866963298692">
+        <title>Operators</title>
+        <para id="id17621733">C contains the following operator groups. </para>
+        <list id="id17621738" list-type="bulleted">
+          <item>Arithmetic </item>
+          <item>Assignment </item>
+          <item>Logical/relational </item>
+          <item>Bitwise </item>
+        </list>
+      </section>
+      <section id="id-940027961346">
+        <title>Arithmetic Operators</title>
+        <para id="id20228711">The arithmetic operators are +, -, /, * and the modulus operator %. Integer division truncates any fractional part. The expression x%y produces the remainder when x is divided by y, and thus is zero when y divide x exactly.The % operator cannot be applied to a float or double. </para>
+        <para id="id20228720">The binary + and – operators have the same precedence, which is lower than the precedence of *, / and %, which is turn lower than unary + and - . Arithmetic operators associate left to right.</para>
+        <table id="id20324473" summary="">
+<tgroup cols="4"><colspec colnum="1" colname="c1"/>
+            <colspec colnum="2" colname="c2"/>
+            <colspec colnum="3" colname="c3"/>
+            <colspec colnum="4" colname="c4"/>
+            <tbody>
+              <row>
+                <entry>
+                  <emphasis>Operator</emphasis>
+                </entry>
+                <entry>
+                  <emphasis>Meaning</emphasis>
+                </entry>
+                <entry>
+                  <emphasis>Data type of the operands</emphasis>
+                </entry>
+                <entry>
+                  <emphasis>Examples</emphasis>
+                </entry>
+              </row>
+              <row>
+                <entry>-</entry>
+                <entry>opposite</entry>
+                <entry>integer, float</entry>
+                <entry><code id="id1166732368221" display="block">int a, b;
+-12; -a; -25.6;</code></entry>
+              </row>
+              <row>
+                <entry>+</entry>
+                <entry>addition</entry>
+                <entry>integer, float</entry>
+                <entry><code id="id1166741045801" display="block">float x, y;
+5 + 8; a + x;
+3.6 + 2.9;
+</code></entry>
+              </row>
+              <row>
+                <entry>-</entry>
+                <entry>subtraction</entry>
+                <entry>integer, float</entry>
+                <entry><code id="id1166732358765" display="block">3 – 1.6; a – 5;</code> </entry>
+              </row>
+              <row>
+                <entry>*</entry>
+                <entry>multiplication</entry>
+                <entry>integer, float</entry>
+                <entry><code id="id1166741196616" display="block">a * b; b * y;
+2.6 * 1.7;
+</code></entry>
+              </row>
+              <row>
+                <entry>/</entry>
+                <entry>division</entry>
+                <entry>integer, float</entry>
+                <entry><code id="id1166741262456" display="block">10.0/3.0;	(= 3.33…)
+10/3.0; 	(= 3.33…)
+10.0/3;       	(= 3.33…)
+</code></entry>
+              </row>
+              <row>
+                <entry>/</entry>
+                <entry>integer division</entry>
+                <entry>integer</entry>
+                <entry><code id="id1166741030211" display="block">10/3;            (= 3)</code></entry>
+              </row>
+              <row>
+                <entry>%</entry>
+                <entry>modulus</entry>
+                <entry>integer</entry>
+                <entry><code id="id1166741206668" display="block">10%3;            (=1)</code></entry>
+              </row>
+            </tbody>
+          
+
+
+
+</tgroup>
+</table>
+      </section>
+      <section id="id-390315329627">
+        <title>Assignment Operators</title>
+        <para id="id19573162">These all perform an arithmetic operation on the lvalue and assign the result to the lvalue. So what does this mean in English? Here is an Example </para>
+        
+        <code id="id1166732358497" display="block">counter = counter + 1; </code><para id="id21311467">can be reduced to </para>
+        <code id="id1166741253941" display="block">counter += 1;           </code>
+        <para id="id21311479">Here is the full set. </para>
+        <table id="element-647" summary="">
+<tgroup cols="2"><tbody>
+  <row>
+    <entry>=</entry>
+    <entry/>
+  </row>
+  <row>
+    <entry>*=</entry>
+    <entry>Multyply</entry>
+  </row>
+  <row>
+    <entry>/=</entry>
+    <entry>Divide</entry>
+  </row>
+  <row>
+    <entry>%=</entry>
+    <entry>Modulus</entry>
+  </row>
+  <row>
+    <entry>+=</entry>
+    <entry>Add</entry>
+  </row>
+  <row>
+    <entry>-=</entry>
+    <entry>Subtract</entry>
+  </row>
+  <row>
+    <entry>&lt;&lt;=</entry>
+    <entry>Left Shift</entry>
+  </row>
+  <row>
+    <entry>&gt;&gt;=</entry>
+    <entry>Right Shift</entry>
+  </row>
+  <row>
+    <entry>&amp;=</entry>
+    <entry>Bitwise AND</entry>
+  </row>
+  <row>
+    <entry>^=</entry>
+    <entry>Bitwise Exclusive OR (XOR)</entry>
+  </row>
+  <row>
+    <entry>|=</entry>
+    <entry>Bitwise Ixclusive OR</entry>
+  </row>
+</tbody>
+</tgroup>
+</table>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <para id="element-540">if expr1 and expr2 are expressions then </para><para id="id20320168">expr1 op= expr2 is equivalent to expr1 = expr1 op expr2</para>
+      </section>
+      <section id="id-0803392784215">
+        <title>Logical and Relational Operators</title>
+        <para id="id19186220">Relational operators</para>
+        <table id="id20231878" summary="">
+<tgroup cols="3"><colspec colnum="1" colname="c1"/>
+            <colspec colnum="2" colname="c2"/>
+            <colspec colnum="3" colname="c3"/>
+            <tbody>
+              <row>
+                <entry>
+                  <emphasis>Operators</emphasis>
+                </entry>
+                <entry>
+                  <emphasis>Meaning</emphasis>
+                </entry>
+                <entry>
+                  <emphasis>Examples</emphasis>
+                </entry>
+              </row>
+              <row>
+                <entry>&gt;</entry>
+                <entry>greater than</entry>
+                <entry><code id="id1166741038879" display="block">2 &gt; 3 (is 0)
+6 &gt; 4 (is 1)
+a &gt; b
+</code></entry>
+              </row>
+              <row>
+                <entry>&gt;=</entry>
+                <entry>greater than or equal to</entry>
+                <entry><code id="id1166740853749" display="block">6 &gt;= 4 (is 1)
+x &gt;= a
+
+</code></entry>
+              </row>
+              <row>
+                <entry>&lt;</entry>
+                <entry>less than</entry>
+                <entry><code id="id1166740971897" display="block">5 &lt; 3 (is 0), 
+</code></entry>
+              </row>
+              <row>
+                <entry>&lt;=</entry>
+                <entry>less than or equal to</entry>
+                <entry><code id="id1166740736356" display="block">5 &lt;= 5 (is 1)
+2 &lt;= 9 (is 1)
+
+</code></entry>
+              </row>
+              <row>
+                <entry>==</entry>
+                <entry>equal to</entry>
+                <entry><code id="id1166740733759" display="block">3 == 4 (is 0)
+a == b</code></entry>
+              </row>
+              <row>
+                <entry>!=</entry>
+                <entry>not equal to</entry>
+                <entry><code id="id1166740733907" display="block">5 != 6 (is 1)
+6 != 6 (is 0) 
+</code></entry>
+              </row>
+            </tbody>
+          
+
+
+
+</tgroup>
+</table>
+        <para id="id18283722">Logical operators</para>
+        <table id="id20431034" summary="">
+<tgroup cols="4"><colspec colnum="1" colname="c1"/>
+            <colspec colnum="2" colname="c2"/>
+            <colspec colnum="3" colname="c3"/>
+            <colspec colnum="4" colname="c4"/>
+            <tbody>
+              <row>
+                <entry>
+                  <emphasis>Operators</emphasis>
+                </entry>
+                <entry>
+                  <emphasis>Meaning</emphasis>
+                </entry>
+                <entry>
+                  <emphasis>Data types of the operands</emphasis>
+                </entry>
+                <entry>
+                  <emphasis>Examples</emphasis>
+                </entry>
+              </row>
+              <row>
+                <entry>&amp;&amp;</entry>
+                <entry>logical and</entry>
+                <entry>2 logic expressions</entry>
+                <entry><code id="id1166741034637" display="block">3&lt;5 &amp;&amp; 4&lt;6 (is 1)
+2&lt;1 &amp;&amp; 2&lt;3 (is 0)
+a &gt; b &amp;&amp; c &lt; d
+</code></entry>
+              </row>
+              <row>
+                <entry>||</entry>
+                <entry>logical or</entry>
+                <entry>2 logic expressions</entry>
+                <entry><code id="id1166741007584" display="block">6 || 0 	        (is 1)
+3&lt;2 || 3&lt;3	(is 1)
+x &gt;= a || x == 0
+</code></entry>
+              </row>
+              <row>
+                <entry>!</entry>
+                <entry>logical not</entry>
+                <entry>1 logic expression</entry>
+                <entry><code id="id1166741194306" display="block">!3	(is 0)
+!(2&gt;5)	(is 1)
+</code></entry>
+              </row>
+            </tbody>
+          
+
+
+</tgroup>
+</table>
+      </section>
+      <section id="id-0246439606245">
+        <title>Bitwise Operators</title>
+        <table id="id18971837" summary="">
+<tgroup cols="4"><colspec colnum="1" colname="c1"/>
+            <colspec colnum="2" colname="c2"/>
+            <colspec colnum="3" colname="c3"/>
+            <colspec colnum="4" colname="c4"/>
+            <tbody>
+              <row>
+                <entry>
+                  <emphasis>Operators</emphasis>
+                </entry>
+                <entry>
+                  <emphasis>Meaning</emphasis>
+                </entry>
+                <entry>
+                  <emphasis>Data types of the operands</emphasis>
+                </entry>
+                <entry>
+                  <emphasis>Examples</emphasis>
+                </entry>
+              </row>
+              <row>
+                <entry>&amp;</entry>
+                <entry>Binary AND</entry>
+                <entry>2 binary numbers</entry>
+                <entry><code id="id1166741185696" display="block">
+0 &amp; 0    	(is 0)
+0 &amp; 1 	        (is 0)
+1 &amp; 0 	        (is 0)
+1 &amp; 1 	        (is 1)
+101 &amp; 110	(is 100)
+
+</code></entry>
+              </row>
+              <row>
+                <entry>|</entry>
+                <entry>Binary OR</entry>
+                <entry>2 binary numbers</entry>
+                <entry><code id="id1166741225885" display="block">0 | 0 	        (is 0)
+0 | 1 	        (is 0)
+1 | 0 	        (is 0)
+1 | 1 	        (is 1)
+101 | 110	(is 111)
+
+</code></entry>
+              </row>
+              <row>
+                <entry>^</entry>
+                <entry>Binary XOR</entry>
+                <entry>2 binary numbers</entry>
+                <entry><code id="id1166740935662" display="block">0 ^ 0 	       (is 0)
+0 ^1 	       (is 1)
+1 ^ 0 	       (is 1)
+1 ^ 1 	       (is 0)
+101 ^ 110      (is 011)
+</code></entry>
+              </row>
+              <row>
+                <entry>&lt;&lt;</entry>
+                <entry>Shift left</entry>
+                <entry>1 binary number</entry>
+                <entry><code id="id1166741185621" display="block">a &lt;&lt; n     (is a*2n)
+101 &lt;&lt; 2   (is 10100)
+</code></entry>
+              </row>
+              <row>
+                <entry>&gt;&gt;</entry>
+                <entry>Shift right</entry>
+                <entry>1 binary number</entry>
+                <entry><code id="id1166741216105" display="block">
+a &gt;&gt; n    (is a/2n)
+101 &gt;&gt; 2  (is 1)
+
+</code></entry>
+              </row>
+              <row>
+                <entry>~</entry>
+                <entry>One's complement</entry>
+                <entry>1 binary number</entry>
+                <entry><code id="id1166741244522" display="block">
+~ 0 		(is 1)
+~ 1 		(is 0)
+~ 110		(is 001)
+
+</code></entry>
+              </row>
+            </tbody>
+          
+</tgroup>
+</table>
+      </section>
+      <section id="id-492696261617">
+        <title>Increment and Decrement Operators</title>
+        <para id="id19725234">Incrementing, decrementing and doing calculations on a variable is a very common programming task and C has quicker ways of writing the code. The code is rather cyptic in appearance.</para>
+        <para id="id20055338">The increment operator ++ adds 1 to its operand while the decrement operator - -subtract 1. We have frequently used ++ to increment variables, as in</para>
+        <code id="id1166740928436" display="block">if  (c = = ’\n’) 
+     ++n;
+</code>
+        
+        <para id="id20229193">The unusual aspect is that ++ and - - may be used either as prefix operators (before the variable, as in ++n) or postfix operators (after the variable, as in n++). In both cases, the effect is to increment n. But the expression ++n increments n before its value is used, while n++ increment n after its value has been used. This mean that in a context where the value is being used, not just the effect, ++n and n++ are different. For example, if n is 5, then </para>
+        <code id="id1166740938282" display="block">x = n++;</code>
+        <para id="id20045294">sets x to 5 but</para>
+        <code id="id1166740989379" display="block">x = ++n; </code>
+        <para id="id19518642">sets x to 6. In both cases, n becomes 6. </para><note id="id1166741029509">The increment and decrement operator can only be applied to variables; an expression like (i + j)++ is illegal.</note>
+        
+      </section>
+      <section id="id-168939813136">
+        <title>Memory Addressing Operators</title>
+        <para id="id20037470">The five operators listed in <link resource="mk:@MSITStore:C:%5CDOCUME~1%5CComputer%5CLOCALS~1%5CTemp%5CRar$DI00.969%5CC.in.a.Nutshell.(OReilly)-0596006977.chm::">the</link> following table are used in addressing array elements and members of structures, and in using pointers to access objects and functions.</para>
+        <table id="id20372089" summary="">
+          <tgroup cols="4">
+            <colspec colnum="1" colname="c1"/>
+            <colspec colnum="2" colname="c2"/>
+            <colspec colnum="3" colname="c3"/>
+            <colspec colnum="4" colname="c4"/>
+            <tbody>
+              <row>
+                <entry>
+                  <emphasis>Operator</emphasis>
+                </entry>
+                <entry>
+                  <emphasis>Meaning</emphasis>
+                </entry>
+                <entry>
+                  <emphasis>Example</emphasis>
+                </entry>
+                <entry>
+                  <emphasis>Result</emphasis>
+                </entry>
+              </row>
+              <row>
+                <entry>&amp;</entry>
+                <entry>Address of</entry>
+                <entry>&amp;x</entry>
+                <entry>Pointer to x</entry>
+              </row>
+              <row>
+                <entry>*</entry>
+                <entry>Indirection operator</entry>
+                <entry>*p</entry>
+                <entry>The object or function that p points to</entry>
+              </row>
+              <row>
+                <entry>[ ]</entry>
+                <entry>Subscripting</entry>
+                <entry>x[y]</entry>
+                <entry>The element with the index y in the array x (or the element with the index x in the array y: the [ ] operator works either way)</entry>
+              </row>
+              <row>
+                <entry>.</entry>
+                <entry>Structure or union member designator</entry>
+                <entry>x.y</entry>
+                <entry>The member named y in the structure or union x</entry>
+              </row>
+              <row>
+                <entry>-&gt;</entry>
+                <entry>Structure or union member designator by reference</entry>
+                <entry>p-&gt;y</entry>
+                <entry>The member named y in the structure or union that p points to</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+      <section id="id-665292301889">
+        <title>Type Conversions</title>
+        <para id="id19729165">When an operator has operands of different types, they are converted to a common type according to a small number of rules. In general, the only automatic conversion era those that convert a narrower operand into a wider one without loosing information, such as converting an integer into floating point . </para>
+        <para id="id19729177">If there are no unsigned operands, the following informal set of rules will suffice:</para>
+        <para id="id19729182">If either operand is long double, convert the other to long double.</para>
+        <para id="id19673742">Otherwise, if either operand is double, convert the other to double.</para>
+        <para id="id19673747">Otherwise if either operand is float, convert the other to float.</para>
+        <para id="id19673753">Otherwise convert char and short to int. </para>
+        <para id="id19673757">Then if either operand is long, convert the other to long.</para>
+        <para id="id18518638">A char is just a small integer, so chars may be freely used in arithmetic expressions</para>
+      </section>
+      <section id="id-791030262069">
+        <title>Precedence of Operators</title>
+        <para id="id18518652">Operators listed by type. </para>
+        <para id="id20002845">All operators on the same line have the same precedence. The first line has the highest precedence. </para>
+        <table id="id20002851" summary="">
+<tgroup cols="3"><colspec colnum="1" colname="c1"/>
+            <colspec colnum="2" colname="c2"/>
+            <colspec colnum="3" colname="c3"/>
+            <tbody>
+              <row>
+                <entry>
+                  <emphasis>Level</emphasis>
+                </entry>
+                <entry>
+                  <emphasis>Operators</emphasis>
+                </entry>
+                <entry>
+                  <emphasis>Associativity</emphasis>
+                </entry>
+              </row>
+              <row>
+                <entry>1</entry>
+                <entry>() [] . -&gt; ++ (postfix) – (postfix)</entry>
+                <entry>-----&gt;</entry>
+              </row>
+              <row>
+                <entry>2</entry>
+                <entry>! ~ ++ (prefix) -- (prefix) - * &amp; sizeof</entry>
+                <entry>&lt;-----</entry>
+              </row>
+              <row>
+                <entry>3</entry>
+                <entry>* / %</entry>
+                <entry>-----&gt;</entry>
+              </row>
+              <row>
+                <entry>4</entry>
+                <entry>+ -</entry>
+                <entry>-----&gt;</entry>
+              </row>
+              <row>
+                <entry>5</entry>
+                <entry>&lt;&lt; &gt;&gt;</entry>
+                <entry>-----&gt;</entry>
+              </row>
+              <row>
+                <entry>6</entry>
+                <entry>&lt; &lt;= &gt; &gt;=</entry>
+                <entry>-----&gt;</entry>
+              </row>
+              <row>
+                <entry>7</entry>
+                <entry>== !=</entry>
+                <entry>-----&gt;</entry>
+              </row>
+              <row>
+                <entry>8</entry>
+                <entry>&amp;</entry>
+                <entry>-----&gt;</entry>
+              </row>
+              <row>
+                <entry>9</entry>
+                <entry>^</entry>
+                <entry>-----&gt;</entry>
+              </row>
+              <row>
+                <entry>10</entry>
+                <entry>|</entry>
+                <entry>-----&gt;</entry>
+              </row>
+              <row>
+                <entry>11</entry>
+                <entry>&amp;&amp;</entry>
+                <entry>-----&gt;</entry>
+              </row>
+              <row>
+                <entry>12</entry>
+                <entry>||</entry>
+                <entry>-----&gt;</entry>
+              </row>
+              <row>
+                <entry>13</entry>
+                <entry>?:</entry>
+                <entry>&lt;-----</entry>
+              </row>
+              <row>
+                <entry>14</entry>
+                <entry>= += -=</entry>
+                <entry>&lt;-----</entry>
+              </row>
+            </tbody>
+          
+</tgroup>
+</table>
+        <para id="id18619240">Note:associate left to right </para>
+      </section>
+    </section>
+  </content>
+</document>

@@ -1,0 +1,479 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Operating Systems</title>
+  <metadata>
+  <md:content-id>m30793</md:content-id><md:title>Operating Systems</md:title>
+  <md:abstract/>
+  <md:uuid>a2e06f52-88cd-4853-a852-71ada3b4a961</md:uuid>
+</metadata>
+
+<content>
+    <section id="id-892773350603">
+      <title>Basic concepts</title>
+      <para id="id4848618">An operating system (OS) is the software that manages the sharing of the resources of a computer and provides programmers with an interface used to access those resources. An operating system processes system data and user input, and responds by allocating and managing tasks and internal system resources as a service to users and programs of the system. At the foundation of all system software, an operating system performs basic tasks such as controlling and allocating memory, prioritizing system requests, controlling input and output devices, facilitating networking and managing file systems. Most operating systems come with an application that provides a user interface for managing the operating system, such as a command line interpreter or graphical user interface. The operating system forms a platform for other system software and for application software.</para>
+      <para id="id4848641">The most commonly-used contemporary desktop operating system is Microsoft Windows, with Mac OS X also being well-known. Linux and the BSD are popular Unix-like systems.</para>
+      <para id="id4848648">The operating system is the first thing loaded onto the computer -- without the operating system, a computer is useless. In detail, important services that an operating system provides are: </para>
+      <list id="id4848655" list-type="bulleted">
+        <item>Create Interface between you and your computer</item>
+        <item>Manage the file system includes directories, folders, files</item>
+      </list>
+      <list id="id4848671" list-type="bulleted">
+        <item>Has a set of commands that allow for manipulation of the file system: sort, delete, copy, etc.</item>
+        <item>Perform input and output on a variety of devices</item>
+        <item>Allocate Resources</item>
+        <item>Manage the running systems</item>
+      </list>
+      <para id="id4848699">Categorization of operating systems</para>
+      <para id="id4848706">All desktop and laptop computers have operating systems. Operating systems are categorized based on the types of computers they control and the sort of applications they support.</para>
+      <list id="id4848713" list-type="bulleted">
+        <item>Single-user, single task</item>
+        <item>Single-user, multi-tasking</item>
+        <item>Multi-user</item>
+        <item>Real-time operating system</item>
+      </list>
+      <section id="id-700590628295">
+        <title>File</title>
+        <para id="id4848746">A computer file is a block of arbitrary information, or resource for storing information, which is available to a computer program and is usually based on some kind of durable storage. A file is durable in the sense that it remains available for programs to use after the current program has finished. Computer files can be considered as the modern counterpart of paper documents which traditionally were kept in offices' and libraries' files, which are the source of the term.</para>
+        <para id="id4848758">A filename is a special kind of string used to uniquely identify a file stored on the file system of a computer. Depending on the operating system, such a name may also identify a directory. Different operating systems impose different restrictions regarding length and allowed characters on filenames.</para>
+        <para id="id4848768">Many operating systems, including MS-DOS, Microsoft Windows, allow a filename extension that consists of one or more characters following the last period in the filename, thus dividing the filename into two parts: the base name (the primary filename) and the extension (usually indicating the file type associated with a certain file format). The base name and the extension are separated by a dot.</para>
+        <para id="id4848780">Commonly, the extension indicates the content type of the file, for example, </para>
+        <para id="id4848786">exe: executable file, txt : text file, pas : pascal source file, cpp : C++ source file. . . </para>
+        <para id="id4848793">In MS-DOS, Microsoft Windows, you can use wildcards ? and *. ? marks a single character while * Marks any sequence of characters.</para>
+        <para id="id4848800">Example *.pas : all pascal source files of the current directory , possibly t1.pas, book.pas. . .</para>
+        <para id="id4848806">b*.cpp : all C++ source files beginning with b.</para>
+      </section>
+      <section id="id-936140647718">
+        <title>File Management</title>
+        <para id="id4848822">
+          <emphasis>Structures of Disks </emphasis>
+        </para>
+        <para id="id4848830">Floppy disk can be single-sided or double-sided. Data is stored on a disk in circular tracks. Tracks are numbered 0, 1. . . Each track is broken up into arcs called sectors. Each sector stores a fixed amount of data. The typical formatting of these media provide space for 512 bytes (for magnetic disks) or 2048 bytes (for optical discs) of user-accessible data per sector.</para>
+        <figure id="id4848847"><media id="id21844045" alt=""><image src="../../media/graphics1-6f64.png" mime-type="image/png"/></media>
+        <caption>Track, sector, cluster</caption></figure>
+        
+        <para id="id4848875">
+          <emphasis>Formatting (initializing) a disk</emphasis>
+        </para>
+        <para id="id4848882">Disk formatting is the process of preparing a hard disk or other storage medium for use, including setting up an empty file system. Formatting a disk includes the following tasks:</para>
+        <list id="id4848889" list-type="bulleted">
+          <item>Determines the sector size and placement.</item>
+          <item>Slices the disk into sectors by writing codes on the disk.</item>
+          <item>Locates bad spots on the disk, locks it out to prevent the bad spot from being used.</item>
+          <item>Side number, track number, sector number Þ address : locates where on the disk the computer will store the data.</item>
+        </list>
+        <para id="id4848924">
+          <emphasis>Computer file system</emphasis>
+        </para>
+        <para id="id4848932">In computing, a file system is a method for storing and organizing computer files and the data they contain to make it easy to find and access them. File systems may use a data storage device such as a hard disk or CD-ROM and involve maintaining the physical location of the files, or they may be virtual and exist only as an access method for virtual data. </para>
+        <para id="id4848942">More formally, a file system is a set of abstract data types that are implemented for the storage, hierarchical organization, manipulation, navigation, access, and retrieval of data.</para>
+        <para id="id4848950">A typical file system may contain thousands (or even hundreds of thousands) of directories. Directory (catalog, or folder) is an entity in a file system which contains a group of files and/or other directories.Files are kept organized by storing related files in the same directory. A directory contained inside another directory is called a subdirectory of that directory. Together, the directories form a hierarchy, or tree structure.</para>
+        <figure id="id4848964"><media id="id21277416" alt=""><download src="51.PNG" mime-type="application/octet-stream"/></media>
+        <caption>Directory tree</caption></figure>
+        
+        <para id="id4848998">The first or top-most directory in a hierarchy is the root directory (symbolized by the back slash \)</para>
+        <para id="id4849006">The current directory is the directory in which a user is working at a given time.</para>
+        <para id="id4849011">
+          <emphasis>Full name of a file</emphasis>
+        </para>
+        <para id="id4849019">A full filename includes one or more of these components </para>
+        <list id="id4849025" list-type="bulleted">
+          <item>Drive (e.g., C:)</item>
+          <item>Directory (or path) file </item>
+          <item>Base name of the file</item>
+          <item>Extension</item>
+        </list>
+        <para id="id4849050">An operating system includes several files, for instant, MS-DOS includes MSDOS.SYS, IO.SYS, COMMAND.COM . . .</para>
+      </section>
+    </section>
+    <section id="id-16684108802">
+      <title>Some Common Operating Systems</title>
+      <section id="id-887245221749">
+        <title>MS-DOS</title>
+        <para id="id4849072">MS-DOS (short for Microsoft Disk Operating System) is an operating system commercialized by Microsoft. It was the most commonly used member of the DOS family of operating systems and was the dominant operating system for the PC compatible platform during the 1980s. It has gradually been replaced on consumer desktop computers by various generations of the Windows operating system.</para>
+        <para id="id4849083">MS-DOS employs a command line interface and a batch scripting facility via its command interpreter, COMMAND.COM.</para>
+        <figure id="id4849092"><media id="id20724682" alt=""><image src="../../media/graphics3-d96e.png" mime-type="image/png"/></media>
+        <caption>The MS-DOS 6.22 command line interface</caption></figure>
+        
+      </section>
+      <section id="id-650589377147">
+        <title>Microsoft Windows </title>
+        <para id="id4849136">Microsoft Windows is the name of several families of software operating systems by Microsoft. Microsoft Windows interest in graphical user interfaces (GUI)</para>
+        <para id="id4849143">MsWindows are introduced in detail in the next section.</para>
+      </section>
+      <section id="id-147081502022">
+        <title>The Most Common Commands of an Operating Systems</title>
+        <para id="id4849157">Every operating system need a system of command for managing files and disks. Commonly used types are :</para>
+        <list id="id4849163" list-type="bulleted">
+          <item>File management : copy, delete, rename, type a file.</item>
+          <item>Directories management: create, remove, copy directories.</item>
+          <item>Disk management : disk copy, disk format.</item>
+        </list>
+      </section>
+    </section>
+    <section id="id-874925163306">
+      <title>Microsoft Windows</title>
+      <section id="id-652053344434">
+        <title>Brief History of Microsoft Windows</title>
+        <para id="id4849203">In 1983 Microsoft announced its development of Windows, a graphical user interface (GUI) for its own operating system. Windows 3.0, released in 1990, was a complete overhaul of the Windows environment with the capability to address memory beyond 640K and a much more powerful user interface.</para>
+        <para id="id4849212">Windows for Workgroups 3.1 was the first integrated Windows and networking package offered by Microsoft.Windows for Workgroups also includes two additional applications: Microsoft Mail, a network mail package, and Schedule+, a workgroup scheduler. </para>
+        <para id="id4849221">Windows 95, released in August of 1995. A 32-bit system providing full pre-emptive multitasking, advanced file systems, threading, networking and more.Also includes a completely revised user interface.</para>
+        <para id="id4849228">Windows 98, released in June of 1998. Integrated Web Browsing gives your desktop a browser-like interface.</para>
+        <para id="id4849234">Windows 2000 provides an impressive platform of Internet, intranet, extranet, and management applications that integrate tightly with Active Directory.</para>
+        <para id="id4849241">In September 2000 Microsoft released Windows Me, short for Millennium Edition, which is aimed at the home user. The Me operating system boasts some enhanced multimedia features, such as an automated video editor and improved Internet plumbing.</para>
+        <para id="id4849249">Windows XP-Microsoft officially launches it on October 25th. 2001.XP is a whole new kind of Windows for consumers. Under the hood, it contains the 32-bit kernel and driver set from Windows NT and Windows 2000. Naturally it has tons of new features that no previous version of Windows has.</para>
+        <para id="id4849258">Windows Vista is a line of graphical operating systems used on personal computers, including home and business desktops, notebook computers, Tablet PCs, and media centersWindows Vista contains hundreds of new and reworked features; some of the most significant include an updated graphical user interface and visual style dubbed Windows Aero, improved searching features, new multimedia creation tools such as Windows DVD Maker, and completely redesigned networking, audio, print, and display sub-systems.</para>
+        <para id="id4849274">Originally developed as a part of its effort to introduce Windows NT to the workstation market, Microsoft released Windows NT 4.0, which features the new Windows 95 interface on top of the Windows NT kernel.</para>
+        <para id="id4849282">Windows NT (New Technology) is a family of operating systems produced by Microsoft, the first version of which was released in July 1993. It was originally designed to be a powerful high-level-language-based, processor-independent, multiprocessing, multiuser operating system with features comparable to Unix. It was intended to complement consumer versions of Windows that were based on MS-DOS. NT was the first fully 32-bit version of Windows, whereas its consumer-oriented counterparts, Windows 3.1x and Windows 9x, were 16-bit/32-bit hybrids. Windows 2000, Windows XP, Windows Server 2003, Windows Vista, Windows Server 2008 (beta), and Windows Home Server are based upon the Windows NT system, although they are not branded as Windows NT.</para>
+        <para id="id4849298">Windows XP is the most popular version of Microsoft Windows. Windows provides a graphical interface, through which you can run programs, manage files, connect to the internet, and perform many other task as well.</para>
+      </section>
+      <section id="id-127448930443">
+        <title>How to start and exit from Windows XP </title>
+        <section id="id-0960554828616">
+          <title>Starting Windows XP </title>
+          <para id="id4849326">Windows XP starts automatically when you turn on your computer. Depending on the way your PC is currently set up, you may be prompted to select a user account when you start up your PC. Windows will display a welcome screen, from which you click your user name and indicate who you are by entering your password.</para>
+          <para id="id4849335">Once Windows XP has initialized, the following screen will appear.</para>
+          <para id="id4849341">Each user has his own ideas about what constitutes attractive screen colors, important shortcut to place on the desktop etc. This combination can be saved as user profile and Windows remembers all the setting and preferences.</para>
+          <figure id="id4849355"><media id="id11141668" alt=""><image src="../../media/graphics4-ae77.png" mime-type="image/png"/></media>
+          </figure>
+        </section>
+        <section id="id-974684962943">
+          <title>Shutting down Windows XP</title>
+          <para id="id4849390">When you finished using your PC, you shouldn’t turn off the power because that could cause later problems in Windows. Instead, you should use the Shut Down command on the Start menu (or press Ctrl+Esc if the Start menu is invisible). This approach ensure that Windows shuts down in an orderly way that closes all opened files and saves your work in any open program.</para>
+          <para id="id4849395">When shutting down, you have two options: Turn Off and Restart. If you are probably to be away from the computer, you will probably want to turn it off. If the computer is acting strangely and you want to start fresh, you will want to refresh.</para>
+          <para id="id4768283">If for some reason, the computer is not ready to shut down , the computer will remind you in dialog boxes.</para>
+        </section>
+      </section>
+      <section id="id-325095781669">
+        <title>Basic Terms and Operations</title>
+        <para id="id4768303">
+          <emphasis>The Icons</emphasis>
+        </para>
+        <para id="id4768310">On the desktop we have icons that allow us to open the corresponding program.</para>
+        <para id="id4768316">For example, by clicking on the icon <media id="id15821438" alt=""><image src="../../media/graphics5-42cf.png" mime-type="image/png" height="36" width="39"/></media> Internet Explorer will open up.</para>
+        <para id="id4768350">
+          <emphasis>The windows  </emphasis>
+        </para>
+        <para id="id4768361">All the windows have the same structure;The window above is the one that opens when you click on My Computer. Its structure is very similar to the others.</para>
+        <figure id="id4768370"><media id="id12175811" alt=""><image src="../../media/ventana.png" mime-type="image/png"/></media>
+        </figure>
+        <para id="id4768394">All the windows are formed by: </para>
+        <list id="id4768398" list-type="bulleted">
+          <item>The title bar contains the name of the program you are working with and in some cases the name of the opened document also appears. In the top right corner we can find the minimize, maximize/restore, and close buttons. </item>
+          <item>The minimize <media id="id21905706" alt=""><image src="../../media/boton_minimizar.png" mime-type="image/png" height="24" width="26"/></media> button shrinks the window it turns it into a button located in the WindowsXP task bar.</item>
+          <item>The maximize <media id="id16072335" alt=""><image src="../../media/boton_maximizar.png" mime-type="image/png" height="24" width="25"/></media> amplifies the size of the window to the whole screen. </item>
+          <item>The restore button <media id="id12193110" alt=""><image src="../../media/boton_restaurar.png" mime-type="image/png" height="25" width="26"/></media> restores the window to its original state.</item>
+          <item>The close button <media id="id11810697" alt=""><image src="../../media/boton_cerrar.png" mime-type="image/png" height="23" width="26"/></media> closes the window. If we have modified the document, we are asked if we want to save the changes before closing.</item>
+        </list>
+        <para id="id4768554">
+          <emphasis>The dialog boxes</emphasis>
+        </para>
+        <para id="id4768562">The dialog box is a small window-like box that opens after an operation has been selected. In it, you select options and settings to tailor the operation before it proceeds.</para>
+        <figure id="id4768573"><media id="id24012036" alt=""><image src="../../media/graphics6-a3c8.png" mime-type="image/png"/></media>
+        </figure>
+        <para id="id4768597"><emphasis>Text box</emphasis> : a control in which a user can enter texts (or numbers).</para>
+        <para id="id4768607"><emphasis>List box</emphasis> : a box that contains a list of selectable items. In some instances, you select an arrow button on the right of the box in order to display the selectable items.</para>
+        <para id="id4768618"><emphasis>Combo box</emphasis> : a combination of a drop-down list or list box and a single-line textbox, allowing the user either to type a value directly into the control or choose from the list of existing options.</para>
+        <para id="id4768630"><emphasis>Check box</emphasis> : a control that permits the user to make single selection or multiple selections from a number of options. Normally, check boxes are shown on the screen as a square box that can contain white space (for false) or a tick mark or X (for true).</para>
+        <para id="id4768644"><emphasis>Command Button</emphasis>: A control used to initiate an action. The most common buttons are :</para>
+        <list id="id4768654" list-type="bulleted">
+          <item>OK</item>
+          <item>Close</item>
+          <item>Cancel</item>
+          <item>Apply</item>
+          <item>Default </item>
+        </list>
+      </section>
+      <section id="id-592154363545">
+        <title>Using a computer mouse</title>
+        <para id="id4768696">Use the mouse to interact with items on your screen as you would use your hands to interact with objects in the physical world. You can move objects, open them, change them, or throw them away, among other things.</para>
+        <para id="id4768704">A mouse has a primary and secondary mouse button. Use the primary mouse button to select and click items, position the cursor in a document, and drag items.</para>
+        <para id="id4768711">Use the secondary mouse button to display a menu of tasks or options that change depending on where you click. This menu is useful for completing tasks quickly. Clicking the secondary mouse button is called right-clicking.</para>
+        <para id="id4768719">The primary mouse button is normally the left button on the mouse. On a trackball, the primary mouse button is normally the lower button.</para>
+        <para id="id4768725">You can reverse the buttons and use the right mouse button as the primary button.Most mice now include a wheel that helps you to scroll through documents more easily. </para>
+        <para id="id4768732">
+          <emphasis>Pointing</emphasis>
+        </para>
+        <para id="id4768740">Pointing at items on the screen is the most basic mouse function. When instructions tell you to point your mouse at something, move your mouse on your desk until the mouse pointer is pointing at the object on the screen you need to select.</para>
+        <para id="id4768749">
+          <emphasis>Clicking</emphasis>
+        </para>
+        <para id="id4768756">After you have pointed your mouse at an item, you can click on the item to select it.</para>
+        <para id="id4768762">
+          <emphasis>Double clicking</emphasis>
+        </para>
+        <para id="id4768770">To double-click an item, point at the item and press your primary button twice quickly without moving the mouse. Double-clicking allows two different actions to be associated with the same mouse button. Often, single-clicking selects (or highlights) an object, while a double-click executes that object, but this is not universal.</para>
+        <para id="id4768780">
+          <emphasis>Drag and drop</emphasis>
+        </para>
+        <para id="id4768788">to move the item from one place to another using the mouse. Point at the item you need to move, and single click on it. Instead of releasing the mouse button after clicking, hold it down, and move your mouse to where you want to move the item. Release the mouse button to drop the item into place.</para>
+        <para id="id4768797">
+          <emphasis>Right clicking</emphasis>
+        </para>
+        <para id="id4768805">Right-clicking an item usually brings up a menu of actions you can take with the item. To right-click, point at an item and press the secondary (right) button on your mouse.</para>
+      </section>
+      <section id="id-331953201632">
+        <title>The Control Panel</title>
+        <para id="id4768820">Control Panel allows users to view and manipulate basic system settings and controls, such as adding hardware, adding and removing software, controlling user accounts, and changing accessibility options.</para>
+        <para id="id4768828">To start the Control Panel, from the Start menu, click on Control Panel. Here is the Control Panel window:</para>
+        <figure id="id4768837"><media id="id20615518" alt=""><image src="../../media/cp.jpg" mime-type="image/jpeg"/></media>
+        </figure>
+        <para id="id4768861">.</para>
+        <section id="id-968139618223">
+          <title>Configuring the Screen </title>
+          <para id="id4768877">Configuring the screen is important because sometimes we spend many hours in front of the screen, so we hope it can be the most comfortable as possible. </para>
+          <para id="id4768884">Open the Display Tool (or right-click somewhere that has no icons on the desktop and select the option Properties from the shortcut menu that is displayed. The Display properties window will appear where we can change the configuration parameters.</para>
+          <figure id="id4768895">
+            <media id="id18705451" alt=""><image src="../../media/ventana_fondo_pantalla.png" mime-type="image/png" height="474" width="421"/></media>
+          </figure>
+          <para id="id4768919">Change the background or wallpaper, </para>
+          <para id="id4768924">Click on the tab labeled Desktop and choose a new background or wallpaper from the list that appears at the bottom left corner. It is also possible to have another image that does not appear on the list as background. Click on Browse... and look for the image you want as long as the format is compatible. For example .bmp, .jpg, .gif.Once the image and type of view have been selected Click OK.</para>
+        </section>
+        <section id="id-269298325245">
+          <title>The screensaver </title>
+          <para id="id4768948">Sometimes the computer remains inactive a few minutes. It is recommended to have a screensaver to avoid having a still image on the screen too long because this can damage the monitor.</para>
+          <para id="id4768956">From the list, choose the screensaver you like best; a small preview is shown above.</para>
+          <para id="id4768962">You can modify the time it takes for the screensaver to appear by adjusting the time on Wait.</para>
+        </section>
+        <section id="id-135637183781">
+          <title>Configuring the Mouse</title>
+          <para id="id4768976">The mouse is a tool that is used constantly and it is recommendable to have it set up to our needs as well as possible. In the following page we show you how to set it up to your own needs.</para>
+          <para id="id4768984">
+            <emphasis>The Buttons  </emphasis>
+          </para>
+          <para id="id4768994">On the Buttons tab you can adjust the set up of the mouse to suit your needs.If you are left handed. WindowsXP allows you to change the configuration of the buttons so that the right button realizes these functions.</para>
+          <para id="id4769002">We can also adjust the Double-click speed for a slower or a faster double-click.</para>
+          <para id="id4769007">
+            <emphasis>The pointer  </emphasis>
+          </para>
+          <para id="id4769017">On the Pointers tab we can choose the type of pointer the mouse is to have when it moves, when it is busy, when it is used, etc.</para>
+        </section>
+        <section id="id-0176035631979">
+          <title>Adding or removing Programs </title>
+          <list id="id4769031" list-type="bulleted">
+            <item>Click on the Start button and choose Control Panel </item>
+            <item>Click on Add or Remove Programs option, a window will display with the three basic options shown on the left side of the picture as it appears below. Then click on Add New Programs.The window will appear where we can change the configuration parameters.</item>
+            <item>Follow the instruction </item>
+            <item>The Add or Remove Programs window will appear where we can add, change or remove programs following the instructions..</item>
+          </list>
+          <figure id="id4769067">
+            <media id="id10096454" alt=""><image src="../../media/agregar_programas.png" mime-type="image/png" height="419" width="548"/></media>
+          </figure>
+        </section>
+        <section id="id-370726774736">
+          <title>Changing the Regional and Language Options</title>
+          <para id="id4769099">You can use the Regional and Language Options tool in Control Panel to customize the way Windows handles dates, times, currency values, and numbers. </para>
+          <para id="id4769106">To open the Regional and Language Options tool</para>
+          <list id="id4769111" list-type="bulleted">
+            <item>Click Start, and then click Control Panel.</item>
+            <item>Click Date, Time, Language, and Regional Options, and then click Regional and Language Options.</item>
+            <item>To change one or more of the individual settings, click Customize.</item>
+          </list>
+          <figure id="id4769137">
+            <media id="id20605361" alt=""><image src="../../media/graphics7-41a0.png" mime-type="image/png" height="506" width="418"/></media>
+          </figure>
+          <para id="id4769161">To Change the Date In the Customize Regional Options dialog box, click the Date tab to specify any changes you want to make to the short date and the long date.</para>
+          <para id="id4769168">To Change the Time In the Customize Regional Options dialog box, click the Time tab to specify any changes you want to make.</para>
+          <para id="id4769174">To Change the Currency Value Display</para>
+          <para id="id4769179">In the Customize Regional Options dialog box, click the Currency tab to specify any changes you want to make. You can change the currency symbol, the formats used for positive or negative amounts, and the punctuation marks.</para>
+          <para id="id4769187">To Change the Number Display</para>
+          <para id="id4769191">In the Customize Regional Options dialog box, click the Numbers tab to specify any changes you want to make. You can change the decimal symbol and list separator, the format used for negative numbers and leading zeros, and the measurement system (U.S. or metric).</para>
+        </section>
+        <section id="id-499553390733">
+          <title>Add a printer</title>
+          <list id="id4769208" list-type="bulleted">
+            <item>Click on Printer and Faxes </item>
+            <item>Click on Add a Printer, follow the instruction of the Add Printer Wizard</item>
+          </list>
+        </section>
+        <section id="id-836737071022">
+          <title>Delete a printer</title>
+          <list id="id4769234" list-type="bulleted">
+            <item>Click on Printer and Faxes </item>
+            <item>Click on the printer you wish to delete.</item>
+            <item>Press your Delete key to delete the printer.</item>
+          </list>
+        </section>
+      </section>
+      <section id="id-355349877872">
+        <title>The Windows Explorer </title>
+        <para id="id4769267">The Explorer is an indispensable tool in an operating system, since with it we can organize and control the files and folders of the different storage systems at our disposal such as the hard drive, disk drive, etc.</para>
+        <para id="id4769275">The Windows Explorer is also known as the File Manager. Through it we can delete, see, copy, or move files and folders.</para>
+        <section id="id-0456854690002">
+          <title>Starting the Explorer </title>
+          <para id="id4769290">The quickest way to start up the Explorer is through the icon <media id="id14229046" alt=""><image src="../../media/boton_rapido_explorador.png" mime-type="image/png" height="24" width="27"/></media>on the task bar or desktop. If you don't already have the icon created, you can open the Explorer as follows:</para>
+          <list id="id4769327" list-type="bulleted">
+            <item>Click on Start  Select All programs  Select Accessories  Select Windows Explorer </item>
+            <item>Right click on Start button and select Explore</item>
+            <item>From the Start button, choose My documents, My images or My music; the difference is that in these cases we will go directly to those folders.</item>
+          </list>
+        </section>
+        <section id="id-35187903848">
+          <title>The Explorer’s window</title>
+          <para id="id4769379">The explorer consists basically of two sections. On the left side there is the directory tree, which is the list of units and folders that we have. Only units and folders appear, no files. On this image we can see a few folders such as My Documents, aulaclic, ... the My Computer icon, My Network Places and the Recycle Bin. </para>
+          <figure id="id4769392">
+            <media id="id18788332" alt=""><image src="../../media/ventana_explorador.png" mime-type="image/png" height="495" width="594"/></media>
+          </figure>
+          <para id="id4769416">On the right side there is another section, which will show the content of the folder that we have opened on the left section. This section shows its folders and files. In this case the files that are contained in the folder WinXP appear. Depending on the type of view that we have activated we will see different type of information regarding the files. </para>
+          <para id="id4769426">Next we will explain the different bars that make up this window.</para>
+          <figure id="id4769434">
+            <media id="id21232245" alt=""><image src="../../media/b_herramientas_explorador.png" mime-type="image/png" height="43" width="392"/></media>
+          </figure>
+          <para id="id4769459">The standard bar contains the buttons for the most used operations.</para>
+          <para id="id4769468">If this bar is not visible select from the menu View, the option Toolbars, next select the option Standard buttons.</para>
+          <para id="id4769474">The Back button<media id="id11011235" alt=""><image src="../../media/b_herramientas_atras.png" mime-type="image/png" height="41" width="82"/></media> will allow us to go to the last page that we have seen. The button next to it, when activated, allows us to move one page forward.</para>
+          <para id="id4769509">The up button<media id="id21341748" alt=""><image src="../../media/b_herramientas_subir.png" mime-type="image/png" height="29" width="27"/></media> will allow us to go up one level, which means going back to the folder that contains the folder we are working with. </para>
+          <para id="id4769546">The search button<media id="id20639083" alt=""><image src="../../media/b_herramientas_buscar.png" mime-type="image/png" height="32" width="33"/></media> displays a window where we can search for the file we want. </para>
+          <para id="id4769580">The folders button <media id="id21392341" alt=""><image src="../../media/b_herramientas_carpetas.png" mime-type="image/png" height="29" width="34"/></media>shows the folder's structure on the left side of the screen, or it can display an area with the most frequent tasks, depending on the file we have selected. In this area we can find, among others, the following buttons: </para>
+          <para id="id4769617">The last button<media id="id14934495" alt=""><image src="../../media/b_herramientas_vistas.png" mime-type="image/png" height="33" width="52"/></media> allows us to change the views on the folders (view details, Thumbnails,...) We'll explain this in more detailed on the next page.</para>
+          <figure id="id4769656"><media id="id11467178" alt=""><image src="../../media/b_direcciones_explorador.png" mime-type="image/png"/></media>
+          </figure>
+          <para id="id4769680">The Address Bar is well known for Internet because it shows the address of the web we are viewing. With Windows Explorer it functions the same way, but it shows the name of the folder we are working with.</para>
+          <para id="id3981687">If we click on the black arrow it will show the structure with our computer's drives.</para>
+          <para id="id3981693">If we write a name in the address bar and we click on the green arrow, it will search for this name. </para>
+          <para id="id3981699">Windows explorer allows us to see the folder's information in different ways or views to facilitate specific searching. </para>
+          <para id="id3981705">Go to the folder you wish to see: </para>
+          <para id="id3981709">If you click on the arrow of the button <media id="id6038580" alt=""><image src="../../media/b_herramientas_vistas.png" mime-type="image/png" height="33" width="52"/></media>a menu with the following options will appear:</para>
+          <figure id="id3981746">
+            <media id="id17509892" alt=""><image src="../../media/b_desple_vistas.png" mime-type="image/png" height="153" width="103"/></media>
+          </figure>
+          <para id="id3981770"><emphasis>Tiles</emphasis>. The files and folders are shown with large images with the name, file type and size in KB; if it is a picture file the size is shown in pixels. The elements are organized one next to the other from left to right.</para>
+          <para id="id3981784"><emphasis>Icons</emphasis>. The files are represented with an icon smaller than a tile. The only information shown is the name of the file. This type of icon is used when the selected folder has an average quantity of elements. </para>
+          <para id="id3981797"><emphasis>List</emphasis>. Shows small icons, one below the other, so it's easier to search by name. On this view, only the name of the file or folder appears.</para>
+          <para id="id3981817"><emphasis>Details</emphasis>. Icons are shown one below the other, with some of their properties. This type of display is used when we want to find an element with certain characteristics, such as size, file type, date of modification, etc. </para>
+          <para id="id3981830">With this type of view we can organize the elements by size, modification date, name, etc.</para>
+          <para id="id3981836">For example, to organize by the modification date it is enough to click on the box Date Modified, and it will arrange the files by date from greater to lesser. If we click on it again it will arrange it from lesser to greater. The older dates are considered lesser.</para>
+          <para id="id3981845">On the views List or Details the elements appear one below the other and in the case of deleting or adding, the elements will reorganize themselves.</para>
+          <para id="id3981852"><emphasis>Thumbnails</emphasis> . A small representation of the content will appear with the format of the image, such as jpg., jpeg., bmp., gif., etc.</para>
+          <para id="id3981867"><emphasis>Filmstrip</emphasis>. This view is only available for images. On the bottom part a strip will appear with the images in thumbnail format and on the top we will see a larger representation of the image selected on the bottom.</para>
+        </section>
+        <section id="id-321309944985">
+          <title>Opening Files</title>
+          <para id="id3981893">Choose one of the following ways: </para>
+          <list id="id3981897" list-type="bulleted">
+            <item>Double click on the file’s icon. </item>
+            <item>Right click on the file’s icon. Select Open</item>
+            <item>Select the file and press Enter.</item>
+          </list>
+        </section>
+        <section id="id-858939142562">
+          <title>Selecting Files</title>
+          <para id="id3981928">If you wish to select a single file or folder you simply need to click on it. This way any operation you perform will only apply to the selected file or folder.</para>
+          <para id="id3981935">If you wish to realize an operation on several files or folders, Windows Explorer will allow you to select several elements at the same time.</para>
+          <para id="id3981941">
+            <emphasis>To select consecutive elements</emphasis>
+          </para>
+          <para id="id3981953">Click on the first element and then click on the last element while keeping Shift key pressed. This can also be done with the mouse. To do this, click on the left of the first element (but not on it) and, without letting go, drag it. A frame should appear that shows the area that the frame encompasses. Continue dragging until all the desired elements are within the frame, then let go of the left mouse button.. </para>
+          <para id="id3981964">To select several elements that are not consecutive</para>
+          <para id="id3981970">Select the first element and continue to select the desired elements while keeping the Ctrl key pressed.</para>
+        </section>
+        <section id="id-833706391043">
+          <title>Creating and Deleting Folders </title>
+          <para id="id3981985">To create a folder we need to place the pointer where we want the folder to be.Open the folders that we have by clicking on the + located to the left of the folders.</para>
+          <para id="id3981993">If we click on the plus sign of a particular folder it will display and show all of the folders contained in it and the plus sign will become a minus sign -; this will take care of retracting the folders displayed, or hide the content of the folder selected.</para>
+          <para id="id3982002">Once we have the folder that we want open we will select it by clicking on the appropriate folder .Open the menu File, select the option New and then select the option Folder.</para>
+          <para id="id3982009">Now we can view on the bottom right window a new folder that has the name New Folder. This is the name that Windows gives new folders by default. In the event that it finds another folder with that same name, it will subsequently name the new folders New Folder(1), New Folder(2), etc...</para>
+          <para id="id3982018">The name of the folder can be changed</para>
+        </section>
+        <section id="id-613316927135">
+          <title>Deleting folders</title>
+          <para id="id3982031">To Delete a folder, first place the pointer on it.</para>
+          <para id="id3982036">Once the folder has been selected go to the Standard bar and click on or you can use Delete. </para>
+          <para id="id3982044">When we delete a folder or file, by default Windows will move it to the Recycle Bin. The settings can be changed so that it deletes it completely. </para>
+          <para id="id3982051">The Recycle Bin is nothing more than a space reserved on the hard disk so that in case of having deleted any element it would be possible for us to retrieve it.</para>
+          <para id="id3982058">Deleting Files </para>
+          <para id="id3982065">To delete a file we follow the same steps to delete a folder, but instead of selecting a folder select the file you wish to delete.</para>
+        </section>
+        <section id="id-823622609391">
+          <title>Copying Files or Folders</title>
+          <para id="id3982080">Select the element to be copied.Click on Copy and it will open a dialog box titled Copy Items. If we do not have this button on the tool bar, we can go to the Edit menu and select Copy to Folder... First select the item to copy</para>
+          <para id="id3982091">Search for the folder to which we will copy the selected element. It works like Windows explorer. If we click on the + that appears on the left, the contents of the folder will be displayed.</para>
+          <para id="id3982098">Once the folder has been selected, click on Copy.</para>
+          <para id="id3982103">In the case of not having the folder created to which we want to copy to, click Make new folder, write the name of the new folder and Click OK.</para>
+        </section>
+        <section id="id-529674446242">
+          <title>Moving Files or Folders</title>
+          <para id="id3982119">Moving a file or folder means copying the element to the desired location and then deleting its original location. The following steps are very similar.</para>
+          <list id="id3982126" list-type="bulleted">
+            <item>Select the file or folder you want to move.</item>
+          </list>
+          <list id="id3982136" list-type="bulleted">
+            <item>Click on , or Edit --&gt; Move to Folder which will open a new window titled Move Items.</item>
+          </list>
+          <list id="id3982149" list-type="bulleted">
+            <item>Search for the folder where the element are to be moved to.</item>
+          </list>
+          <list id="id3982158" list-type="bulleted">
+            <item>Once the folder is selected, click Move.</item>
+          </list>
+          <list id="id3982168" list-type="bulleted">
+            <item>In the case of not having the folder created to which we want to move the information to, simply click Make New Folder.</item>
+          </list>
+          <list id="id3982178" list-type="bulleted">
+            <item>Write the name of the new folder.Click OK.</item>
+          </list>
+          <para id="id3982188">When moving or copying an item, its name can coincide with the name of a file or folder that is in the destination folder. In this case Windows will ask if we want to substitute the existing file or folder by the new one. When folder is moved or copied, its entire content is also moved or copied.</para>
+        </section>
+        <section id="id-629826305102">
+          <title>Changing the name of a File or Folder </title>
+          <list id="id3982208" list-type="bulleted">
+            <item>Select the file or folder that you want to change the name of. </item>
+          </list>
+          <list id="id3982217" list-type="bulleted">
+            <item>With the right mouse button click on it.</item>
+          </list>
+          <list id="id3982227" list-type="bulleted">
+            <item>Select Rename from the shortcut menu, then the name of the file or folder will be highlighted and with the pointer blinking inside the name box.</item>
+          </list>
+          <list id="id3982238" list-type="bulleted">
+            <item>Write the new name.</item>
+          </list>
+          <list id="id3982247" list-type="bulleted">
+            <item>Click Enter or click outside the file or folder so that the changes take place.</item>
+          </list>
+          <list id="id3982257" list-type="bulleted">
+            <item>You can also do this with Rename option from File menu.</item>
+          </list>
+        </section>
+        <section id="id-364505987996">
+          <title>Files and Folders Properties </title>
+          <para id="id3982276">Both files and folders have their own characteristics, for example size, location, date of creation, attributes, etc.</para>
+          <para id="id3982282">To know the characteristics of a particular file or folder we need to:</para>
+          <list id="id3982288" list-type="bulleted">
+            <item>select it and choose Properties option from File menu,or,</item>
+            <item>click on it with the right mouse button and select the option Properties from the menu that is displayed.</item>
+          </list>
+          <para id="id3982304">Click on the OK button to accept or the Cancel button to discard all changes.</para>
+        </section>
+      </section>
+      <section id="id-618575027864">
+        <title>Run a program on Windows</title>
+        <para id="id3982320">To run a program on Windows, you would do the following steps:</para>
+        <list id="id3982326" list-type="bulleted">
+          <item>Click on the Start menu</item>
+          <item>Click on the Run option</item>
+          <item>Type the name and the directory of the file in the Open field (or click on Browse button if you do not know its location)</item>
+          <item>Click on the OK button</item>
+        </list>
+      </section>
+      <section id="id-862292037228">
+        <title>The Command Prompt</title>
+        <para id="id3982362">Before Windows was created, the most common operating system that runs on PC was DOS. Though Windows does not run on DOS, they do have something called the command prompt, which has a similar appearance to DOS.</para>
+        <figure id="id3982376">
+          <media id="id10182148" alt=""><image src="../../media/cmdprompt.png" mime-type="image/png" height="303" width="599"/></media>
+        </figure>
+        <para id="id3982400">To use the command prompt you would type in the commands and instructions you want and press enter.</para>
+      </section>
+      <section id="id-372271953728">
+        <title>The Recycle Bin</title>
+        <para id="id3982414">The recycle bin provides a safety net when deleting files and folders. When you delete any of these items from your hard disk, Windows places it in the Recycle Bin. Items deleted from a floppy disk or a network drive are permanently deleted and are not sent to the Recycle Bin.</para>
+        <para id="id3982423">Items in the Recycle Bin remain there until you decide to permanently delete them from your computer.</para>
+        <para id="id3982429">To delete or restore files in the Recycle Bin </para>
+        <para id="id3982434">On the desktop, double-click Recycle Bin.Do one of the following: </para>
+        <list id="id3982441" list-type="bulleted">
+          <item>To restore an item, right-click it, and then click Restore. </item>
+          <item>To restore all of the items, on the Edit menu, click Select All, and then on the File menu, click Restore. </item>
+          <item>To delete an item, right-click it, and then click Delete. </item>
+        </list>
+      </section>
+    </section>
+  </content>
+</document>

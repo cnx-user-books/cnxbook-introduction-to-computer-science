@@ -1,0 +1,584 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Introduction to C</title>
+  <metadata>
+  <md:content-id>m27752</md:content-id><md:title>Introduction to C</md:title>
+  <md:abstract/>
+  <md:uuid>d4fcfb90-0fdf-444f-b0e7-c7bc5e682cf6</md:uuid>
+</metadata>
+
+<content>
+    <section id="id-649141097805">
+      <title>History of the C Programming Language</title>
+      <para id="id18971891">C is a general-purpose programming language with features economy of expression, modern flow control and data structures, and a rich set of operators. </para>
+      <para id="id18467423">C was developed at Bell Laboratories in 1972 by Dennis Ritchie. Many of its principles and ideas were taken from the earlier language B and B's earlier ancestors BCPL and CPL. CPL ( Combined Programming Language ) was developed with the purpose of creating a language that was capable of both high level, machine independent programming and would still allow the programmer to control the behavior of individual bits of information.</para>
+      <para id="id18970153">There are some of C's characteristics that define the language and also have lead to its popularity as a programming language. Naturally we will be studying many of these aspects throughout the course. </para>
+      <list id="id19124642" list-type="bulleted">
+        <item>Small size </item>
+        <item>Extensive use of function calls </item>
+        <item>Loose typing -- unlike PASCAL </item>
+        <item>Structured language </item>
+        <item>Low level (BitWise) programming readily available </item>
+        <item>Pointer implementation - extensive use of pointers for memory, array, structures and functions. </item>
+      </list>
+      <para id="id17632719">C has now become a widely used professional language for various reasons. </para>
+      <list id="id18686284" list-type="bulleted">
+        <item>It has high-level constructs. </item>
+        <item>It can handle low-level activities. </item>
+        <item>It produces efficient programs. </item>
+        <item>It can be compiled on a variety of computers. </item>
+      </list>
+      <para id="id19173569">Its main drawback is that it has poor error detection which can make it off putting to the beginner. However diligence in this matter can pay off handsomely since having learned the rules of C we can break them. Not many languages allow this. This if done properly and carefully leads to the power of C programming.</para>
+      <para id="id18784580">C's power and flexibility soon became apparent. Because of this, the Unix operating system which was originally written in assembly language, was almost immediately re-written in C ( only the assembly language code needed to "bootstrap" the C code was kept ). During the rest of the 1970's, C spread throughout many colleges and universities because of it's close ties to Unix and the availability of C compilers. Soon, many different organizations began using their own versions of C causing compatibility problems. In response to this in 1983, the American National Standards Institute ( ANSI ) formed a committee to establish a standard definition of C which became known as ANSI Standard C. Today C is in widespread use with a rich standard library of functions.</para>
+    </section>
+    <section id="id-790150080431">
+      <title>The Integrated Development Environment of C++ 3.0</title>
+      <para id="id19036848">
+        <emphasis>Start Turbo C++ IDE</emphasis>
+      </para>
+      <para id="id18675642">Change to directory C:\TC\BIN</para>
+      <para id="id18559352">Run TC.EXE</para>
+      <para id="id18549212">The screen should look like <link target-id="id18603133"/></para>
+      <figure id="id18603133"><media id="id4971964" alt=""><image src="../../media/graphics1-ca9d.png" mime-type="image/png" height="379" width="625"/></media>
+      <caption>C++ IDE</caption></figure>
+      
+      <para id="id18253398">Select the File menu to create a new file or open an existing file to edit.</para>
+      <figure id="id18335672">
+        <media id="id1166740395572" alt=""><image src="../../media/graphics2-c9ae.png" mime-type="image/png" height="213" width="200"/></media>
+      </figure>
+      <para id="id18778424">Choose a file to open. This screen allow you to change to your directory.</para>
+      <figure id="id11698530"><media id="id8919196" alt=""><image src="../../media/graphics3-6626.png" mime-type="image/png"/></media>
+      <caption>Change directory dialog box</caption></figure>
+      
+      <para id="id18686312">
+        <emphasis>Compile and run a program</emphasis>
+      </para>
+      <para id="id17898177">To compile a program , use F9 or the compile menu </para>
+      <figure id="id18744804"><media id="id1166740267293" alt=""><image src="../../media/graphics4-a256.png" mime-type="image/png"/></media>
+      </figure>
+      <para id="id10605915">To run a program, use the run menu or press Ctrl + F9</para>
+      <para id="id18138798">If your program have no syntax error, the user screen look like in <link target-id="id18443003"/></para>
+      <figure id="id18443003"><media id="id1166731544547" alt=""><image src="../../media/graphics5-0716.png" mime-type="image/png"/></media>
+      <caption>The user screen of C++ 3.0</caption></figure>
+      
+      <para id="id18760461">To exit from IDE, select the file menu, choose quit or press Alt+X</para>
+    </section>
+    <section id="id-999176541876">
+      <title>Basic Components of C Programs</title>
+      <section id="id-873716871966">
+        <title>Symbols</title>
+        <para id="id18068290">A C program consists of the following characters: </para>
+        <para id="id18029334">26 capital letter of English alphabet : A, B, C, D, . . . . X, Y, Z</para>
+        <para id="id19157825">26 small letter of English alphabet : a, b, c, d, . . . .x, y, z</para>
+        <para id="id18817364">10 digits : 0, 1, . . . 9</para>
+        <para id="id18817368">Math operators : + - * / = &lt; &gt;</para>
+        <para id="id18408989">Other symbols : |, \, # , %, ~, . . . .</para>
+      </section>
+      <section id="id-175481537296">
+        <title>Key Words</title>
+        <para id="id19074312">A keyword is an identifier which indicate a specific command. Keywords are also considered reserved words. You shouldn’t use them for any other purpose in a C program.</para>
+        <para id="id16115895">The most important keywords of Turbo C are</para>
+        <table id="id19087804" summary="">
+          <tgroup cols="8">
+            <colspec colnum="1" colname="c1"/>
+            <colspec colnum="2" colname="c2"/>
+            <colspec colnum="3" colname="c3"/>
+            <colspec colnum="4" colname="c4"/>
+            <colspec colnum="5" colname="c5"/>
+            <colspec colnum="6" colname="c6"/>
+            <colspec colnum="7" colname="c7"/>
+            <colspec colnum="8" colname="c8"/>
+            <tbody>
+              <row>
+                <entry>asm</entry>
+                <entry>auto</entry>
+                <entry>break</entry>
+                <entry>case</entry>
+                <entry>char</entry>
+                <entry>const</entry>
+                <entry>continue</entry>
+                <entry>default</entry>
+              </row>
+              <row>
+                <entry>do</entry>
+                <entry>double</entry>
+                <entry>else</entry>
+                <entry>enum</entry>
+                <entry>extern</entry>
+                <entry>float</entry>
+                <entry>for</entry>
+                <entry>goto </entry>
+              </row>
+              <row>
+                <entry>if</entry>
+                <entry>int</entry>
+                <entry>long</entry>
+                <entry>register</entry>
+                <entry>return</entry>
+                <entry>short</entry>
+                <entry>signed</entry>
+                <entry>sizeof</entry>
+              </row>
+              <row>
+                <entry>static</entry>
+                <entry>struct</entry>
+                <entry>switch</entry>
+                <entry>typedef</entry>
+                <entry>union</entry>
+                <entry>unsigned</entry>
+                <entry>void</entry>
+                <entry>volatile</entry>
+              </row>
+              <row>
+                <entry>while</entry>
+                <entry/>
+                <entry/>
+                <entry/>
+                <entry/>
+                <entry/>
+                <entry/>
+                <entry/>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+        
+      </section>
+      <section id="id-402638816824">
+        <title>Identifiers</title>
+        <para id="id19105264">Identifiers or names refer to a variety of things : functions; tag of structures, union and enumerations; member of structures or unions; enumeration constants; typedef names and objects. There are some restrictions on the names . </para>
+        <para id="id18840995">Names are made up of letters and digit; The first character must be a letter. The underscore “_” count as a letter; sometime it is useful for improving the readability of long variable names. For example, name <emphasis>unit_price</emphasis> is easier to understand than <emphasis>unitprice</emphasis>. However, don’t begin variable names with underscore, since library routines often use such names.</para>
+        <para id="id18466475">Upper and lower case are distinct, so x and X are different names. Traditional C practice use lower case for variable names, and all upper case for symbolic constant. </para>
+        <para id="id16935765">Only the first 31 characters are significant.</para>
+        <para id="id18279813">Keywords are reserved: you can’t use them as variable names. </para>
+        <para id="id18555273"><emphasis>Example</emphasis> The following names are valid</para>
+        <para id="id18960517">i, x, b55, max_val </para>
+        <para id="id18631923">and the following names are invalid</para>
+        <table id="id18661352" summary="">
+          <tgroup cols="2">
+            <colspec colnum="1" colname="c1"/>
+            <colspec colnum="2" colname="c2"/>
+            <tbody>
+              <row>
+                <entry>12w </entry>
+                <entry>the first character is a digit</entry>
+              </row>
+              <row>
+                <entry>income tax </entry>
+                <entry>use invalid character “ “</entry>
+              </row>
+              <row>
+                <entry>char</entry>
+                <entry>char is a keyword</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+        <para id="id18420211">It is wise to choose variable names that are related to the purpose of the variable, for example, count_of_girls, MAXWORD. </para>
+      </section>
+      <section id="id-897461408165">
+        <title>Data Types</title>
+        <para id="id18661491">Data is valuable resources of computers. Data may comprise numbers, text, images . . . </para>
+        <para id="id18364239">They belong to different data types.</para>
+        <para id="id17139005">In programming languages, a data type is a set of values and the operations on those values. </para>
+        <para id="id17701762">For example, int type is the set of 32-bit integers within the range -2,147,483,648 to 2,147,483,647 together with the operations described in the following table.</para>
+        <table id="id18956837" summary="">
+          <tgroup cols="2">
+            <colspec colnum="1" colname="c1"/>
+            <colspec colnum="2" colname="c2"/>
+            <tbody>
+              <row>
+                <entry>Operations</entry>
+                <entry>Symbol</entry>
+              </row>
+              <row>
+                <entry>Opposite</entry>
+                <entry>-</entry>
+              </row>
+              <row>
+                <entry>Addition</entry>
+                <entry>+</entry>
+              </row>
+              <row>
+                <entry>Subtraction</entry>
+                <entry>-</entry>
+              </row>
+              <row>
+                <entry>Multiplication</entry>
+                <entry>*</entry>
+              </row>
+              <row>
+                <entry>Division</entry>
+                <entry>/</entry>
+              </row>
+              <row>
+                <entry>Modulus</entry>
+                <entry>%</entry>
+              </row>
+              <row>
+                <entry>Equal to</entry>
+                <entry>= =</entry>
+              </row>
+              <row>
+                <entry>Greater than</entry>
+                <entry>&gt;</entry>
+              </row>
+              <row>
+                <entry>Less than</entry>
+                <entry>&lt;</entry>
+              </row>
+              <row>
+                <entry>…</entry>
+                <entry/>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+        <para id="id19158120">A data type can also be thought of as a constraint placed upon the interpretation of data in a type system in computer programming. </para>
+        <para id="id18833882">Common types of data in programming languages include primitive types (such as integers, floating point numbers or characters), tuples, records, algebraic data types, abstract data types, reference types, classes and function types. A data type describes representation, interpretation and structure of values manipulated by algorithms or objects stored in computer memory or other storage device. The type system uses data type information to check correctness of computer programs that access or manipulate the</para>
+        <para id="id18885605">data.</para>
+      </section>
+      <section id="id-0201729353586">
+        <title>Constants</title>
+        <para id="id18700589">In general, a constant is a specific quantity that does not or cannot change or vary. A constant’s value is fixed at compile-time and cannot change during program execution. C supports three types of constants : numeric, character, string.</para>
+        <para id="id18686289">Numeric constants of C are usually just the written version of numbers. For example 1, 0, 56.78, 12.3e-4. We can specify our constant in octal or hexadecimal, or force them to be treated as long integers.</para>
+        <list id="id19021145" list-type="bulleted">
+          <item>Octal constants are written with a leading zero : -0.15</item>
+          <item>Hexadecimal constants are written with a leading 0x : 0x1ae</item>
+          <item>Long constants are written with a trailing L : 890L or 890l</item>
+        </list>
+        <para id="id17306391">Character constants are usually just the character enclosed in single quotes; ‘a’, ‘b’, ‘c’. Some characters can’t be represented in this way, so we use a 2 character sequence (escape sequence).</para>
+        <table id="id17710406" summary="">
+          <tgroup cols="2">
+            <colspec colnum="1" colname="c1"/>
+            <colspec colnum="2" colname="c2"/>
+            <tbody>
+              <row>
+                <entry>‘\n’</entry>
+                <entry>newline</entry>
+              </row>
+              <row>
+                <entry>‘\t’</entry>
+                <entry>horizontal tab</entry>
+              </row>
+              <row>
+                <entry>‘\v’</entry>
+                <entry>vertical tab</entry>
+              </row>
+              <row>
+                <entry>‘\b’</entry>
+                <entry>backspace</entry>
+              </row>
+              <row>
+                <entry>‘\r’</entry>
+                <entry>carriage return</entry>
+              </row>
+              <row>
+                <entry>‘\\’</entry>
+                <entry>backslash</entry>
+              </row>
+              <row>
+                <entry>‘\’’</entry>
+                <entry>single quote</entry>
+              </row>
+              <row>
+                <entry>‘\”’</entry>
+                <entry>double quotes</entry>
+              </row>
+              <row>
+                <entry>‘\0’</entry>
+                <entry>null (used automatically to terminate character strings)</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+        <para id="id18249234">Character constants participate in numeric operations just as any other integers (they are represented by their order in the ASCII character set), although they are most often used in comparison with other characters.</para>
+        <para id="id18580926">Character constants are rarely used, since string constants are more convenient. A string constant is a sequence of characters surrounded by double quotes e.g. “Brian and Dennis”.</para>
+        <para id="id19088169">A character is a different type to a single character string. This is important.</para>
+        <para id="id18584690">It is helpful to assign a descriptive name to a value that does not change later in the program. That is the value associated with the name is constant rather than variable, and thus such a name is referred to as symbolic constant or simply a constant.</para>
+      </section>
+      <section id="id-759236197964">
+        <title>Variables</title>
+        <para id="id19087217">Variables are the names that refer to sections of memory into which data can be stored. </para>
+        <para id="id18633261">Let’s imagine that memory is a series of different size boxes. The box size is memory storage area required in bytes.In order to use a box to store data, the box must be given a name, this process is known as <emphasis>declaration</emphasis>. It helps if you give a box a meaningful name that relates to the type of information and it is easier to find the data.The boxes must be of the correct size for the data type you are going to put into it. An integer number such as 2 requires a smaller box than a floating point number as 123e12.</para>
+        <para id="id18830208">Data is placed into a box by assigning the data to the box. By using the name of the box you can retrieve the box contents, some kind of data.</para>
+        <para id="id18260519">Variable named by an identifier. The conventions of identifiers were shown in 1.3.3.</para>
+        <para id="id18881675">Names should be meaningful or descriptive, for example, studentAge or student_age is more meaningful than age, and much more meaniful than a single letter such as a.</para>
+      </section>
+      <section id="id-609397726794">
+        <title>Operators</title>
+        <para id="id18902072">Programming languages have a set of operators that perform arithmetical operations , and others such as Boolean operations on truth values, and string operators manipulating strings of text. Computers are mathematical devices , but compilers and interpreters require a full syntactic theory of all operation in order to parse formulae involving any combination correctly. </para>
+      </section>
+      <section id="id-549307497425">
+        <title>Expressions</title>
+        <para id="id18690058">An expression in a programming language is a combination of values, functions, etc. interpreted according to the particular rules of precedence and association for a particular programming language, which computes and returns another value.</para>
+        <para id="id16871084">C expressions are arranged in the following groups based on the operators they contain and how you use them: </para>
+        <list id="id7440427" list-type="bulleted">
+          <item>Arithmetic expression</item>
+          <item>Conditional expression</item>
+          <item>Assignment expression</item>
+          <item>Comma expression</item>
+          <item>lvalue</item>
+          <item>Constant expression</item>
+        </list>
+        <para id="id18860754">Expressions are used as </para>
+        <list id="id18860758" list-type="bulleted">
+          <item>Right hands of assignment statements</item>
+          <item>Actual parameters of functions</item>
+          <item>Conditions of if statements</item>
+          <item>Indexes of while statements</item>
+          <item>Operands of other expressions . . . .</item>
+        </list>
+      </section>
+      <section id="id-150508129173">
+        <title>Functions</title>
+        <para id="id17156183">A subprogram (also known as a procedure or subroutine) is nothing more than a collection of instructions forming a program unit written independently of the main program yet associated with it through a transfer/return process. Control is passed to the subprogram at the time its services are required, and then control is returned to the main program after the subprogram has finished.</para>
+        <para id="id18702063">The syntax used to represent the request of subprogram varies among the different language. The techniques used to describe a subprogram also varies from language to language. Many systems allow such program units to be written in languages other than that of the main program. </para>
+        <para id="id18914982">In most procedural programming languages, a subprogram is implemented as though it were completely separate entity with its own data and algorithm so that an item of data in either the main program or the subprogram is not automatically accessible from within the other. With this arrangement, any transfer of data between the two program parts must be specified by the programmer. This is usually done by listing the items called parameters to be transferred in the same syntactic structure used to request the subprogram’s execution. </para>
+        <para id="id17620116">The names used for the parameters within the subprogram can be thought of as merely standing in for the actual data values that are supplied when the subprogram is requested. As a result, you often hear them called formal parameters, whereas the data values supplied from the main program are refereed to actual parameters. </para>
+        <figure id="id18361305">
+          <media id="id2246133" alt=""><image src="../../media/graphics6-ce7c.png" mime-type="image/png" height="251" width="426"/></media>
+        </figure>
+        <para id="id18758595">C only accept one kind of subprogram, function. A function is a sub program in which input values are transferred through a parameter list. However, information is returned from a function to the main program in the form of the “value of the function”. That is the value returned by a function is associated with the name of the function in a manner similar to the association between a value and a variable name. The difference is that the value associated with a function name is computed (according to the function’s definition) each time it is required, whereas when a variable ‘s value is required, it is merely retrieve from memory.</para>
+        <para id="id18411747">C also provide a rich collection of built-in functions.There are more than twenty functions declared in &lt;math.h&gt;. Here are some of the more frequently used.</para>
+        <table id="id17398691" summary="">
+<tgroup cols="4"><colspec colnum="1" colname="c1"/>
+            <colspec colnum="2" colname="c2"/>
+            <colspec colnum="3" colname="c3"/>
+            <colspec colnum="4" colname="c4"/>
+            <tbody>
+              <row>
+                <entry>Name</entry>
+                <entry>Description</entry>
+                <entry>Math Symbols</entry>
+                <entry>Example</entry>
+              </row>
+              <row>
+                <entry>sqrt(x)</entry>
+                <entry>square root</entry>
+                <entry>
+                <m:math display="block">
+ <m:semantics>
+  <m:mrow>
+   <m:msqrt>
+    <m:mi>x</m:mi>
+   </m:msqrt>
+   
+  </m:mrow>
+ 
+ </m:semantics>
+</m:math></entry>
+                <entry>sqrt(16.0) is 4.0</entry>
+              </row>
+              <row>
+                <entry>pow(x,y)</entry>
+                <entry>compute a value taken to an exponent, xy</entry>
+                <entry><m:math display="block">
+ <m:semantics>
+  <m:mrow>
+   <m:msup>
+    <m:mi>x</m:mi>
+    <m:mi>y</m:mi>
+   </m:msup>
+   
+  </m:mrow>
+
+ </m:semantics>
+</m:math>
+</entry>
+                <entry>pow(2,3) is 8</entry>
+              </row>
+              <row>
+                <entry>exp(x)</entry>
+                <entry>exponential function, computes ex</entry>
+                <entry><m:math display="block">
+ <m:semantics>
+  <m:mrow>
+   <m:msup>
+    <m:mi>e</m:mi>
+    <m:mi>y</m:mi>
+   </m:msup>
+   
+  </m:mrow>
+ 
+ </m:semantics>
+</m:math>
+</entry>
+                <entry>exp(1.0) is 2.718282</entry>
+              </row>
+              <row>
+                <entry>log(x)</entry>
+                <entry>natural logarithm</entry>
+                <entry>ln x</entry>
+                <entry>log(2.718282) is 1.0</entry>
+              </row>
+              <row>
+                <entry>log10(x)</entry>
+                <entry>base-10 logarithm</entry>
+                <entry>log x</entry>
+                <entry>log10(100) is 2</entry>
+              </row>
+              <row>
+                <entry>sin(x)</entry>
+                <entry>sine</entry>
+                <entry>sin x</entry>
+                <entry>sin(0.0) is 0.0</entry>
+              </row>
+              <row>
+                <entry>cos(x)</entry>
+                <entry>cosine</entry>
+                <entry>cos x</entry>
+                <entry>cos(0.0) is 1.0</entry>
+              </row>
+              <row>
+                <entry>tan(x)</entry>
+                <entry>tangent</entry>
+                <entry>tg x</entry>
+                <entry>tan(0.0) is 0.0</entry>
+              </row>
+              <row>
+                <entry>ceil(x)</entry>
+                <entry>smallest integer not less than parameter</entry>
+                <entry>
+                  <m:math>
+                    <m:semantics>
+                      <m:mrow>
+                        <m:mstyle fontsize="12pt">
+                          <m:mrow>
+                            <m:mrow>
+                              <m:mo stretchy="false">⌈</m:mo>
+                              <m:mi>x</m:mi>
+                              <m:mo stretchy="false">⌉</m:mo>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mrow/>
+                      </m:mrow>
+                      <m:annotation encoding="StarMath 5.0"> size 12{ lceil x rceil } {}</m:annotation>
+                    </m:semantics>
+                  </m:math>
+                </entry>
+                <entry>ceil(2.5) is 3; ceil(-2.5) is –2</entry>
+              </row>
+              <row>
+                <entry>floor(x)</entry>
+                <entry>largest integer not greater than parameter</entry>
+                <entry>
+                  <m:math>
+                    <m:semantics>
+                      <m:mrow>
+                        <m:mstyle fontsize="12pt">
+                          <m:mrow>
+                            <m:mfenced open="⌊" close="⌋">
+                              <m:mi>x</m:mi>
+                            </m:mfenced>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mrow/>
+                      </m:mrow>
+                      <m:annotation encoding="StarMath 5.0"> size 12{ left lfloor x right rfloor } {}</m:annotation>
+                    </m:semantics>
+                  </m:math>
+                </entry>
+                <entry>floor(2.5) is 2; floor(-2.5) is –3</entry>
+              </row>
+            </tbody>
+          
+
+
+
+
+</tgroup>
+</table>
+        <para id="id18054029">
+          <emphasis>Library</emphasis>
+        </para>
+        <para id="id19076931">The library is not part of the C language proper, but an environment that support C will provide the function declarations and type and macro definitions of this library.The functions, types and macro of the library are declared in headers. </para>
+        <para id="id17096641">C header files have extensions .h. Header files should not contain any source code. They are used purely to store function prototypes, common #define constants, and any other information you wish to export from the C file that the header file belongs to. </para>
+        <para id="id18029071">A header can be accessed by </para>
+        <code id="id1166731221047" display="block"> #include &lt;header&gt;</code>
+        <para id="id18264509">Here are some headers of Turbo C library</para>
+        <para id="id12845105"><emphasis>stdio.h</emphasis> Provides functions for performing input and output.</para>
+        <para id="id19025644"><emphasis>stdlib.h</emphasis> Defines several general operation functions and macros.</para>
+        <para id="id18445662"><emphasis>conio.h</emphasis> Declares several useful library functions for performing "console input and output" from a program. </para>
+        <para id="id16610220"><emphasis>math.h</emphasis> Defines several mathematic functions.</para>
+        <para id="id18040903"><emphasis>string.h</emphasis> Provides many functions useful for manipulating strings (character arrays).</para>
+        <para id="id18081139"><emphasis>io.h</emphasis> Defines the file handle and low-level input and output functions</para>
+        <para id="id18295403"><emphasis>graphics.h</emphasis> Includes graphics functions</para>
+      </section>
+      <section id="id-271383597274">
+        <title>Statements</title>
+        <para id="id18266414">A statement specifies one or more action to be perform during the execution of a program.</para>
+        <para id="id17474560">C requires a semicolon at the end of every statement.</para>
+      </section>
+      <section id="id-865515820842">
+        <title>Comments</title>
+        <para id="id18624038">Comments are marked by symbol “/*” and “*/”. C also use // to mark the start of a comment and the end of a line to indicate the end of a comment. </para>
+        <example id="element-438"><code id="id1166734229288" display="block">1. The Hello program written using the first  commenting style of C
+/* A simple program to demonstrate
+  C style comments
+
+  The following line is essential 
+  in the C version of the hello HUT program
+  */
+#include &lt;stdio.h&gt;
+main()
+{
+	printf  /* just print */  ("Hello HUT\n"); 
+
+}
+
+The Hello program written using the second commenting style of C
+
+//  A simple program to demonstrate
+//  C style comments
+//
+//  The following line is essential 
+//  in the C version of the hello HUT program
+#include &lt;stdio.h&gt;
+main()
+{
+	printf("Hello HUT\n"); //print the string and then go to a new line
+
+}
+</code>
+</example>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <para id="id17348346">By the first way, a program may have a multi-line comments and comments in the middle of a line of code.However, you shouldn’t mix the two style in the same program.</para>
+      </section>
+    </section>
+    <section id="id-512240767663">
+      <title>C program structure</title>
+      <para id="id19083477">A C program basically has the following form: </para>
+      <list id="id18931258" list-type="bulleted">
+        <item>Preprocessor Commands : Declare standard libraries used inside the program</item>
+        <item>Type definitions : Define new data types used inside the program</item>
+        <item>Function prototypes : Declare function types and variables passed to function. </item>
+        <item>Variables : State the names and data types of global variables</item>
+        <item>Functions: Include the main function(required) and the functions that their prototypes were announced above. </item>
+      </list>
+      <figure id="id17400752"><media id="id1166738057897" alt=""><image src="../../media/graphics7-0465.png" mime-type="image/png"/></media>
+      </figure>
+    </section>
+  </content>
+</document>
