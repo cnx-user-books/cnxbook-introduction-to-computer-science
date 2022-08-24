@@ -1,3 +1,36 @@
-<col:collection xmlns="http://cnx.rice.edu/collxml" xmlns:md="http://cnx.rice.edu/mdml" xmlns:col="http://cnx.rice.edu/collxml" xml:lang="en" type="Course">  <metadata xmlns:md="http://cnx.rice.edu/mdml" mdml-version="0.5">  <md:content-id>col10776</md:content-id>  <md:title>Introduction to Computer Science</md:title>      <md:license url="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution License 3.0</md:license>  <md:language>en</md:language>        <md:uuid>9f224e5b-4c59-4ceb-befb-c79bc47c2a1f</md:uuid>
-<md:slug>introduction-to-computer-science</md:slug>
-</metadata>  <col:content>                        <col:subcollection>        <md:title>Introduction to Computer Science </md:title>                                <col:content>                    <col:module document="m27715"/>                            <col:module document="m27737"/>                            <col:module document="m27733"/>                            <col:module document="m30793"/>                            <col:module document="m27727"/>                          </col:content>      </col:subcollection>                            <col:subcollection>        <md:title>The C programming languages</md:title>                                <col:content>                    <col:module document="m27752"/>                            <col:module document="m27741"/>                            <col:module document="m27773"/>                            <col:module document="m27769"/>                            <col:module document="m27749"/>                            <col:module document="m27761"/>                            <col:module document="m27764"/>                            <col:module document="m27743"/>                          </col:content>      </col:subcollection>      </col:content></col:collection>
+<?xml version="1.0"?>
+<col:collection xmlns="http://cnx.rice.edu/collxml" xmlns:md="http://cnx.rice.edu/mdml" xmlns:col="http://cnx.rice.edu/collxml" xml:lang="en" type="Course" authors="Huong Nguyen">
+  <metadata xmlns:md="http://cnx.rice.edu/mdml" mdml-version="0.5">
+    <md:content-id>col10776</md:content-id>
+    <md:title>Introduction to Computer Science</md:title>
+    <md:license url="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution License 3.0</md:license>
+    <md:language>en</md:language>
+    <md:uuid>9f224e5b-4c59-4ceb-befb-c79bc47c2a1f</md:uuid>
+    <md:slug>introduction-to-computer-science</md:slug>
+  </metadata>
+  <col:content>
+    <col:subcollection>
+      <md:title>Introduction to Computer Science </md:title>
+      <col:content>
+        <col:module document="m27715"/>
+        <col:module document="m27737"/>
+        <col:module document="m27733"/>
+        <col:module document="m30793"/>
+        <col:module document="m27727"/>
+      </col:content>
+    </col:subcollection>
+    <col:subcollection>
+      <md:title>The C programming languages</md:title>
+      <col:content>
+        <col:module document="m27752"/>
+        <col:module document="m27741"/>
+        <col:module document="m27773"/>
+        <col:module document="m27769"/>
+        <col:module document="m27749"/>
+        <col:module document="m27761"/>
+        <col:module document="m27764"/>
+        <col:module document="m27743"/>
+      </col:content>
+    </col:subcollection>
+  </col:content>
+</col:collection>
